@@ -6,61 +6,46 @@
 //
 
 import SwiftUI
-import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @State private var consumoAgua: Int = 0
+    let metaAgua = 2000
 
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
-                }
-                .onDelete(perform: deleteItems)
-            }
-#if os(macOS)
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-#endif
-            .toolbar {
-#if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-#endif
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-        } detail: {
-            Text("Select an item")
-        }
-    }
+        VStack(spacing: 30) {
+            Text("💧 Consumo de Água")
+                .font(.title)
+                .fontWeight(.bold)
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
+            Text("\(consumoAgua) ml de \(metaAgua) ml")
+                .font(.headline)
 
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+            ProgressView(value: Float(consumoAgua), total: Float(metaAgua))
+                .progressViewStyle(LinearProgressViewStyle())
+                .padding(.horizontal, 40)
+
+            Button(action: {
+                if consumoAgua + 250 <= metaAgua {
+                    consumoAgua += 250
+                } else {
+                    consumoAgua = metaAgua
+                }
+            }) {
+                Text("+250ml")
+                    .font(.title2)
+                    .padding()
+                    .frame(width: 200)
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(12)
             }
+
+            Spacer()
         }
+        .padding()
     }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }
