@@ -1,5 +1,9 @@
-# 💪🐱 GymCat
+# GymCat
 
-Um app de rastreamento de saúde e desempenho com gamificação voltado pra rotina fitness e bem-estar.
+Um app de rotina Fitness com gamificação! Ainda nos estágios iniciais.
+_A fitness routine app with gamification! Still in its early stages._
 
-_Este projeto é desenvolvido com **SwiftUI**._
+
+
+Desenvolvido com SwiftUI.
+_Developed with SwiftUI._

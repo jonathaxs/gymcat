@@ -1,15 +1,15 @@
 //
 //  ContentView.swift
-//  GymCat
+//  GymCat App
 //
-//  Created by Jonathas Motta on 16/08/25.
+//  Created by @jonathaxs on 2025.
 //
 
 import SwiftUI
 
 struct ContentView: View {
-    @State private var consumoAgua: Int = 0
-    let metaAgua = 2000
+    @State private var waterIntake: Int = 0
+    let waterGoal = 2000
 
     var body: some View {
         VStack(spacing: 30) {
@@ -17,18 +17,18 @@ struct ContentView: View {
                 .font(.title)
                 .fontWeight(.bold)
 
-            Text("\(consumoAgua) ml de \(metaAgua) ml")
+            Text("\(waterIntake) ml de \(waterGoal) ml")
                 .font(.headline)
 
-            ProgressView(value: Float(consumoAgua), total: Float(metaAgua))
+            ProgressView(value: Float(waterIntake), total: Float(waterGoal))
                 .progressViewStyle(LinearProgressViewStyle())
                 .padding(.horizontal, 40)
 
             Button(action: {
-                if consumoAgua + 250 <= metaAgua {
-                    consumoAgua += 250
+                if waterIntake + 250 <= waterGoal {
+                    waterIntake += 250
                 } else {
-                    consumoAgua = metaAgua
+                    waterIntake = waterGoal
                 }
             }) {
                 Text("+250ml")
