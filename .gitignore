@@ -13,4 +13,4 @@ DerivedData/
 .build/
 
 # Dependências do CocoaPods
-Pods/
+Pods/**/xcuserdata/
