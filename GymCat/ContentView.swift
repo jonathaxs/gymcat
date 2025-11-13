@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var waterIntake: Int = 0
+    @AppStorage("waterIntake") private var waterIntake: Int = 0
     let waterGoal = 2000
 
     var body: some View {
@@ -38,6 +38,18 @@ struct ContentView: View {
                     .background(Color.blue)
                     .foregroundColor(.white)
                     .cornerRadius(12)
+            }
+
+            Button(action: {
+                waterIntake = 0
+            }) {
+                Text("Resetar dia")
+                    .font(.body)
+                    .padding(8)
+                    .frame(width: 200)
+                    .background(Color.red.opacity(0.8))
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
             }
 
             Spacer()
