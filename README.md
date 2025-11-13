@@ -1,11 +1,15 @@
 # 🐈‍⬛ GymCat
 
-###  pt-br
+### _pt-br_
 **Um app de rotina Fitness com gamificação! Ainda nos estágios iniciais.**  
-***Desenvolvido com SwiftUI.***
+
+
+*Desenvolvido com SwiftUI.*
 
 ---
 
-###  english
+### _english_
 **A fitness routine app with gamification! Still in its early stages.**  
-***Developed with SwiftUI.***
+
+
+*Developed with SwiftUI.*
