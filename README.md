@@ -1,6 +1,7 @@
-#🐈‍⬛ GymCat
+# 🐈‍⬛ GymCat
 <br>
-### 🇧🇷 pt-br
+---------------------- **pt-br** ----------------------
+<br>
 <br>
 **Um app de rotina Fitness com gamificação! Ainda nos estágios iniciais.**
 <br>
@@ -9,7 +10,8 @@
 <br>
 <br>
 <br>
-### 🇺🇸 english
+--------------------- **english** ---------------------
+<br>
 <br>
 **A fitness routine app with gamification! Still in its early stages.**
 <br>
