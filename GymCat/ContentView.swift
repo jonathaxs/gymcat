@@ -58,25 +58,40 @@ struct ContentView: View {
 
     private var dailyCatTitle: String {
         switch dailyProgress {
-        case ..<0.3:
-            return "Gato triste"
-        case ..<0.6:
-            return "Gato feliz"
+        case ..<0.50:
+            return "Gato Triste"
+        case ..<0.75:
+            return "Gato Iniciante"
         case ..<1.0:
-            return "Gato alerta"
+            return "Gato Fitness"
         default:
-            return "Gato preto"
+            return "Gato Forte"
+        }
+    }
+
+    private var dailyCardColor: Color {
+        switch dailyCatTitle {
+        case "Gato Triste":
+            return Color.red.opacity(0.15)
+        case "Gato Iniciante":
+            return Color.yellow.opacity(0.15)
+        case "Gato Fitness":
+            return Color.blue.opacity(0.15)
+        case "Gato Forte":
+            return Color.green.opacity(0.15)
+        default:
+            return Color.gray.opacity(0.15)
         }
     }
 
     private var dailyPoints: Int {
         switch dailyProgress {
-        case ..<0.3:
-            return 0
-        case ..<0.6:
-            return 30
+        case ..<0.50:
+            return 15
+        case ..<0.75:
+            return 45
         case ..<1.0:
-            return 60
+            return 75
         default:
             return 100
         }
@@ -111,7 +126,7 @@ struct ContentView: View {
                 }
             }
             .padding(20)
-            .background(Color(.systemYellow).opacity(0.15))
+            .background(dailyCardColor)
             .cornerRadius(25)
 
             NutrientTrackerRow(
@@ -156,7 +171,7 @@ struct ContentView: View {
                 carbIntake = 0
                 fatIntake = 0
             }) {
-                Text("Finalizar dia")
+                Text("Finalizar Dia")
                     .font(.body.bold())
                     .padding(15)
                     .frame(maxWidth: .infinity)
