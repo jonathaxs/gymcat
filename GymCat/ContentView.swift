@@ -12,11 +12,13 @@ struct ContentView: View {
     @AppStorage("proteinIntake") private var proteinIntake: Int = 0
     @AppStorage("carbIntake") private var carbIntake: Int = 0
     @AppStorage("fatIntake") private var fatIntake: Int = 0
+    @AppStorage("sleepHours") private var sleepHours: Int = 0
 
     let waterGoal = 2000
     let proteinGoal = 150
     let carbGoal = 250
     let fatGoal = 60
+    let sleepGoal = 7
 
     // Daily progress helpers
     private var waterProgress: Double {
@@ -34,9 +36,13 @@ struct ContentView: View {
     private var fatProgress: Double {
         min(Double(fatIntake) / Double(fatGoal), 1.0)
     }
+    
+    private var sleepProgress: Double {
+        min(Double(sleepHours) / Double(sleepGoal), 1.0)
+    }
 
     private var dailyProgress: Double {
-        (waterProgress + proteinProgress + carbProgress + fatProgress) / 4.0
+        (waterProgress + proteinProgress + carbProgress + fatProgress + sleepProgress) / 5.0
     }
 
     private var dailyPercent: Int {
@@ -98,92 +104,104 @@ struct ContentView: View {
     }
 
     var body: some View {
-        VStack(spacing: 15) {
-            Text("GymCat")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .padding(.top, 24)
+        ScrollView {
+            VStack(spacing: 12) {
+                Text("GymCat")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(.top, 0)
 
-            VStack(alignment: .leading, spacing: 10) {
-                HStack(alignment: .top) {
-                    Text(dailyCatEmoji)
-                        .font(.largeTitle)
+                VStack(alignment: .leading, spacing: 10) {
+                    HStack(alignment: .top) {
+                        Text(dailyCatEmoji)
+                            .font(.largeTitle)
 
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text(dailyCatTitle)
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text(dailyCatTitle)
+                                .font(.headline)
+                            Text("Progresso do dia: ")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                            + Text("\(dailyPercent)%")
+                                .font(.subheadline.bold())
+                        }
+
+                        Spacer()
+
+                        Text("\(dailyPoints) pts")
                             .font(.headline)
-                        Text("Progresso do dia: ")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                        + Text("\(dailyPercent)%")
-                            .font(.subheadline.bold())
                     }
-
-                    Spacer()
-
-                    Text("\(dailyPoints) pts")
-                        .font(.headline)
                 }
+                .padding(20)
+                .background(dailyCardColor)
+                .cornerRadius(25)
+
+                NutrientTrackerRow(
+                    icon: "💧",
+                    title: "Água",
+                    unit: "ml",
+                    increment: 250,
+                    goal: waterGoal,
+                    value: $waterIntake
+                )
+
+                NutrientTrackerRow(
+                    icon: "🍗",
+                    title: "Proteína",
+                    unit: "g",
+                    increment: 10,
+                    goal: proteinGoal,
+                    value: $proteinIntake
+                )
+
+                NutrientTrackerRow(
+                    icon: "🍞",
+                    title: "Carboidratos",
+                    unit: "g",
+                    increment: 20,
+                    goal: carbGoal,
+                    value: $carbIntake
+                )
+
+                NutrientTrackerRow(
+                    icon: "🧈",
+                    title: "Gorduras",
+                    unit: "g",
+                    increment: 5,
+                    goal: fatGoal,
+                    value: $fatIntake
+                )
+                
+                NutrientTrackerRow(
+                    icon: "😴",
+                    title: "Sono",
+                    unit: "h",
+                    increment: 1,
+                    goal: sleepGoal,
+                    value: $sleepHours
+                )
+
+                Button(action: {
+                    waterIntake = 0
+                    proteinIntake = 0
+                    carbIntake = 0
+                    fatIntake = 0
+                    sleepHours = 0
+                }) {
+                    Text("Finalizar Dia")
+                        .font(.body.bold())
+                        .padding(15)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.yellow.opacity(0.6))
+                        .foregroundColor(.primary)
+                        .cornerRadius(20)
+                }
+                .padding(.top, 8)
+
+                Spacer()
             }
-            .padding(20)
-            .background(dailyCardColor)
-            .cornerRadius(25)
-
-            NutrientTrackerRow(
-                icon: "💧",
-                title: "Água",
-                unit: "ml",
-                increment: 250,
-                goal: waterGoal,
-                value: $waterIntake
-            )
-
-            NutrientTrackerRow(
-                icon: "🍗",
-                title: "Proteína",
-                unit: "g",
-                increment: 10,
-                goal: proteinGoal,
-                value: $proteinIntake
-            )
-
-            NutrientTrackerRow(
-                icon: "🍞",
-                title: "Carboidratos",
-                unit: "g",
-                increment: 20,
-                goal: carbGoal,
-                value: $carbIntake
-            )
-
-            NutrientTrackerRow(
-                icon: "🧈",
-                title: "Gorduras",
-                unit: "g",
-                increment: 5,
-                goal: fatGoal,
-                value: $fatIntake
-            )
-
-            Button(action: {
-                waterIntake = 0
-                proteinIntake = 0
-                carbIntake = 0
-                fatIntake = 0
-            }) {
-                Text("Finalizar Dia")
-                    .font(.body.bold())
-                    .padding(15)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.yellow.opacity(0.6))
-                    .foregroundColor(.primary)
-                    .cornerRadius(20)
+            .padding()
             }
-            .padding(.top, 8)
-
-            Spacer()
-        }
-        .padding()
     }
 }
 
