@@ -83,7 +83,7 @@ struct ContentView: View {
     }
 
     var body: some View {
-        VStack(spacing: 24) {
+        VStack(spacing: 15) {
             Text("GymCat")
                 .font(.largeTitle)
                 .fontWeight(.bold)
@@ -97,9 +97,11 @@ struct ContentView: View {
                     VStack(alignment: .leading, spacing: 10) {
                         Text(dailyCatTitle)
                             .font(.headline)
-                        Text("Progresso do dia: \(dailyPercent)%")
+                        Text("Progresso do dia: ")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
+                        + Text("\(dailyPercent)%")
+                            .font(.subheadline.bold())
                     }
 
                     Spacer()
@@ -108,9 +110,9 @@ struct ContentView: View {
                         .font(.headline)
                 }
             }
-            .padding(12)
+            .padding(20)
             .background(Color(.systemYellow).opacity(0.15))
-            .cornerRadius(12)
+            .cornerRadius(25)
 
             NutrientTrackerRow(
                 icon: "💧",
@@ -155,12 +157,12 @@ struct ContentView: View {
                 fatIntake = 0
             }) {
                 Text("Finalizar dia")
-                    .font(.body)
+                    .font(.body.bold())
                     .padding(15)
                     .frame(maxWidth: .infinity)
-                    .background(Color.red.opacity(0.8))
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
+                    .background(Color.yellow.opacity(0.6))
+                    .foregroundColor(.primary)
+                    .cornerRadius(20)
             }
             .padding(.top, 8)
 
@@ -181,7 +183,7 @@ struct NutrientTrackerRow: View {
     @Binding var value: Int
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 10) {
             HStack {
                 Text(icon)
                 Text(title)
@@ -196,17 +198,17 @@ struct NutrientTrackerRow: View {
 
                 Spacer()
 
-                HStack(spacing: 6) {
+                HStack(spacing: 5) {
                     Button(action: {
                         let newValue = value - increment
                         value = max(newValue, 0)
                     }) {
                         Text("-")
-                            .font(.subheadline)
+                            .font(.title2.bold())
                             .frame(width: 80, height: 40)
-                            .background(Color.gray.opacity(0.2))
-                            .foregroundColor(.primary)
-                            .cornerRadius(6)
+                            .background(Color.red.opacity(0.8))
+                            .foregroundColor(.white)
+                            .cornerRadius(15)
                     }
 
                     Button(action: {
@@ -214,21 +216,25 @@ struct NutrientTrackerRow: View {
                         value = min(newValue, goal)
                     }) {
                         Text("+")
-                            .font(.subheadline)
+                            .font(.title2.bold())
                             .frame(width: 80, height: 40)
                             .background(Color.blue)
                             .foregroundColor(.white)
-                            .cornerRadius(6)
+                            .cornerRadius(15)
                     }
                 }
             }
 
             ProgressView(value: Float(value), total: Float(goal))
                 .progressViewStyle(LinearProgressViewStyle())
+                .tint(Color.green.opacity(0.9))
+                .scaleEffect(x: 1, y: 2, anchor: .center)
+                .frame(height: 10)
+                .clipShape(RoundedRectangle(cornerRadius: 25))
         }
-        .padding(12)
+        .padding(15)
         .background(Color(.systemGray6))
-        .cornerRadius(12)
+        .cornerRadius(25)
     }
 }
 
