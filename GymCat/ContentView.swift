@@ -18,12 +18,99 @@ struct ContentView: View {
     let carbGoal = 250
     let fatGoal = 60
 
+    // Daily progress helpers
+    private var waterProgress: Double {
+        min(Double(waterIntake) / Double(waterGoal), 1.0)
+    }
+
+    private var proteinProgress: Double {
+        min(Double(proteinIntake) / Double(proteinGoal), 1.0)
+    }
+
+    private var carbProgress: Double {
+        min(Double(carbIntake) / Double(carbGoal), 1.0)
+    }
+
+    private var fatProgress: Double {
+        min(Double(fatIntake) / Double(fatGoal), 1.0)
+    }
+
+    private var dailyProgress: Double {
+        (waterProgress + proteinProgress + carbProgress + fatProgress) / 4.0
+    }
+
+    private var dailyPercent: Int {
+        Int(dailyProgress * 100)
+    }
+
+    private var dailyCatEmoji: String {
+        switch dailyProgress {
+        case ..<0.3:
+            return "😿"
+        case ..<0.6:
+            return "😺"
+        case ..<1.0:
+            return "🐈"
+        default:
+            return "🐈‍⬛"
+        }
+    }
+
+    private var dailyCatTitle: String {
+        switch dailyProgress {
+        case ..<0.3:
+            return "Gato triste"
+        case ..<0.6:
+            return "Gato feliz"
+        case ..<1.0:
+            return "Gato alerta"
+        default:
+            return "Gato preto"
+        }
+    }
+
+    private var dailyPoints: Int {
+        switch dailyProgress {
+        case ..<0.3:
+            return 0
+        case ..<0.6:
+            return 30
+        case ..<1.0:
+            return 60
+        default:
+            return 100
+        }
+    }
+
     var body: some View {
         VStack(spacing: 24) {
             Text("GymCat")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding(.top, 24)
+
+            VStack(alignment: .leading, spacing: 10) {
+                HStack(alignment: .top) {
+                    Text(dailyCatEmoji)
+                        .font(.largeTitle)
+
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text(dailyCatTitle)
+                            .font(.headline)
+                        Text("Progresso do dia: \(dailyPercent)%")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
+
+                    Spacer()
+
+                    Text("\(dailyPoints) pts")
+                        .font(.headline)
+                }
+            }
+            .padding(12)
+            .background(Color(.systemYellow).opacity(0.15))
+            .cornerRadius(12)
 
             NutrientTrackerRow(
                 icon: "💧",
@@ -83,7 +170,8 @@ struct ContentView: View {
     }
 }
 
-// This view is a reusable sub-component used only by ContentView.
+// This View is a reusable sub-component used only by ContentView.
+
 struct NutrientTrackerRow: View {
     let icon: String
     let title: String
@@ -115,7 +203,7 @@ struct NutrientTrackerRow: View {
                     }) {
                         Text("-")
                             .font(.subheadline)
-                            .frame(width: 60, height: 50)
+                            .frame(width: 80, height: 40)
                             .background(Color.gray.opacity(0.2))
                             .foregroundColor(.primary)
                             .cornerRadius(6)
@@ -127,7 +215,7 @@ struct NutrientTrackerRow: View {
                     }) {
                         Text("+")
                             .font(.subheadline)
-                            .frame(width: 60, height: 50)
+                            .frame(width: 80, height: 40)
                             .background(Color.blue)
                             .foregroundColor(.white)
                             .cornerRadius(6)
