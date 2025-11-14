@@ -51,14 +51,14 @@ struct ContentView: View {
 
     private var dailyCatEmoji: String {
         switch dailyProgress {
-        case ..<0.3:
+        case ..<0.50:
             return "😿"
-        case ..<0.6:
+        case ..<0.75:
             return "😺"
         case ..<1.0:
             return "🐈"
         default:
-            return "🐈‍⬛"
+            return "🦁"
         }
     }
 
@@ -78,15 +78,15 @@ struct ContentView: View {
     private var dailyCardColor: Color {
         switch dailyCatTitle {
         case "Gato Triste":
-            return Color.red.opacity(0.15)
+            return Color.red.opacity(0.30)
         case "Gato Iniciante":
-            return Color.yellow.opacity(0.15)
+            return Color.yellow.opacity(0.30)
         case "Gato Fitness":
-            return Color.blue.opacity(0.15)
+            return Color.blue.opacity(0.30)
         case "Gato Forte":
-            return Color.green.opacity(0.15)
+            return Color.green.opacity(0.30)
         default:
-            return Color.gray.opacity(0.15)
+            return Color.gray.opacity(0.30)
         }
     }
 
