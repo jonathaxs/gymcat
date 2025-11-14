@@ -23,6 +23,7 @@ struct ContentView: View {
             Text("GymCat")
                 .font(.largeTitle)
                 .fontWeight(.bold)
+                .padding(.top, 24)
 
             NutrientTrackerRow(
                 icon: "💧",
@@ -66,9 +67,9 @@ struct ContentView: View {
                 carbIntake = 0
                 fatIntake = 0
             }) {
-                Text("Resetar dia")
+                Text("Finalizar dia")
                     .font(.body)
-                    .padding(8)
+                    .padding(15)
                     .frame(maxWidth: .infinity)
                     .background(Color.red.opacity(0.8))
                     .foregroundColor(.white)
@@ -82,6 +83,7 @@ struct ContentView: View {
     }
 }
 
+// This view is a reusable sub-component used only by ContentView.
 struct NutrientTrackerRow: View {
     let icon: String
     let title: String
@@ -91,33 +93,52 @@ struct NutrientTrackerRow: View {
     @Binding var value: Int
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text(icon)
                 Text(title)
                     .font(.headline)
+                Spacer()
             }
 
-            Text("\(value) \(unit) de \(goal) \(unit)")
-                .font(.subheadline)
+            HStack(spacing: 8) {
+                Text("\(value) \(unit) / \(goal) \(unit)")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+
+                Spacer()
+
+                HStack(spacing: 6) {
+                    Button(action: {
+                        let newValue = value - increment
+                        value = max(newValue, 0)
+                    }) {
+                        Text("-")
+                            .font(.subheadline)
+                            .frame(width: 60, height: 50)
+                            .background(Color.gray.opacity(0.2))
+                            .foregroundColor(.primary)
+                            .cornerRadius(6)
+                    }
+
+                    Button(action: {
+                        let newValue = value + increment
+                        value = min(newValue, goal)
+                    }) {
+                        Text("+")
+                            .font(.subheadline)
+                            .frame(width: 60, height: 50)
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(6)
+                    }
+                }
+            }
 
             ProgressView(value: Float(value), total: Float(goal))
                 .progressViewStyle(LinearProgressViewStyle())
-
-            Button(action: {
-                let newValue = value + increment
-                value = min(newValue, goal)
-            }) {
-                Text("+\(increment) \(unit)")
-                    .font(.subheadline)
-                    .padding(8)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
-            }
         }
-        .padding()
+        .padding(12)
         .background(Color(.systemGray6))
         .cornerRadius(12)
     }
