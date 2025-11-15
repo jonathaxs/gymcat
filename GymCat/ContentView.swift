@@ -1,13 +1,16 @@
 //
 //  ContentView.swift
 //  GymCat App
+//  Today Screen
 //
-//  Created by @jonathaxs on 2025.
+//  Created by @jonathaxs on 2025-08-16.
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
+    @Environment(\.modelContext) private var modelContext
     @AppStorage("waterIntake") private var waterIntake: Int = 0
     @AppStorage("proteinIntake") private var proteinIntake: Int = 0
     @AppStorage("carbIntake") private var carbIntake: Int = 0
@@ -106,7 +109,7 @@ struct ContentView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 12) {
-                Text("GymCat")
+                Text("Hoje")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .padding(.top, 0)
@@ -182,6 +185,20 @@ struct ContentView: View {
                 )
 
                 Button(action: {
+                    let record = DailyRecord(
+                        date: Date(),
+                        water: waterIntake,
+                        protein: proteinIntake,
+                        carb: carbIntake,
+                        fat: fatIntake,
+                        sleep: sleepHours,
+                        percent: dailyPercent,
+                        catTitle: dailyCatTitle,
+                        catEmoji: dailyCatEmoji,
+                        points: dailyPoints
+                    )
+                    modelContext.insert(record)
+
                     waterIntake = 0
                     proteinIntake = 0
                     carbIntake = 0

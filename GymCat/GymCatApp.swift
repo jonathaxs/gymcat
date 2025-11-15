@@ -2,7 +2,7 @@
 //  GymCatApp.swift
 //  GymCat
 //
-//  Created by Jonathas Motta on 16/08/25.
+//  Created by @jonathaxs on 2025-08-16.
 //
 
 import SwiftUI
@@ -12,7 +12,7 @@ import SwiftData
 struct GymCatApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            DailyRecord.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
