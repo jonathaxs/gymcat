@@ -8,8 +8,14 @@
 import Foundation
 import SwiftData
 
+// MARK: - SwiftData Model
+// DailyRecord represents a single completed day in the GymCat app.
+// Each property is persisted automatically by SwiftData.
+// This model is created when the user taps "Finalizar Dia".
 @Model
 final class DailyRecord {
+    // Stored properties for each metric and metadata for the daily record.
+    // These values correspond to the user's progress on a given day.
     var date: Date
     var water: Int
     var protein: Int
@@ -21,6 +27,12 @@ final class DailyRecord {
     var catEmoji: String
     var points: Int
 
+    // MARK: - Initializer
+    // The initializer assigns all incoming values to the model's stored properties.
+    // `self.` is used here to distinguish the class properties from the parameters.
+    // In the future we will rename parameters to improve readability.
+    // The `date` parameter has a default value of `Date()`,
+    // meaning new records will automatically store the current day unless another date is provided.
     init(
         date: Date = Date(),
         water: Int,
