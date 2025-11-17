@@ -3,6 +3,7 @@
 //  GymCat App
 //  Today Screen
 //
+/*  Criado por @jonathaxs em 2025-08-16. */
 //  Created by @jonathaxs on 2025-08-16.
 //
 
@@ -10,8 +11,11 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    // MARK: - State & persisted values
-    // Access to the SwiftData context so we can save a DailyRecord when the user finishes the day.
+    // MARK: - States & valores persistidos
+    // Acesso ao contexto do SwiftData e variáveis persistidas com @AppStorage.
+
+    /* MARK: - State & persisted values */
+    /* Access to the SwiftData context and variables persisted using @AppStorage. */
     @Environment(\.modelContext) private var modelContext
     @AppStorage("waterIntake") private var waterIntake: Int = 0
     @AppStorage("proteinIntake") private var proteinIntake: Int = 0
@@ -19,16 +23,22 @@ struct ContentView: View {
     @AppStorage("fatIntake") private var fatIntake: Int = 0
     @AppStorage("sleepHours") private var sleepHours: Int = 0
 
-    // Default daily goals for each tracked metric.
-    // In the future these values should come from user settings / onboarding instead of being hard-coded here.
+    // Metas diárias padrão para cada métrica acompanhada.
+    // No futuro, virão das configurações do usuário.
+
+    /* Default daily goals for each tracked metric. */
+    /* In the future these should come from user settings. */
     let waterGoal = 3000
     let proteinGoal = 150
     let carbGoal = 300
     let fatGoal = 80
     let sleepGoal = 7
 
-    // MARK: - Daily progress helpers
-    // These helpers normalize each intake into a 0...1 progress value, clamped to a maximum of 100%.
+    // MARK: - Auxiliares de cálculo de progresso diário
+    // Normaliza consumo para valores entre 0...1.
+
+    /* MARK: - Daily progress helpers */
+    /* Normalizes each intake into values between 0...1. */
     private var waterProgress: Double {
         min(Double(waterIntake) / Double(waterGoal), 1.0)
     }
@@ -57,11 +67,11 @@ struct ContentView: View {
         Int(dailyProgress * 100)
     }
     
-    // MARK: - Daily cat evaluation
-    // NOTE: All these properties use the same threshold logic based on dailyProgress.
-    // TODO: In a future refactor, extract this logic into a single model (e.g. an enum DailyCat)
-    // that exposes emoji, title, color and points. That avoids repeating the same switch
-    // over dailyProgress in multiple places.
+    // Propriedades que determinam o gato do dia com base no progresso.
+    // Esta lógica será unificada futuramente em um enum DailyCat.
+
+    /* Properties that determine the daily cat based on progress. */
+    /* Logic will be unified later into a DailyCat enum. */
 
     private var dailyCatEmoji: String {
         switch dailyProgress {
@@ -117,9 +127,11 @@ struct ContentView: View {
         }
     }
 
-    // MARK: - View body
-    // Main layout for the "Hoje" screen: summary card at the top, followed by
-    // each nutrient/sleep tracker row and the "Finalizar Dia" action button.
+    // MARK: - Corpo da View
+    // Estrutura visual da tela principal "Hoje".
+
+    /* MARK: - View body */
+    /* Main layout for the "Hoje" screen. */
     var body: some View {
         ScrollView {
             VStack(spacing: 12) {
@@ -155,7 +167,11 @@ struct ContentView: View {
                 .background(dailyCardColor)
                 .cornerRadius(25)
                 
-                // Individual trackers for each metric
+                // Blocos individuais de acompanhamento.
+                // Cada um utiliza a subview NutrientTrackerRow.
+
+                /* Individual trackers for each metric. */
+                /* Each one uses the NutrientTrackerRow subview. */
                 NutrientTrackerRow(
                     icon: "😴",
                     title: "Sono",
@@ -201,7 +217,9 @@ struct ContentView: View {
                     value: $fatIntake
                 )
 
-                // When the user finishes the day, we save a DailyRecord and reset all counters.
+                // Quando o usuário finaliza o dia, salvamos um DailyRecord e zeramos todos os contadores.
+                                
+                /* When the user finishes the day, we save a DailyRecord and reset all counters. */
                 Button(action: {
                     let record = DailyRecord(
                         date: Date(),
@@ -240,9 +258,11 @@ struct ContentView: View {
     }
 }
 
-// MARK: - Subviews
-// This View is a reusable sub-component used only by ContentView to avoid repeating the same
-// layout and logic for Água, Proteína, Carboidratos, Gorduras e Sono.
+// MARK: - Subviews (Subcomponentes)
+// Subview reutilizável para evitar duplicação de layout e lógica.
+
+/* MARK: - Subviews */
+/* Reusable subview to avoid duplicated logic. */
 
 struct NutrientTrackerRow: View {
     let icon: String
