@@ -17,10 +17,10 @@ struct ContentView: View {
     @AppStorage("fatIntake") private var fatIntake: Int = 0
     @AppStorage("sleepHours") private var sleepHours: Int = 0
 
-    let waterGoal = 2000
+    let waterGoal = 3000
     let proteinGoal = 150
-    let carbGoal = 250
-    let fatGoal = 60
+    let carbGoal = 300
+    let fatGoal = 80
     let sleepGoal = 7
 
     // Daily progress helpers
@@ -51,14 +51,17 @@ struct ContentView: View {
     private var dailyPercent: Int {
         Int(dailyProgress * 100)
     }
+    
+    
+    // REFATORATION?
 
     private var dailyCatEmoji: String {
         switch dailyProgress {
-        case ..<0.50:
+        case ..<0.5:
             return "😿"
-        case ..<0.75:
+        case ..<0.7:
             return "😺"
-        case ..<1.0:
+        case ..<0.9:
             return "🐈"
         default:
             return "🦁"
@@ -67,11 +70,11 @@ struct ContentView: View {
 
     private var dailyCatTitle: String {
         switch dailyProgress {
-        case ..<0.50:
+        case ..<0.5:
             return "Gato Triste"
-        case ..<0.75:
+        case ..<0.7:
             return "Gato Iniciante"
-        case ..<1.0:
+        case ..<0.9:
             return "Gato Fitness"
         default:
             return "Gato Forte"
@@ -95,14 +98,14 @@ struct ContentView: View {
 
     private var dailyPoints: Int {
         switch dailyProgress {
-        case ..<0.50:
+        case ..<0.5:
             return 15
-        case ..<0.75:
-            return 45
-        case ..<1.0:
+        case ..<0.7:
+            return 55
+        case ..<0.9:
             return 75
         default:
-            return 100
+            return 105
         }
     }
 
@@ -161,7 +164,7 @@ struct ContentView: View {
                     icon: "🍗",
                     title: "Proteína",
                     unit: "g",
-                    increment: 10,
+                    increment: 20,
                     goal: proteinGoal,
                     value: $proteinIntake
                 )
