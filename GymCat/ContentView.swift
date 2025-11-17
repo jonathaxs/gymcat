@@ -10,6 +10,8 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
+    // MARK: - State & persisted values
+    // Access to the SwiftData context so we can save a DailyRecord when the user finishes the day.
     @Environment(\.modelContext) private var modelContext
     @AppStorage("waterIntake") private var waterIntake: Int = 0
     @AppStorage("proteinIntake") private var proteinIntake: Int = 0
@@ -17,13 +19,16 @@ struct ContentView: View {
     @AppStorage("fatIntake") private var fatIntake: Int = 0
     @AppStorage("sleepHours") private var sleepHours: Int = 0
 
+    // Default daily goals for each tracked metric.
+    // In the future these values should come from user settings / onboarding instead of being hard-coded here.
     let waterGoal = 3000
     let proteinGoal = 150
     let carbGoal = 300
     let fatGoal = 80
     let sleepGoal = 7
 
-    // Daily progress helpers
+    // MARK: - Daily progress helpers
+    // These helpers normalize each intake into a 0...1 progress value, clamped to a maximum of 100%.
     private var waterProgress: Double {
         min(Double(waterIntake) / Double(waterGoal), 1.0)
     }
@@ -52,8 +57,11 @@ struct ContentView: View {
         Int(dailyProgress * 100)
     }
     
-    
-    // REFATORATION?
+    // MARK: - Daily cat evaluation
+    // NOTE: All these properties use the same threshold logic based on dailyProgress.
+    // TODO: In a future refactor, extract this logic into a single model (e.g. an enum DailyCat)
+    // that exposes emoji, title, color and points. That avoids repeating the same switch
+    // over dailyProgress in multiple places.
 
     private var dailyCatEmoji: String {
         switch dailyProgress {
@@ -109,14 +117,19 @@ struct ContentView: View {
         }
     }
 
+    // MARK: - View body
+    // Main layout for the "Hoje" screen: summary card at the top, followed by
+    // each nutrient/sleep tracker row and the "Finalizar Dia" action button.
     var body: some View {
         ScrollView {
             VStack(spacing: 12) {
+                // Screen header
                 Text("Hoje")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .padding(.top, 0)
 
+                // Daily summary card: current cat, progress percentage and points
                 VStack(alignment: .leading, spacing: 10) {
                     HStack(alignment: .top) {
                         Text(dailyCatEmoji)
@@ -142,6 +155,7 @@ struct ContentView: View {
                 .background(dailyCardColor)
                 .cornerRadius(25)
                 
+                // Individual trackers for each metric
                 NutrientTrackerRow(
                     icon: "😴",
                     title: "Sono",
@@ -187,6 +201,7 @@ struct ContentView: View {
                     value: $fatIntake
                 )
 
+                // When the user finishes the day, we save a DailyRecord and reset all counters.
                 Button(action: {
                     let record = DailyRecord(
                         date: Date(),
@@ -225,7 +240,9 @@ struct ContentView: View {
     }
 }
 
-// This View is a reusable sub-component used only by ContentView.
+// MARK: - Subviews
+// This View is a reusable sub-component used only by ContentView to avoid repeating the same
+// layout and logic for Água, Proteína, Carboidratos, Gorduras e Sono.
 
 struct NutrientTrackerRow: View {
     let icon: String
