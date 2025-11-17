@@ -138,6 +138,15 @@ struct ContentView: View {
                 .padding(20)
                 .background(dailyCardColor)
                 .cornerRadius(25)
+                
+                NutrientTrackerRow(
+                    icon: "😴",
+                    title: "Sono",
+                    unit: "h",
+                    increment: 1,
+                    goal: sleepGoal,
+                    value: $sleepHours
+                )
 
                 NutrientTrackerRow(
                     icon: "💧",
@@ -173,15 +182,6 @@ struct ContentView: View {
                     increment: 5,
                     goal: fatGoal,
                     value: $fatIntake
-                )
-                
-                NutrientTrackerRow(
-                    icon: "😴",
-                    title: "Sono",
-                    unit: "h",
-                    increment: 1,
-                    goal: sleepGoal,
-                    value: $sleepHours
                 )
 
                 Button(action: {
