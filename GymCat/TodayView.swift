@@ -1,5 +1,5 @@
 //
-//  TodayView.swift (original starter "ContentView.swift")
+//  TodayView.swift
 //  GymCat App
 //
 //  Criado por @jonathaxs em 2025-08-16.

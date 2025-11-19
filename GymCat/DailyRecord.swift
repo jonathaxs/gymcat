@@ -1,5 +1,5 @@
 //
-//  Item.swift
+//  DailyRecord.swift
 //  GymCat
 //
 //  Criado por @jonathaxs em 2025-08-16.
