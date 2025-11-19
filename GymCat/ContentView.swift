@@ -223,15 +223,15 @@ struct ContentView: View {
                 Button(action: {
                     let record = DailyRecord(
                         date: Date(),
-                        water: waterIntake,
-                        protein: proteinIntake,
-                        carb: carbIntake,
-                        fat: fatIntake,
-                        sleep: sleepHours,
-                        percent: dailyPercent,
+                        waterAmount: waterIntake,
+                        proteinAmount: proteinIntake,
+                        carbAmount: carbIntake,
+                        fatAmount: fatIntake,
+                        sleepHours: sleepHours,
+                        percentValue: dailyPercent,
                         catTitle: dailyCatTitle,
                         catEmoji: dailyCatEmoji,
-                        points: dailyPoints
+                        pointsEarned: dailyPoints
                     )
                     modelContext.insert(record)
 

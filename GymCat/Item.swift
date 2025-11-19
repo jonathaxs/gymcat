@@ -54,25 +54,25 @@ final class DailyRecord {
         /* The `date` parameter has a default value of `Date()`, */
         /* meaning new records will automatically store the current day unless another date is provided. */
         date: Date = Date(),
-        water: Int,
-        protein: Int,
-        carb: Int,
-        fat: Int,
-        sleep: Int,
-        percent: Int,
+        waterAmount: Int,
+        proteinAmount: Int,
+        carbAmount: Int,
+        fatAmount: Int,
+        sleepHours: Int,
+        percentValue: Int,
         catTitle: String,
         catEmoji: String,
-        points: Int
+        pointsEarned: Int
     ) {
         self.date = date
-        self.water = water
-        self.protein = protein
-        self.carb = carb
-        self.fat = fat
-        self.sleep = sleep
-        self.percent = percent
+        self.water = waterAmount
+        self.protein = proteinAmount
+        self.carb = carbAmount
+        self.fat = fatAmount
+        self.sleep = sleepHours
+        self.percent = percentValue
         self.catTitle = catTitle
         self.catEmoji = catEmoji
-        self.points = points
+        self.points = pointsEarned
     }
 }
