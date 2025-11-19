@@ -25,7 +25,7 @@ struct MainView: View {
             // Aba principal que exibe o acompanhamento diário.
             
             /* Main tab showing the daily tracker screen. */
-            ContentView()
+            TodayView()
                 .tabItem {
                     Label("Hoje", systemImage: "house.fill")
                 }

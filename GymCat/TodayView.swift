@@ -1,16 +1,15 @@
 //
-//  ContentView.swift
+//  TodayView.swift (original starter "ContentView.swift")
 //  GymCat App
-//  Today Screen
 //
-/*  Criado por @jonathaxs em 2025-08-16. */
-//  Created by @jonathaxs on 2025-08-16.
+//  Criado por @jonathaxs em 2025-08-16.
+/*  Created by @jonathaxs on 2025-08-16. */
 //
 
 import SwiftUI
 import SwiftData
 
-struct ContentView: View {
+struct TodayView: View {
     // MARK: - States & valores persistidos
     // Acesso ao contexto do SwiftData e variáveis persistidas com @AppStorage.
 
@@ -63,7 +62,7 @@ struct ContentView: View {
         (waterProgress + proteinProgress + carbProgress + fatProgress + sleepProgress) / 5.0
     }
 
-    private var dailyPercent: Int {
+    private var dailyPercentage: Int {
         Int(dailyProgress * 100)
     }
     
@@ -86,7 +85,7 @@ struct ContentView: View {
         }
     }
 
-    private var dailyCatTitle: String {
+    private var dailyCatName: String {
         switch dailyProgress {
         case ..<0.5:
             return "Gato Triste"
@@ -99,8 +98,8 @@ struct ContentView: View {
         }
     }
 
-    private var dailyCardColor: Color {
-        switch dailyCatTitle {
+    private var dailyCatColor: Color {
+        switch dailyCatName {
         case "Gato Triste":
             return Color.red.opacity(0.30)
         case "Gato Iniciante":
@@ -114,7 +113,7 @@ struct ContentView: View {
         }
     }
 
-    private var dailyPoints: Int {
+    private var dailyCatPoints: Int {
         switch dailyProgress {
         case ..<0.5:
             return 15
@@ -148,23 +147,23 @@ struct ContentView: View {
                             .font(.largeTitle)
 
                         VStack(alignment: .leading, spacing: 10) {
-                            Text(dailyCatTitle)
+                            Text(dailyCatName)
                                 .font(.headline)
                             Text("Progresso do dia: ")
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary)
-                            + Text("\(dailyPercent)%")
+                            + Text("\(dailyPercentage)%")
                                 .font(.subheadline.bold())
                         }
 
                         Spacer()
 
-                        Text("\(dailyPoints) pts")
+                        Text("\(dailyCatPoints) pts")
                             .font(.headline)
                     }
                 }
                 .padding(20)
-                .background(dailyCardColor)
+                .background(dailyCatColor)
                 .cornerRadius(25)
                 
                 // Blocos individuais de acompanhamento.
@@ -228,10 +227,10 @@ struct ContentView: View {
                         carbAmount: carbIntake,
                         fatAmount: fatIntake,
                         sleepHours: sleepHours,
-                        percentValue: dailyPercent,
-                        catTitle: dailyCatTitle,
+                        percentValue: dailyPercentage,
+                        catTitle: dailyCatName,
                         catEmoji: dailyCatEmoji,
-                        pointsEarned: dailyPoints
+                        pointsEarned: dailyCatPoints
                     )
                     modelContext.insert(record)
 
@@ -329,5 +328,5 @@ struct NutrientTrackerRow: View {
 }
 
 #Preview {
-    ContentView()
+    TodayView()
 }
