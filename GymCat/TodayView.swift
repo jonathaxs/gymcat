@@ -1,6 +1,6 @@
 //
 //  TodayView.swift
-//  GymCat App
+//  GymCat
 //
 //  Criado por @jonathaxs em 2025-08-16.
 /*  Created by @jonathaxs on 2025-08-16. */
@@ -8,6 +8,94 @@
 
 import SwiftUI
 import SwiftData
+
+// MARK: - DailyCat (Enum de categorias de gato)
+// Representa as categorias de gato do dia com base no progresso.
+// Centraliza emoji, nome, cor e pontos em um único tipo.
+
+/* MARK: - DailyCat (Enum for cat categories) */
+/* Represents the daily cat categories based on progress. */
+/* Centralizes emoji, name, color and points in a single type. */
+enum DailyCat {
+    case triste
+    case iniciante
+    case fitness
+    case forte
+}
+
+// Extensão com lógica de cálculo e propriedades derivadas.
+// Aqui definimos como o progresso vira um DailyCat e quais
+// são os atributos (emoji, nome, cor e pontos) de cada caso.
+
+/* Extension adding calculation logic and derived properties. */
+/* Defines how progress maps to a DailyCat and which emoji, name, */
+/* color and points belong to each case. */
+extension DailyCat {
+    static func from(progress: Double) -> DailyCat {
+        switch progress {
+        case ..<0.5:
+            return .triste
+        case ..<0.7:
+            return .iniciante
+        case ..<0.9:
+            return .fitness
+        default:
+            return .forte
+        }
+    }
+
+    var emoji: String {
+        switch self {
+        case .triste:
+            return "😿"
+        case .iniciante:
+            return "😺"
+        case .fitness:
+            return "🐈"
+        case .forte:
+            return "🦁"
+        }
+    }
+
+    var name: String {
+        switch self {
+        case .triste:
+            return "Gato Triste"
+        case .iniciante:
+            return "Gato Iniciante"
+        case .fitness:
+            return "Gato Fitness"
+        case .forte:
+            return "Gato Forte"
+        }
+    }
+
+    var color: Color {
+        switch self {
+        case .triste:
+            return Color.red.opacity(0.30)
+        case .iniciante:
+            return Color.yellow.opacity(0.30)
+        case .fitness:
+            return Color.blue.opacity(0.30)
+        case .forte:
+            return Color.green.opacity(0.30)
+        }
+    }
+
+    var points: Int {
+        switch self {
+        case .triste:
+            return 15
+        case .iniciante:
+            return 55
+        case .fitness:
+            return 75
+        case .forte:
+            return 105
+        }
+    }
+}
 
 struct TodayView: View {
     // MARK: - States & valores persistidos
@@ -66,71 +154,20 @@ struct TodayView: View {
         Int(dailyProgress * 100)
     }
     
-    // Propriedades que determinam o gato do dia com base no progresso.
-    // Esta lógica será unificada futuramente em um enum DailyCat.
-
-    /* Properties that determine the daily cat based on progress. */
-    /* Logic will be unified later into a DailyCat enum. */
-
-    private var dailyCatEmoji: String {
-        switch dailyProgress {
-        case ..<0.5:
-            return "😿"
-        case ..<0.7:
-            return "😺"
-        case ..<0.9:
-            return "🐈"
-        default:
-            return "🦁"
-        }
-    }
-
-    private var dailyCatName: String {
-        switch dailyProgress {
-        case ..<0.5:
-            return "Gato Triste"
-        case ..<0.7:
-            return "Gato Iniciante"
-        case ..<0.9:
-            return "Gato Fitness"
-        default:
-            return "Gato Forte"
-        }
-    }
-
-    private var dailyCatColor: Color {
-        switch dailyCatName {
-        case "Gato Triste":
-            return Color.red.opacity(0.30)
-        case "Gato Iniciante":
-            return Color.yellow.opacity(0.30)
-        case "Gato Fitness":
-            return Color.blue.opacity(0.30)
-        case "Gato Forte":
-            return Color.green.opacity(0.30)
-        default:
-            return Color.gray.opacity(0.30)
-        }
-    }
-
-    private var dailyCatPoints: Int {
-        switch dailyProgress {
-        case ..<0.5:
-            return 15
-        case ..<0.7:
-            return 55
-        case ..<0.9:
-            return 75
-        default:
-            return 105
-        }
+    // Categoria de gato do dia calculada a partir do progresso médio.
+    // Usa o enum DailyCat para unificar emoji, nome, cor e pontos.
+    
+    /* Daily cat category computed from the average progress. */
+    /* Uses the DailyCat enum to unify emoji, name, color and points. */
+    private var dailyCat: DailyCat {
+        DailyCat.from(progress: dailyProgress)
     }
 
     // MARK: - Corpo da View
     // Estrutura visual da tela principal "Hoje".
 
     /* MARK: - View body */
-    /* Main layout for the "Hoje" screen. */
+    /* Main layout for the "Today" screen. */
     var body: some View {
         ScrollView {
             VStack(spacing: 12) {
@@ -143,11 +180,11 @@ struct TodayView: View {
                 // Daily summary card: current cat, progress percentage and points
                 VStack(alignment: .leading, spacing: 10) {
                     HStack(alignment: .top) {
-                        Text(dailyCatEmoji)
+                        Text(dailyCat.emoji)
                             .font(.largeTitle)
 
                         VStack(alignment: .leading, spacing: 10) {
-                            Text(dailyCatName)
+                            Text(dailyCat.name)
                                 .font(.headline)
                             Text("Progresso do dia: ")
                                 .font(.subheadline)
@@ -158,12 +195,12 @@ struct TodayView: View {
 
                         Spacer()
 
-                        Text("\(dailyCatPoints) pts")
+                        Text("\(dailyCat.points) pts")
                             .font(.headline)
                     }
                 }
                 .padding(20)
-                .background(dailyCatColor)
+                .background(dailyCat.color)
                 .cornerRadius(25)
                 
                 // Blocos individuais de acompanhamento.
@@ -228,9 +265,9 @@ struct TodayView: View {
                         fatAmount: fatIntake,
                         sleepHours: sleepHours,
                         percentValue: dailyPercentage,
-                        catTitle: dailyCatName,
-                        catEmoji: dailyCatEmoji,
-                        pointsEarned: dailyCatPoints
+                        catTitle: dailyCat.name,
+                        catEmoji: dailyCat.emoji,
+                        pointsEarned: dailyCat.points
                     )
                     modelContext.insert(record)
 

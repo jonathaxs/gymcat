@@ -1,7 +1,6 @@
 //
 //  HistoryView.swift
 //  GymCat
-//  History Screen?
 //
 //  Criado por @jonathaxs em 2025-11-14.
 /*  Created by @jonathaxs on 2025-11-14. */
