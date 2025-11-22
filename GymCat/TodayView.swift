@@ -2,20 +2,20 @@
 //  TodayView.swift
 //  GymCat
 //
-//  Criado por @jonathaxs em 2025-08-16.
-/*  Created by @jonathaxs on 2025-08-16. */
+//  Created by @jonathaxs on 2025-08-16.
+/*  Criado por @jonathaxs em 2025-08-16. */
 //
 
 import SwiftUI
 import SwiftData
 
-// MARK: - DailyCat (Enum de categorias de gato)
-// Representa as categorias de gato do dia com base no progresso.
-// Centraliza emoji, nome, cor e pontos em um único tipo.
+// MARK: - DailyCat (Enum for cat categories)
+// Represents the daily cat categories based on progress.
+// Centralizes emoji, name, color and points in a single type.
 
-/* MARK: - DailyCat (Enum for cat categories) */
-/* Represents the daily cat categories based on progress. */
-/* Centralizes emoji, name, color and points in a single type. */
+/* MARK: - DailyCat (Enum de categorias de gato) */
+/* Representa as categorias de gato do dia com base no progresso. */
+/* Centraliza emoji, nome, cor e pontos em um único tipo. */
 enum DailyCat {
     case triste
     case iniciante
@@ -23,13 +23,13 @@ enum DailyCat {
     case forte
 }
 
-// Extensão com lógica de cálculo e propriedades derivadas.
-// Aqui definimos como o progresso vira um DailyCat e quais
-// são os atributos (emoji, nome, cor e pontos) de cada caso.
+// Extension adding calculation logic and derived properties.
+// Defines how progress maps to a DailyCat and which emoji, name,
+// color and points belong to each case.
 
-/* Extension adding calculation logic and derived properties. */
-/* Defines how progress maps to a DailyCat and which emoji, name, */
-/* color and points belong to each case. */
+/* Extensão com lógica de cálculo e propriedades derivadas. */
+/* Aqui definimos como o progresso vira um DailyCat e quais */
+/* são os atributos (emoji, nome, cor e pontos) de cada caso. */
 extension DailyCat {
     static func from(progress: Double) -> DailyCat {
         switch progress {
@@ -98,11 +98,11 @@ extension DailyCat {
 }
 
 struct TodayView: View {
-    // MARK: - States & valores persistidos
-    // Acesso ao contexto do SwiftData e variáveis persistidas com @AppStorage.
+    // MARK: - State & persisted values
+    // Access to the SwiftData context and variables persisted using @AppStorage.
 
-    /* MARK: - State & persisted values */
-    /* Access to the SwiftData context and variables persisted using @AppStorage. */
+    /* MARK: - States & valores persistidos */
+    /* Acesso ao contexto do SwiftData e variáveis persistidas com @AppStorage. */
     @Environment(\.modelContext) private var modelContext
     @AppStorage("waterIntake") private var waterIntake: Int = 0
     @AppStorage("proteinIntake") private var proteinIntake: Int = 0
@@ -110,22 +110,22 @@ struct TodayView: View {
     @AppStorage("fatIntake") private var fatIntake: Int = 0
     @AppStorage("sleepHours") private var sleepHours: Int = 0
 
-    // Metas diárias padrão para cada métrica acompanhada.
-    // No futuro, virão das configurações do usuário.
+    // Default daily goals for each tracked metric.
+    // In the future these should come from user settings.
 
-    /* Default daily goals for each tracked metric. */
-    /* In the future these should come from user settings. */
+    /* Metas diárias padrão para cada métrica acompanhada. */
+    /* No futuro, virão das configurações do usuário. */
     let waterGoal = 3000
     let proteinGoal = 150
     let carbGoal = 300
     let fatGoal = 80
     let sleepGoal = 7
 
-    // MARK: - Auxiliares de cálculo de progresso diário
-    // Normaliza consumo para valores entre 0...1.
+    // MARK: - Daily progress helpers
+    // Normalizes each intake into values between 0...1.
 
-    /* MARK: - Daily progress helpers */
-    /* Normalizes each intake into values between 0...1. */
+    /* MARK: - Auxiliares de cálculo de progresso diário */
+    /* Normaliza consumo para valores entre 0...1. */
     private var waterProgress: Double {
         min(Double(waterIntake) / Double(waterGoal), 1.0)
     }
@@ -154,20 +154,20 @@ struct TodayView: View {
         Int(dailyProgress * 100)
     }
     
-    // Categoria de gato do dia calculada a partir do progresso médio.
-    // Usa o enum DailyCat para unificar emoji, nome, cor e pontos.
-    
-    /* Daily cat category computed from the average progress. */
-    /* Uses the DailyCat enum to unify emoji, name, color and points. */
+    // Daily cat category computed from the average progress.
+    // Uses the DailyCat enum to unify emoji, name, color and points.
+
+    /* Categoria de gato do dia calculada a partir do progresso médio. */
+    /* Usa o enum DailyCat para unificar emoji, nome, cor e pontos. */
     private var dailyCat: DailyCat {
         DailyCat.from(progress: dailyProgress)
     }
 
-    // MARK: - Corpo da View
-    // Estrutura visual da tela principal "Hoje".
+    // MARK: - View body
+    // Main layout for the "Today" screen.
 
-    /* MARK: - View body */
-    /* Main layout for the "Today" screen. */
+    /* MARK: - Corpo da View */
+    /* Estrutura visual da tela principal "Hoje". */
     var body: some View {
         ScrollView {
             VStack(spacing: 12) {
@@ -203,11 +203,11 @@ struct TodayView: View {
                 .background(dailyCat.color)
                 .cornerRadius(25)
                 
-                // Blocos individuais de acompanhamento.
-                // Cada um utiliza a subview NutrientTrackerRow.
+                // Individual trackers for each metric.
+                // Each one uses the NutrientTrackerRow subview.
 
-                /* Individual trackers for each metric. */
-                /* Each one uses the NutrientTrackerRow subview. */
+                /* Blocos individuais de acompanhamento. */
+                /* Cada um utiliza a subview NutrientTrackerRow. */
                 NutrientTrackerRow(
                     icon: "😴",
                     title: "Sono",
@@ -253,9 +253,9 @@ struct TodayView: View {
                     value: $fatIntake
                 )
 
-                // Quando o usuário finaliza o dia, salvamos um DailyRecord e zeramos todos os contadores.
-                                
-                /* When the user finishes the day, we save a DailyRecord and reset all counters. */
+                // When the user finishes the day, we save a DailyRecord and reset all counters.
+
+                /* Quando o usuário finaliza o dia, salvamos um DailyRecord e zeramos todos os contadores. */
                 Button(action: {
                     let record = DailyRecord(
                         date: Date(),
@@ -294,11 +294,11 @@ struct TodayView: View {
     }
 }
 
-// MARK: - Subviews (Subcomponentes)
-// Subview reutilizável para evitar duplicação de layout e lógica.
+// MARK: - Subviews
+// Reusable subview to avoid duplicated logic.
 
-/* MARK: - Subviews */
-/* Reusable subview to avoid duplicated logic. */
+/* MARK: - Subviews (Subcomponentes) */
+/* Subview reutilizável para evitar duplicação de layout e lógica. */
 
 struct NutrientTrackerRow: View {
     let icon: String
