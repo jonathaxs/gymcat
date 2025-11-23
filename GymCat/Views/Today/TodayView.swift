@@ -38,24 +38,28 @@ struct TodayView: View {
 
     /* MARK: - Auxiliares de cálculo de progresso diário */
     /* Normaliza consumo para valores entre 0...1. */
+    private func calculateProgress(current: Int, goal: Int) -> Double {
+        min(Double(current) / Double(goal), 1.0)
+    }
+
     private var waterProgress: Double {
-        min(Double(waterIntake) / Double(waterGoal), 1.0)
+        calculateProgress(current: waterIntake, goal: waterGoal)
     }
 
     private var proteinProgress: Double {
-        min(Double(proteinIntake) / Double(proteinGoal), 1.0)
+        calculateProgress(current: proteinIntake, goal: proteinGoal)
     }
 
     private var carbProgress: Double {
-        min(Double(carbIntake) / Double(carbGoal), 1.0)
+        calculateProgress(current: carbIntake, goal: carbGoal)
     }
 
     private var fatProgress: Double {
-        min(Double(fatIntake) / Double(fatGoal), 1.0)
+        calculateProgress(current: fatIntake, goal: fatGoal)
     }
     
     private var sleepProgress: Double {
-        min(Double(sleepHours) / Double(sleepGoal), 1.0)
+        calculateProgress(current: sleepHours, goal: sleepGoal)
     }
 
     private var dailyProgress: Double {
@@ -73,6 +77,33 @@ struct TodayView: View {
     /* Usa o enum DailyCat para unificar emoji, nome, cor e pontos. */
     private var dailyCat: DailyCat {
         DailyCat.from(progress: dailyProgress)
+    }
+
+    // MARK: - Actions
+    // Encapsulates logic to finish the day and save data.
+
+    /* MARK: - Ações */
+    /* Encapsula lógica para finalizar o dia e salvar dados. */
+    private func finishDay() {
+        let record = DailyRecord(
+            date: Date(),
+            waterAmount: waterIntake,
+            proteinAmount: proteinIntake,
+            carbAmount: carbIntake,
+            fatAmount: fatIntake,
+            sleepHours: sleepHours,
+            percentValue: dailyPercentage,
+            catTitle: dailyCat.name,
+            catEmoji: dailyCat.emoji,
+            pointsEarned: dailyCat.points
+        )
+        modelContext.insert(record)
+
+        waterIntake = 0
+        proteinIntake = 0
+        carbIntake = 0
+        fatIntake = 0
+        sleepHours = 0
     }
 
     // MARK: - View body
@@ -168,27 +199,7 @@ struct TodayView: View {
                 // When the user finishes the day, we save a DailyRecord and reset all counters.
 
                 /* Quando o usuário finaliza o dia, salvamos um DailyRecord e zeramos todos os contadores. */
-                Button(action: {
-                    let record = DailyRecord(
-                        date: Date(),
-                        waterAmount: waterIntake,
-                        proteinAmount: proteinIntake,
-                        carbAmount: carbIntake,
-                        fatAmount: fatIntake,
-                        sleepHours: sleepHours,
-                        percentValue: dailyPercentage,
-                        catTitle: dailyCat.name,
-                        catEmoji: dailyCat.emoji,
-                        pointsEarned: dailyCat.points
-                    )
-                    modelContext.insert(record)
-
-                    waterIntake = 0
-                    proteinIntake = 0
-                    carbIntake = 0
-                    fatIntake = 0
-                    sleepHours = 0
-                }) {
+                Button(action: finishDay) {
                     Text("Finalizar Dia")
                         .font(.body.bold())
                         .padding(15)
