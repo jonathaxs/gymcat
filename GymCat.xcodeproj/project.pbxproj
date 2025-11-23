@@ -30,9 +30,9 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		69CA30632E514AE300486F90 /* GymCat */ = {
+		69CA30632E514AE300486F90 /* GymCatApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = GymCat;
+			path = GymCatApp;
 			sourceTree = "<group>";
 		};
 		69CA30742E514AE400486F90 /* GymCatTests */ = {
@@ -75,7 +75,7 @@
 		69CA30582E514AE200486F90 = {
 			isa = PBXGroup;
 			children = (
-				69CA30632E514AE300486F90 /* GymCat */,
+				69CA30632E514AE300486F90 /* GymCatApp */,
 				69CA30742E514AE400486F90 /* GymCatTests */,
 				69CA307E2E514AE400486F90 /* GymCatUITests */,
 				69CA30622E514AE300486F90 /* Products */,
@@ -108,7 +108,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				69CA30632E514AE300486F90 /* GymCat */,
+				69CA30632E514AE300486F90 /* GymCatApp */,
 			);
 			name = GymCat;
 			packageProductDependencies = (
@@ -187,11 +187,12 @@
 				};
 			};
 			buildConfigurationList = 69CA305C2E514AE200486F90 /* Build configuration list for PBXProject "GymCat" */;
-			developmentRegion = en;
+			developmentRegion = "pt-BR";
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = 69CA30582E514AE200486F90;
 			minimizedProjectReferenceProxies = 1;
@@ -394,7 +395,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = GymCat/GymCat.entitlements;
+				CODE_SIGN_ENTITLEMENTS = GymCatApp/GymCat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
@@ -436,7 +437,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = GymCat/GymCat.entitlements;
+				CODE_SIGN_ENTITLEMENTS = GymCatApp/GymCat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
