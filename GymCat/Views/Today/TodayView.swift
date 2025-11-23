@@ -202,10 +202,11 @@ struct TodayView: View {
                 Button(action: finishDay) {
                     Text("Finalizar Dia")
                         .font(.body.bold())
-                        .frame(maxWidth: .infinity)
+                        .frame(width: 180)
+                        .padding(8)
                 }
-                .buttonStyle(GlassButtonStyle())
-                .padding(.top, 8)
+                .buttonStyle(GlassButtonStyle(tint: .green))
+                .padding(8)
 
                 Spacer()
             }
@@ -213,7 +214,6 @@ struct TodayView: View {
             }
     }
 }
-
 
 #Preview {
     TodayView()

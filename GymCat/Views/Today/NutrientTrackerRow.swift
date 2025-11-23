@@ -45,8 +45,9 @@ struct NutrientTrackerRow: View {
                     }) {
                         Text("-")
                             .font(.title2.bold())
+                            .frame(minWidth: 60)
                     }
-                    .buttonStyle(GlassButtonStyle())
+                    .buttonStyle(GlassButtonStyle(tint: .red))
 
                     Button(action: {
                         let newValue = value + increment
@@ -54,8 +55,9 @@ struct NutrientTrackerRow: View {
                     }) {
                         Text("+")
                             .font(.title2.bold())
+                            .frame(minWidth: 60)
                     }
-                    .buttonStyle(GlassButtonStyle())
+                    .buttonStyle(GlassButtonStyle(tint: .blue))
                 }
             }
 
@@ -64,7 +66,7 @@ struct NutrientTrackerRow: View {
                 .tint(Color.green.opacity(0.9))
                 .scaleEffect(x: 1, y: 2, anchor: .center)
                 .frame(height: 10)
-                .clipShape(RoundedRectangle(cornerRadius: 25))
+                .clipShape(RoundedRectangle(cornerRadius: 30))
         }
         .padding(15)
         .background(Color(.systemGray6))
@@ -74,22 +76,33 @@ struct NutrientTrackerRow: View {
 // Glass-like button style with blur, rounded corners and subtle border.
 /* Estilo de botão com aparência de vidro: blur, cantos arredondados e borda sutil. */
 struct GlassButtonStyle: ButtonStyle {
+    let tint: Color
+
+    init(tint: Color = .white) {
+        self.tint = tint
+    }
+
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .padding(.horizontal, 16)
+            .padding(.horizontal, 14)
             .padding(.vertical, 8)
             .background(
-                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                Capsule()
                     .fill(.ultraThinMaterial)
             )
-            .overlay(
-                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .strokeBorder(Color.white.opacity(0.5), lineWidth: 1)
+            .background(
+                Capsule()
+                    .fill(tint.opacity(0.4))
             )
-            .shadow(radius: 4)
-            .scaleEffect(configuration.isPressed ? 0.96 : 1.0)
+            .overlay(
+                Capsule()
+                    .strokeBorder(tint.opacity(0.6), lineWidth: 1)
+            )
+            .shadow(radius: 2)
+            .scaleEffect(configuration.isPressed ? 0.90 : 1.0)
+            .opacity(configuration.isPressed ? 0.8 : 1.0)
             .animation(
-                .spring(response: 0.25, dampingFraction: 0.7),
+                .easeInOut(duration: 0.2),
                 value: configuration.isPressed
             )
     }
