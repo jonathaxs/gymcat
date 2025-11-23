@@ -22,6 +22,19 @@ struct HistoryView: View {
     /* Consulta SwiftData que recupera todos os registros diários. */
     /* O sort por data em ordem reversa garante que o dia mais recente apareça no topo. */
     @Query(sort: \DailyRecord.date, order: .reverse) private var records: [DailyRecord]
+    @Environment(\.modelContext) private var modelContext
+
+    // MARK: - Actions
+    // Deletes the selected record from the database.
+
+    /* MARK: - Ações */
+    /* Remove o registro selecionado do banco de dados. */
+    private func deleteRecord(offsets: IndexSet) {
+        for index in offsets {
+            let record = records[index]
+            modelContext.delete(record)
+        }
+    }
 
     var body: some View {
         // MARK: - View Body
@@ -32,31 +45,49 @@ struct HistoryView: View {
         /* Estrutura visual da tela de histórico utilizando NavigationStack. */
         /* Cada registro é exibido em uma linha da lista com emoji, título, data e pontos. */
         NavigationStack {
-            List(records) { record in
-                // Individual history row.
-                // Shows the cat emoji, title, date, and points for that day.
+            Group {
+                if records.isEmpty {
+                    // Empty state view.
+                    // Shown when there are no records to display.
 
-                /* Linha individual do histórico. */
-                /* Mostra o emoji do gato, o título, a data e os pontos do dia. */
-                HStack(spacing: 16) {
-                    Text(record.catEmoji)
-                        .font(.largeTitle)
+                    /* Estado vazio. */
+                    /* Exibido quando não há registros para mostrar. */
+                    ContentUnavailableView(
+                        "Nenhum histórico",
+                        systemImage: "calendar.badge.exclamationmark",
+                        description: Text("Complete suas metas diárias para ver seu progresso aqui.")
+                    )
+                } else {
+                    List {
+                        ForEach(records) { record in
+                            // Individual history row.
+                            // Shows the cat emoji, title, date, and points for that day.
 
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(record.catTitle)
-                            .font(.headline)
+                            /* Linha individual do histórico. */
+                            /* Mostra o emoji do gato, o título, a data e os pontos do dia. */
+                            HStack(spacing: 16) {
+                                Text(record.catEmoji)
+                                    .font(.largeTitle)
 
-                        Text(record.date, style: .date)
-                            .foregroundStyle(.secondary)
-                            .font(.caption)
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(record.catTitle)
+                                        .font(.headline)
+
+                                    Text(record.date, style: .date)
+                                        .foregroundStyle(.secondary)
+                                        .font(.caption)
+                                }
+
+                                Spacer()
+
+                                Text("\(record.points) pts")
+                                    .font(.subheadline.bold())
+                            }
+                            .padding(.vertical, 8)
+                        }
+                        .onDelete(perform: deleteRecord)
                     }
-
-                    Spacer()
-
-                    Text("\(record.points) pts")
-                        .font(.subheadline.bold())
                 }
-                .padding(.vertical, 8)
             }
             // Navigation title for the history screen.
 
