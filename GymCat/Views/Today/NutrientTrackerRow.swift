@@ -45,11 +45,8 @@ struct NutrientTrackerRow: View {
                     }) {
                         Text("-")
                             .font(.title2.bold())
-                            .frame(width: 80, height: 40)
-                            .background(Color.red.opacity(0.8))
-                            .foregroundColor(.white)
-                            .cornerRadius(15)
                     }
+                    .buttonStyle(GlassButtonStyle())
 
                     Button(action: {
                         let newValue = value + increment
@@ -57,11 +54,8 @@ struct NutrientTrackerRow: View {
                     }) {
                         Text("+")
                             .font(.title2.bold())
-                            .frame(width: 80, height: 40)
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(15)
                     }
+                    .buttonStyle(GlassButtonStyle())
                 }
             }
 
@@ -75,5 +69,28 @@ struct NutrientTrackerRow: View {
         .padding(15)
         .background(Color(.systemGray6))
         .cornerRadius(25)
+    }
+}
+// Glass-like button style with blur, rounded corners and subtle border.
+/* Estilo de botão com aparência de vidro: blur, cantos arredondados e borda sutil. */
+struct GlassButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding(.horizontal, 16)
+            .padding(.vertical, 8)
+            .background(
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .fill(.ultraThinMaterial)
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .strokeBorder(Color.white.opacity(0.5), lineWidth: 1)
+            )
+            .shadow(radius: 4)
+            .scaleEffect(configuration.isPressed ? 0.96 : 1.0)
+            .animation(
+                .spring(response: 0.25, dampingFraction: 0.7),
+                value: configuration.isPressed
+            )
     }
 }
