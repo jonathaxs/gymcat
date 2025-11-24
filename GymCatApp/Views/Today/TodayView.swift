@@ -114,13 +114,18 @@ struct TodayView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 12) {
+                
                 // Screen header
+                
+                /* Cabeçalho */
                 Text("Hoje")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .padding(.top, 0)
 
                 // Daily summary card: current cat, progress percentage and points
+                
+                /* Card de resumo diário: categoria atual, percentual de progresso e pontos.  */
                 VStack(alignment: .leading, spacing: 10) {
                     HStack(alignment: .top) {
                         Text(dailyCat.emoji)
