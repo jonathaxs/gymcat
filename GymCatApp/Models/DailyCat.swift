@@ -59,13 +59,13 @@ extension DailyCat {
     var name: String {
         switch self {
         case .triste:
-            return "Gato Triste"
+            return String(localized: "cat.sad")
         case .iniciante:
-            return "Gato Iniciante"
+            return String(localized: "cat.beginner")
         case .fitness:
-            return "Gato Fitness"
+            return String(localized: "cat.fitness")
         case .forte:
-            return "Gato Forte"
+            return String(localized: "cat.strong")
         }
     }
 

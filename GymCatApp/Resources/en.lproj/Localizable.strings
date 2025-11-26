@@ -1,5 +1,5 @@
 /* 
-  Localizable.strings
+  Localizable.strings (en.lproj)
   GymCat
 
   Created by @jonathaxs on 2025-11-24.
@@ -7,3 +7,30 @@
 
 
 */
+
+/* MainView */
+"main.tab.today" = "Today";
+"main.tab.history" = "History";
+
+/* TodayView */
+"today.header.title" = "Today";
+"today.summary.progress" = "Today's progress: ";
+"today.metric.separator" = "/";
+"today.metric.sleep" = "Sleep";
+"today.metric.water" = "Water";
+"today.metric.protein" = "Protein";
+"today.metric.carbs" = "Carbs";
+"today.metric.fats" = "Fats";
+"today.button.finish" = "Finish Day";
+
+/* HistoryView */
+"history.header.title" = "History";
+"history.empty.title" = "No history";
+"history.empty.description" = "Complete your daily goals to see your progress here.";
+"history.points.total" = "pts";
+
+/* DailyCat */
+"cat.sad" = "Sad Cat";
+"cat.beginner" = "Beginner Cat";
+"cat.fitness" = "Fitness Cat";
+"cat.strong" = "Strong Cat";

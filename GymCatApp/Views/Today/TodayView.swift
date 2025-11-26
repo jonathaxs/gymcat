@@ -118,7 +118,7 @@ struct TodayView: View {
                 // Screen header
                 
                 /* Cabeçalho */
-                Text("Hoje")
+                Text(String(localized: "today.header.title"))
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .padding(.top, 0)
@@ -134,7 +134,7 @@ struct TodayView: View {
                         VStack(alignment: .leading, spacing: 10) {
                             Text(dailyCat.name)
                                 .font(.headline)
-                            Text("Progresso do dia: ")
+                            Text(String(localized: "today.summary.progress"))
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary)
                             + Text("\(dailyPercentage)%")
@@ -158,7 +158,7 @@ struct TodayView: View {
                 /* Cada um utiliza a subview NutrientTrackerRow. */
                 NutrientTrackerRow(
                     icon: "😴",
-                    title: "Sono",
+                    title: String(localized: "today.metric.sleep"),
                     unit: "h",
                     increment: 1,
                     goal: sleepGoal,
@@ -167,7 +167,7 @@ struct TodayView: View {
 
                 NutrientTrackerRow(
                     icon: "💧",
-                    title: "Água",
+                    title: String(localized: "today.metric.water"),
                     unit: "ml",
                     increment: 250,
                     goal: waterGoal,
@@ -176,7 +176,7 @@ struct TodayView: View {
 
                 NutrientTrackerRow(
                     icon: "🍗",
-                    title: "Proteína",
+                    title: String(localized: "today.metric.protein"),
                     unit: "g",
                     increment: 20,
                     goal: proteinGoal,
@@ -185,7 +185,7 @@ struct TodayView: View {
 
                 NutrientTrackerRow(
                     icon: "🍞",
-                    title: "Carboidratos",
+                    title: String(localized: "today.metric.carbs"),
                     unit: "g",
                     increment: 20,
                     goal: carbGoal,
@@ -194,7 +194,7 @@ struct TodayView: View {
 
                 NutrientTrackerRow(
                     icon: "🧈",
-                    title: "Gorduras",
+                    title: String(localized: "today.metric.fats"),
                     unit: "g",
                     increment: 5,
                     goal: fatGoal,
@@ -205,7 +205,7 @@ struct TodayView: View {
 
                 /* Quando o usuário finaliza o dia, salvamos um DailyRecord e zeramos todos os contadores. */
                 Button(action: finishDay) {
-                    Text("Finalizar Dia")
+                    Text(String(localized: "today.button.finish"))
                         .font(.body.bold())
                         .frame(width: 180)
                         .padding(8)

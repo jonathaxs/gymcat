@@ -27,7 +27,7 @@ struct MainView: View {
             /* Aba principal que exibe o acompanhamento diário. */
             TodayView()
                 .tabItem {
-                    Label("Hoje", systemImage: "house.fill")
+                    Label(String(localized: "main.tab.today"), systemImage: "house.fill")
                 }
 
             // Tab that displays the saved day history.
@@ -35,7 +35,7 @@ struct MainView: View {
             /* Aba que exibe o histórico de registros salvos. */
             HistoryView()
                 .tabItem {
-                    Label("Histórico", systemImage: "calendar")
+                    Label(String(localized: "main.tab.history"), systemImage: "calendar")
                 }
         }
     }

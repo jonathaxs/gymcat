@@ -53,9 +53,9 @@ struct HistoryView: View {
                     /* Estado vazio. */
                     /* Exibido quando não há registros para mostrar. */
                     ContentUnavailableView(
-                        "Nenhum histórico",
+                        String(localized: "history.empty.title"),
                         systemImage: "calendar.badge.exclamationmark",
-                        description: Text("Complete suas metas diárias para ver seu progresso aqui.")
+                        description: Text(String(localized: "history.empty.description"))
                     )
                 } else {
                     List {
@@ -80,7 +80,7 @@ struct HistoryView: View {
 
                                 Spacer()
 
-                                Text("\(record.points) pts")
+                                Text("\(record.points) \(String(localized: "history.points.total"))")
                                     .font(.subheadline.bold())
                             }
                             .padding(.vertical, 8)
@@ -92,7 +92,7 @@ struct HistoryView: View {
             // Navigation title for the history screen.
 
             /* Título da navegação para a tela de histórico. */
-            .navigationTitle("Histórico")
+            .navigationTitle(String(localized: "history.header.title"))
         }
     }
 }
