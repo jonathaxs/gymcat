@@ -33,9 +33,9 @@ struct MainView: View {
             // Tab that displays the saved day history.
 
             /* Aba que exibe o histórico de registros salvos. */
-            HistoryView()
+            AchievementsView()
                 .tabItem {
-                    Label(String(localized: "main.tab.history"), systemImage: "calendar")
+                    Label(String(localized: "achievements.tab.title"), systemImage: "calendar")
                 }
         }
     }

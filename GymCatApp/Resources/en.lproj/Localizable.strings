@@ -10,7 +10,6 @@
 
 /* MainView */
 "main.tab.today" = "Today";
-"main.tab.history" = "History";
 
 /* TodayView */
 "today.header.title" = "Today";
@@ -23,11 +22,12 @@
 "today.metric.fats" = "Fats";
 "today.button.finish" = "Finish Day";
 
-/* HistoryView */
-"history.header.title" = "History";
-"history.empty.title" = "No history";
-"history.empty.description" = "Complete your daily goals to see your progress here.";
-"history.points.total" = "pts";
+/* AchievementsView */
+"achievements.header.title" = "Achievements";
+"achievements.empty.title" = "No achievements yet";
+"achievements.empty.description" = "Finish your days to unlock achievements here.";
+"achievements.points.total" = "pts";
+"achievements.tab.title" = "Achievements";
 
 /* DailyCat */
 "cat.sad" = "Sad Cat";

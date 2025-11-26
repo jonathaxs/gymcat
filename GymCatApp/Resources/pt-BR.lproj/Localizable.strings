@@ -10,7 +10,6 @@
 
 /* MainView */
 "main.tab.today" = "Hoje";
-"main.tab.history" = "Histórico";
 
 /* TodayView */
 "today.header.title" = "Hoje";
@@ -23,11 +22,12 @@
 "today.metric.fats" = "Gorduras";
 "today.button.finish" = "Finalizar Dia";
 
-/* HistoryView */
-"history.header.title" = "Histórico";
-"history.empty.title" = "Nenhum histórico";
-"history.empty.description" = "Complete suas metas diárias para ver seu progresso aqui.";
-"history.points.total" = "pts";
+/* AchievementsView */
+"achievements.header.title" = "Conquistas";
+"achievements.empty.title" = "Nenhuma conquista ainda";
+"achievements.empty.description" = "Finalize seus dias para desbloquear conquistas aqui.";
+"achievements.points.total" = "pts";
+"achievements.tab.title" = "Conquistas";
 
 /* DailyCat */
 "cat.sad" = "Gato Triste";

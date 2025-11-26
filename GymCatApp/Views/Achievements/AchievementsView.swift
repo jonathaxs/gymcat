@@ -1,5 +1,5 @@
 //
-//  HistoryView.swift
+//  AchievementsView.swift
 //  GymCat
 //
 //  Created by @jonathaxs on 2025-11-14.
@@ -9,13 +9,13 @@
 import SwiftUI
 import SwiftData
 
-// MARK: - History Screen
+// MARK: - Achievements Screen
 // Displays all saved DailyRecord entries using SwiftData, sorted newest to oldest.
 
-/* MARK: - Tela de Histórico */
+/* MARK: - Tela de Conquistas */
 /* Exibe todos os registros diários salvos no SwiftData, ordenados do mais recente para o mais antigo. */
 
-struct HistoryView: View {
+struct AchievementsView: View {
     // SwiftData query that retrieves all daily records.
     // Sorting by date in reverse order shows the most recent day first.
 
@@ -38,11 +38,11 @@ struct HistoryView: View {
 
     var body: some View {
         // MARK: - View Body
-        // Visual structure for the history screen using NavigationStack.
+        // Visual structure for the achievements screen using NavigationStack.
         // Each record is displayed in a list row with emoji, title, date, and points.
 
         /* MARK: - Corpo da View */
-        /* Estrutura visual da tela de histórico utilizando NavigationStack. */
+        /* Estrutura visual da tela de conquistas utilizando NavigationStack. */
         /* Cada registro é exibido em uma linha da lista com emoji, título, data e pontos. */
         NavigationStack {
             Group {
@@ -53,9 +53,9 @@ struct HistoryView: View {
                     /* Estado vazio. */
                     /* Exibido quando não há registros para mostrar. */
                     ContentUnavailableView(
-                        String(localized: "history.empty.title"),
+                        String(localized: "achievements.empty.title"),
                         systemImage: "calendar.badge.exclamationmark",
-                        description: Text(String(localized: "history.empty.description"))
+                        description: Text(String(localized: "achievements.empty.description"))
                     )
                 } else {
                     List {
@@ -80,7 +80,7 @@ struct HistoryView: View {
 
                                 Spacer()
 
-                                Text("\(record.points) \(String(localized: "history.points.total"))")
+                                Text("\(record.points) \(String(localized: "achievements.points.total"))")
                                     .font(.subheadline.bold())
                             }
                             .padding(.vertical, 8)
@@ -89,15 +89,15 @@ struct HistoryView: View {
                     }
                 }
             }
-            // Navigation title for the history screen.
+            // Navigation title for the achievements screen.
 
-            /* Título da navegação para a tela de histórico. */
-            .navigationTitle(String(localized: "history.header.title"))
+            /* Título da navegação para a tela de conquistas. */
+            .navigationTitle(String(localized: "achievements.header.title"))
         }
     }
 }
 
 #Preview {
-    HistoryView()
+    AchievementsView()
         .modelContainer(for: DailyRecord.self, inMemory: true)
 }
