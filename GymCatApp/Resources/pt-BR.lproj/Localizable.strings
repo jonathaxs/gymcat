@@ -34,3 +34,13 @@
 "cat.beginner" = "Gato Iniciante";
 "cat.fitness" = "Gato Fitness";
 "cat.strong" = "Gato Forte";
+
+/* TodayView - New Components */
+"today.card.title" = "Hoje";
+"today.card.progress" = "Progresso:";
+"today.card.points" = "Pontos:";
+"today.button.finish.icon.accessibility" = "Finalizar Dia";
+
+"today.finish.alert.title" = "Deseja finalizar o dia?";
+"today.finish.alert.confirm" = "Finalizar";
+"today.finish.alert.cancel" = "Cancelar";

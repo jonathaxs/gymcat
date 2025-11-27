@@ -34,3 +34,13 @@
 "cat.beginner" = "Beginner Cat";
 "cat.fitness" = "Fitness Cat";
 "cat.strong" = "Strong Cat";
+
+/* TodayView - New Components */
+"today.card.title" = "Today";
+"today.card.progress" = "Progress:";
+"today.card.points" = "Points:";
+"today.button.finish.icon.accessibility" = "Finish Day";
+
+"today.finish.alert.title" = "Do you want to finish the day?";
+"today.finish.alert.confirm" = "Finish";
+"today.finish.alert.cancel" = "Cancel";

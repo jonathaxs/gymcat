@@ -21,6 +21,8 @@ struct TodayView: View {
     @AppStorage("carbIntake") private var carbIntake: Int = 0
     @AppStorage("fatIntake") private var fatIntake: Int = 0
     @AppStorage("sleepHours") private var sleepHours: Int = 0
+    
+    @State private var showingFinishAlert = false
 
     // Default daily goals for each tracked metric.
     // In the future these should come from user settings.
@@ -115,41 +117,14 @@ struct TodayView: View {
         ScrollView {
             VStack(spacing: 12) {
                 
-                // Screen header
+                // Screen header and Daily summary card
                 
-                /* Cabeçalho */
-                Text(String(localized: "today.header.title"))
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.top, 0)
-
-                // Daily summary card: current cat, progress percentage and points
-                
-                /* Card de resumo diário: categoria atual, percentual de progresso e pontos.  */
-                VStack(alignment: .leading, spacing: 10) {
-                    HStack(alignment: .top) {
-                        Text(dailyCat.emoji)
-                            .font(.largeTitle)
-
-                        VStack(alignment: .leading, spacing: 10) {
-                            Text(dailyCat.name)
-                                .font(.headline)
-                            Text(String(localized: "today.summary.progress"))
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
-                            + Text("\(dailyPercentage)%")
-                                .font(.subheadline.bold())
-                        }
-
-                        Spacer()
-
-                        Text("\(dailyCat.points) pts")
-                            .font(.headline)
-                    }
-                }
-                .padding(20)
-                .background(dailyCat.color)
-                .cornerRadius(25)
+                /* Cabeçalho e Card de resumo diário */
+                DailySummaryCard(
+                    dailyCat: dailyCat,
+                    dailyPercentage: dailyPercentage,
+                    finishDayAction: { showingFinishAlert = true }
+                )
                 
                 // Individual trackers for each metric.
                 // Each one uses the NutrientTrackerRow subview.
@@ -204,19 +179,21 @@ struct TodayView: View {
                 // When the user finishes the day, we save a DailyRecord and reset all counters.
 
                 /* Quando o usuário finaliza o dia, salvamos um DailyRecord e zeramos todos os contadores. */
-                Button(action: finishDay) {
-                    Text(String(localized: "today.button.finish"))
-                        .font(.body.bold())
-                        .frame(width: 180)
-                        .padding(8)
-                }
-                .buttonStyle(GlassButtonStyle(tint: .green))
-                .padding(8)
+                // Button removed, now inside DailySummaryCard
 
                 Spacer()
             }
             .padding()
+        }
+        .alert(
+            String(localized: "today.finish.alert.title"),
+            isPresented: $showingFinishAlert
+        ) {
+            Button(String(localized: "today.finish.alert.confirm")) {
+                finishDay()
             }
+            Button(String(localized: "today.finish.alert.cancel"), role: .cancel) { }
+        }
     }
 }
 
