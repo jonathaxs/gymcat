@@ -1,10 +1,9 @@
 //
-//  FinishDayButton.swift
-//  GymCat
+//  GymCat/GymCatApp/Views/Today/FinishDayButton.swift
 //
 //  Created by @jonathaxs on 2025-11-26.
 /*  Criado por @jonathaxs em 2025-11-26. */
-//
+// ⌘
 
 import SwiftUI
 

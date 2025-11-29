@@ -1,10 +1,9 @@
 //
-//  AchievementsView.swift
-//  GymCat
+//  GymCat/GymCatApp/Views/Achievements/AchievementsView.swift
 //
 //  Created by @jonathaxs on 2025-11-14.
 /*  Criado por @jonathaxs em 2025-11-14. */
-//
+// ⌘
 
 import SwiftUI
 import SwiftData

@@ -1,17 +1,14 @@
 /* 
-  Localizable.strings (pt-BR.lproj)
-  GymCat
+  GymCat/GymCatApp/Resources/i18n/pt-BR.lproj/Localizable.strings
 
   Created by @jonathaxs on 2025-11-24.
-* Criado por @jonathaxs em 2025-11-24. *
+* Criado por @jonathaxs em 2025-11-24. */
+// ⌘
 
-
-*/
-
-/* MainView */
+/* GymCat/GymCatApp/Views/MainView.swift */
 "main.tab.today" = "Hoje";
 
-/* TodayView */
+/* GymCat/GymCatApp/Views/Today/TodayView.swift */
 "today.header.title" = "Hoje";
 "today.summary.progress" = "Progresso do dia: ";
 "today.metric.separator" = "/";
@@ -22,20 +19,6 @@
 "today.metric.fats" = "Gorduras";
 "today.button.finish" = "Finalizar Dia";
 
-/* AchievementsView */
-"achievements.header.title" = "Conquistas";
-"achievements.empty.title" = "Nenhuma conquista ainda";
-"achievements.empty.description" = "Finalize seus dias para desbloquear conquistas aqui.";
-"achievements.points.total" = "pts";
-"achievements.tab.title" = "Conquistas";
-
-/* DailyCat */
-"cat.sad" = "Gato Triste";
-"cat.beginner" = "Gato Iniciante";
-"cat.fitness" = "Gato Fitness";
-"cat.strong" = "Gato Forte";
-
-/* TodayView - New Components */
 "today.card.title" = "Hoje";
 "today.card.progress" = "Progresso:";
 "today.card.points" = "Pontos:";
@@ -44,3 +27,16 @@
 "today.finish.alert.title" = "Deseja finalizar o dia?";
 "today.finish.alert.confirm" = "Finalizar";
 "today.finish.alert.cancel" = "Cancelar";
+
+/* GymCat/GymCatApp/Views/Achievements/AchievementsView.swift */
+"achievements.header.title" = "Conquistas";
+"achievements.empty.title" = "Nenhuma conquista ainda";
+"achievements.empty.description" = "Finalize seus dias para desbloquear conquistas aqui.";
+"achievements.points.total" = "pts";
+"achievements.tab.title" = "Conquistas";
+
+/* GymCat/GymCatApp/Models/DailyCat.swift */
+"cat.sad" = "Gato Triste";
+"cat.beginner" = "Gato Iniciante";
+"cat.fitness" = "Gato Fitness";
+"cat.strong" = "Gato Forte";

@@ -1,10 +1,9 @@
 //
-//  GymCatApp.swift
-//  GymCat
+//  GymCat/GymCatApp/GymCatApp.swift
 //
 //  Created by @jonathaxs on 2025-08-16.
 /*  Criado por @jonathaxs em 2025-08-16. */
-//
+// ⌘
 
 // MARK: - Main Application
 // Entry point of the GymCat app. Sets up SwiftData and loads MainView.

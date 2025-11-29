@@ -1,17 +1,14 @@
 /* 
-  Localizable.strings (en.lproj)
-  GymCat
+  GymCat/GymCatApp/Resources/i18n/en.lproj/Localizable.strings
 
   Created by @jonathaxs on 2025-11-24.
-* Criado por @jonathaxs em 2025-11-24. *
+* Criado por @jonathaxs em 2025-11-24. */
+// ⌘
 
-
-*/
-
-/* MainView */
+/* GymCat/GymCatApp/Views/MainView.swift */
 "main.tab.today" = "Today";
 
-/* TodayView */
+/* GymCat/GymCatApp/Views/Today/TodayView.swift */
 "today.header.title" = "Today";
 "today.summary.progress" = "Today's progress: ";
 "today.metric.separator" = "/";
@@ -22,20 +19,6 @@
 "today.metric.fats" = "Fats";
 "today.button.finish" = "Finish Day";
 
-/* AchievementsView */
-"achievements.header.title" = "Achievements";
-"achievements.empty.title" = "No achievements yet";
-"achievements.empty.description" = "Finish your days to unlock achievements here.";
-"achievements.points.total" = "pts";
-"achievements.tab.title" = "Achievements";
-
-/* DailyCat */
-"cat.sad" = "Sad Cat";
-"cat.beginner" = "Beginner Cat";
-"cat.fitness" = "Fitness Cat";
-"cat.strong" = "Strong Cat";
-
-/* TodayView - New Components */
 "today.card.title" = "Today";
 "today.card.progress" = "Progress:";
 "today.card.points" = "Points:";
@@ -44,3 +27,16 @@
 "today.finish.alert.title" = "Do you want to finish the day?";
 "today.finish.alert.confirm" = "Finish";
 "today.finish.alert.cancel" = "Cancel";
+
+/* GymCat/GymCatApp/Views/Achievements/AchievementsView.swift */
+"achievements.header.title" = "Achievements";
+"achievements.empty.title" = "No achievements yet";
+"achievements.empty.description" = "Finish your days to unlock achievements here.";
+"achievements.points.total" = "pts";
+"achievements.tab.title" = "Achievements";
+
+/* GymCat/GymCatApp/Models/DailyCat.swift */
+"cat.sad" = "Sad Cat";
+"cat.beginner" = "Beginner Cat";
+"cat.fitness" = "Fitness Cat";
+"cat.strong" = "Strong Cat";

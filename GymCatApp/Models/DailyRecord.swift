@@ -1,10 +1,9 @@
 //
-//  DailyRecord.swift
-//  GymCat
+//  GymCat/GymCatApp/Models/DailyRecord.swift
 //
 //  Created by @jonathaxs on 2025-08-16.
 /*  Criado por @jonathaxs em 2025-08-16. */
-//
+// ⌘
 
 import Foundation
 import SwiftData

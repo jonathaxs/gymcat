@@ -1,10 +1,9 @@
 //
-//  MainView.swift
-//  GymCat
+//  GymCat/GymCatApp/Views/MainView.swift
 //
 //  Created by @jonathaxs on 2025-11-15.
 /*  Criado por @jonathaxs em 2025-11-15. */
-//
+// ⌘
 
 import SwiftUI
 import SwiftData

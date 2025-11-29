@@ -1,10 +1,9 @@
 //
-//  NutrientTrackerRow.swift
-//  GymCat
+//  GymCat/GymCatApp/Views/Today/NutrientTrackerRow.swift
 //
 //  Created by @jonathaxs on 2025-11-22.
 /*  Criado por @jonathaxs em 2025-11-22. */
-//
+// ⌘
 
 import SwiftUI
 

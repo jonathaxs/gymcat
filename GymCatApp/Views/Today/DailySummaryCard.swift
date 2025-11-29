@@ -1,10 +1,9 @@
 //
-//  DailySummaryCard.swift
-//  GymCat
+//  GymCat/GymCatApp/Views/Today/DailySummaryCard.swift
 //
 //  Created by @jonathaxs on 2025-11-26.
 /*  Criado por @jonathaxs em 2025-11-26. */
-//
+// ⌘
 
 import SwiftUI
 

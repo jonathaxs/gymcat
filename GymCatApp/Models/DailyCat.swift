@@ -1,10 +1,9 @@
 //
-//  DailyCat.swift
-//  GymCat
+//  GymCat/GymCatApp/Models/DailyCat.swift
 //
 //  Created by @jonathaxs on 2025-11-22.
 /*  Criado por @jonathaxs em 2025-11-22. */
-//
+// ⌘
 
 import SwiftUI
 
