@@ -20,8 +20,6 @@ struct TodayView: View {
     @AppStorage("carbIntake") private var carbIntake: Int = 0
     @AppStorage("fatIntake") private var fatIntake: Int = 0
     @AppStorage("sleepHours") private var sleepHours: Int = 0
-    
-    @State private var showingFinishAlert = false
 
     // Default daily goals for each tracked metric.
     // In the future these should come from user settings.
@@ -122,7 +120,7 @@ struct TodayView: View {
                 DailySummaryCard(
                     dailyCat: dailyCat,
                     dailyPercentage: dailyPercentage,
-                    finishDayAction: { showingFinishAlert = true }
+                    finishDayAction: finishDay
                 )
                 
                 // Individual trackers for each metric.
@@ -183,15 +181,6 @@ struct TodayView: View {
                 Spacer()
             }
             .padding()
-        }
-        .alert(
-            String(localized: "today.finish.alert.title"),
-            isPresented: $showingFinishAlert
-        ) {
-            Button(String(localized: "today.finish.alert.confirm")) {
-                finishDay()
-            }
-            Button(String(localized: "today.finish.alert.cancel"), role: .cancel) { }
         }
     }
 }

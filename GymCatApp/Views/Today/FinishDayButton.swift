@@ -7,23 +7,15 @@
 
 import SwiftUI
 
-
-//
-//
-
-/* */
-/* */
-
 struct FinishDayButton: View {
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
             Image(systemName: "checkmark.circle.fill")
-                .font(.system(size: 44))
-                .foregroundStyle(.white)
-                .shadow(radius: 2)
+                .font(.system(size: 35))
         }
+        .buttonStyle(GlassButtonStyle(tint: .green))
         .accessibilityLabel(String(localized: "today.button.finish.icon.accessibility"))
     }
 }

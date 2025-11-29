@@ -7,15 +7,11 @@
 
 import SwiftUI
 
-//
-
-/* */
-/* */
-
 struct DailySummaryCard: View {
     let dailyCat: DailyCat
     let dailyPercentage: Int
     let finishDayAction: () -> Void
+    @State private var showPopover = false
 
     var body: some View {
         HStack(alignment: .center) {
@@ -44,7 +40,22 @@ struct DailySummaryCard: View {
             
             Spacer()
             
-            FinishDayButton(action: finishDayAction)
+            FinishDayButton {
+                showPopover = true
+            }
+            .confirmationDialog(
+                String(localized: "today.finish.dialog.title"),
+                isPresented: $showPopover,
+                titleVisibility: .visible
+            ) {
+                Button(String(localized: "today.finish.dialog.confirm")) {
+                    finishDayAction()
+                    showPopover = false
+                }
+                Button(String(localized: "today.finish.dialog.cancel")) {
+                    showPopover = false
+                }
+            }
         }
         .padding()
         .background(dailyCat.color)
