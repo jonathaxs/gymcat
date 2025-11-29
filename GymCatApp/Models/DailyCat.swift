@@ -15,10 +15,10 @@ import SwiftUI
 /* Representa as categorias de gato do dia com base no progresso. */
 /* Centraliza emoji, nome, cor e pontos em um único tipo. */
 enum DailyCat {
-    case triste
-    case iniciante
+    case sad
+    case beginner
     case fitness
-    case forte
+    case strong
 }
 
 // Extension adding calculation logic and derived properties.
@@ -32,64 +32,64 @@ extension DailyCat {
     static func from(progress: Double) -> DailyCat {
         switch progress {
         case ..<0.5:
-            return .triste
+            return .sad
         case ..<0.7:
-            return .iniciante
+            return .beginner
         case ..<0.9:
             return .fitness
         default:
-            return .forte
+            return .strong
         }
     }
 
     var emoji: String {
         switch self {
-        case .triste:
+        case .sad:
             return "😿"
-        case .iniciante:
+        case .beginner:
             return "😺"
         case .fitness:
             return "🐈"
-        case .forte:
+        case .strong:
             return "🦁"
         }
     }
 
     var name: String {
         switch self {
-        case .triste:
+        case .sad:
             return String(localized: "cat.sad")
-        case .iniciante:
+        case .beginner:
             return String(localized: "cat.beginner")
         case .fitness:
             return String(localized: "cat.fitness")
-        case .forte:
+        case .strong:
             return String(localized: "cat.strong")
         }
     }
 
     var color: Color {
         switch self {
-        case .triste:
+        case .sad:
             return Color.red.opacity(0.30)
-        case .iniciante:
+        case .beginner:
             return Color.yellow.opacity(0.30)
         case .fitness:
             return Color.blue.opacity(0.30)
-        case .forte:
+        case .strong:
             return Color.green.opacity(0.30)
         }
     }
 
     var points: Int {
         switch self {
-        case .triste:
+        case .sad:
             return 15
-        case .iniciante:
+        case .beginner:
             return 55
         case .fitness:
             return 75
-        case .forte:
+        case .strong:
             return 105
         }
     }

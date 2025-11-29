@@ -23,17 +23,6 @@
 "today.card.progress" = "Progress:";
 "today.card.points" = "Points:";
 
-"today.button.finish.icon.accessibility" = "Finish Day";
-"today.button.finish" = "Finish Day";
-
-"today.finish.alert.title" = "Do you want to finish the day?";
-"today.finish.alert.confirm" = "Finish";
-"today.finish.alert.cancel" = "Cancel";
-
-"today.finish.dialog.title" = "Finish daily goal?";
-"today.finish.dialog.confirm" = "Yes";
-"today.finish.dialog.cancel" = "No";
-
 /* GymCat/GymCatApp/Views/Achievements/AchievementsView.swift */
 "achievements.header.title" = "Achievements";
 "achievements.empty.title" = "No achievements yet";

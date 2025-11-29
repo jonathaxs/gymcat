@@ -23,18 +23,6 @@
 "today.card.progress" = "Progresso:";
 "today.card.points" = "Pontos:";
 
-"today.button.finish" = "Finalizar Dia";
-"today.button.finish.icon.accessibility" = "Finalizar Dia";
-
-"today.finish.alert.title" = "Deseja finalizar o dia?";
-"today.finish.alert.confirm" = "Finalizar";
-"today.finish.alert.cancel" = "Cancelar";
-
-"today.finish.dialog.title" = "Finalizar meta diária?";
-"today.finish.dialog.confirm" = "Sim";
-"today.finish.dialog.cancel" = "Não";
-
-
 /* GymCat/GymCatApp/Views/Achievements/AchievementsView.swift */
 "achievements.header.title" = "Conquistas";
 "achievements.empty.title" = "Nenhuma conquista ainda";

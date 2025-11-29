@@ -20,6 +20,7 @@ struct TodayView: View {
     @AppStorage("carbIntake") private var carbIntake: Int = 0
     @AppStorage("fatIntake") private var fatIntake: Int = 0
     @AppStorage("sleepHours") private var sleepHours: Int = 0
+    @AppStorage("lastFinishedDate") private var lastFinishedDate: String = ""
 
     // Default daily goals for each tracked metric.
     // In the future these should come from user settings.
@@ -78,14 +79,22 @@ struct TodayView: View {
         DailyCat.from(progress: dailyProgress)
     }
 
+    private func dateString(from date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: date)
+    }
+
     // MARK: - Actions
     // Encapsulates logic to finish the day and save data.
 
     /* MARK: - Ações */
     /* Encapsula lógica para finalizar o dia e salvar dados. */
-    private func finishDay() {
+    /* MARK: - Ações */
+    /* Encapsula lógica para finalizar o dia e salvar dados. */
+    private func finishSpecificDay(_ date: Date) {
         let record = DailyRecord(
-            date: Date(),
+            date: date,
             waterAmount: waterIntake,
             proteinAmount: proteinIntake,
             carbAmount: carbIntake,
@@ -97,12 +106,89 @@ struct TodayView: View {
             pointsEarned: dailyCat.points
         )
         modelContext.insert(record)
+    }
 
+    private func finishDay() {
         waterIntake = 0
         proteinIntake = 0
         carbIntake = 0
         fatIntake = 0
         sleepHours = 0
+    }
+
+    private func checkIfNewDay() {
+        let todayString = dateString(from: Date())
+
+        // If the app has never saved a date before, initialize and exit.
+        /* Se o app nunca salvou uma data antes, inicializa e sai. */
+        if lastFinishedDate.isEmpty {
+            lastFinishedDate = todayString
+            return
+        }
+
+        // If the day did not change, do nothing.
+        /* Se o dia não mudou, não faz nada. */
+        if todayString == lastFinishedDate {
+            return
+        }
+
+        let calendar = Calendar.current
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+
+        // Parse the last finished date from storage.
+        /* Converte a última data finalizada salva. */
+        guard let lastDate = formatter.date(from: lastFinishedDate) else {
+            lastFinishedDate = todayString
+            finishDay()
+            return
+        }
+
+        // 1) Save ONLY the real last day using the user's actual data.
+        /* 1) Salva APENAS o último dia real usando os dados atuais do usuário. */
+        finishSpecificDay(lastDate)
+
+        // 2) Reset metrics BEFORE generating missing days.
+        /* 2) Zera as métricas ANTES de gerar os dias perdidos. */
+        finishDay()
+
+        // 3) Generate "Sad Cat" records for all missing days (except today).
+        /* 3) Gera registros "Gato Triste" para todos os dias perdidos (exceto hoje). */
+        var cursor = calendar.date(byAdding: .day, value: 1, to: lastDate)!
+
+        let todayStart = calendar.startOfDay(for: Date())
+
+        while cursor < todayStart {
+            // Create Sad Cat with zero progress.
+            /* Cria Gato Triste com progresso zero. */
+            let sad = DailyCat.sad
+
+            let sadRecord = DailyRecord(
+                date: cursor,
+                waterAmount: 0,
+                proteinAmount: 0,
+                carbAmount: 0,
+                fatAmount: 0,
+                sleepHours: 0,
+                percentValue: 0,
+                catTitle: sad.name,
+                catEmoji: sad.emoji,
+                pointsEarned: sad.points
+            )
+
+            modelContext.insert(sadRecord)
+
+            // Move to the next day.
+            /* Avança para o próximo dia. */
+            cursor = calendar.date(byAdding: .day, value: 1, to: cursor)!
+        }
+
+        // 4) Update lastFinishedDate to today.
+        /* 4) Atualiza a última data finalizada para hoje. */
+        lastFinishedDate = todayString
+
+        // 5) The new day starts clean with all metrics already zero.
+        /* 5) O novo dia já começa limpo com todas as métricas zeradas. */
     }
 
     // MARK: - View body
@@ -117,10 +203,10 @@ struct TodayView: View {
                 // Screen header and Daily summary card
                 
                 /* Cabeçalho e Card de resumo diário */
+                /* Cabeçalho e Card de resumo diário */
                 DailySummaryCard(
                     dailyCat: dailyCat,
-                    dailyPercentage: dailyPercentage,
-                    finishDayAction: finishDay
+                    dailyPercentage: dailyPercentage
                 )
                 
                 // Individual trackers for each metric.
@@ -181,6 +267,15 @@ struct TodayView: View {
                 Spacer()
             }
             .padding()
+        }
+        .onAppear {
+            checkIfNewDay()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            checkIfNewDay()
+        }
+        .onReceive(Timer.publish(every: 60, on: .main, in: .common).autoconnect()) { _ in
+            checkIfNewDay()
         }
     }
 }
