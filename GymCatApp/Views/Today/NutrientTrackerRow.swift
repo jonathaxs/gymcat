@@ -1,18 +1,15 @@
+// ⌘
 //
 //  GymCat/GymCatApp/Views/Today/NutrientTrackerRow.swift
 //
 //  Created by @jonathaxs on 2025-11-22.
-/*  Criado por @jonathaxs em 2025-11-22. */
+//
 // ⌘
 
 import SwiftUI
 
 // MARK: - Subviews
 // Reusable subview to avoid duplicated logic.
-
-/* MARK: - Subviews (Subcomponentes) */
-/* Subview reutilizável para evitar duplicação de layout e lógica. */
-
 struct NutrientTrackerRow: View {
     let icon: String
     let title: String
@@ -20,7 +17,7 @@ struct NutrientTrackerRow: View {
     let increment: Int
     let goal: Int
     @Binding var value: Int
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
@@ -29,14 +26,14 @@ struct NutrientTrackerRow: View {
                     .font(.headline)
                 Spacer()
             }
-
+            
             HStack(spacing: 8) {
                 Text("\(value) \(unit) \(String(localized: "today.metric.separator")) \(goal) \(unit)")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
-
+                
                 Spacer()
-
+                
                 HStack(spacing: 5) {
                     Button(action: {
                         let newValue = value - increment
@@ -47,7 +44,7 @@ struct NutrientTrackerRow: View {
                             .frame(minWidth: 60)
                     }
                     .buttonStyle(GlassButtonStyle(tint: .red))
-
+                    
                     Button(action: {
                         let newValue = value + increment
                         value = min(newValue, goal)
@@ -59,7 +56,7 @@ struct NutrientTrackerRow: View {
                     .buttonStyle(GlassButtonStyle(tint: .blue))
                 }
             }
-
+            
             ProgressView(value: Float(value), total: Float(goal))
                 .progressViewStyle(LinearProgressViewStyle())
                 .tint(Color.green.opacity(0.9))
@@ -72,15 +69,15 @@ struct NutrientTrackerRow: View {
         .cornerRadius(25)
     }
 }
+
 // Glass-like button style with blur, rounded corners and subtle border.
-/* Estilo de botão com aparência de vidro: blur, cantos arredondados e borda sutil. */
 struct GlassButtonStyle: ButtonStyle {
     let tint: Color
-
+    
     init(tint: Color = .white) {
         self.tint = tint
     }
-
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding(.horizontal, 14)

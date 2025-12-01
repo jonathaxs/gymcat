@@ -1,14 +1,15 @@
-/* 
+// ⌘
+/*
   GymCat/GymCatApp/Resources/i18n/en.lproj/Localizable.strings
 
   Created by @jonathaxs on 2025-11-24.
-* Criado por @jonathaxs em 2025-11-24. */
+*/
 // ⌘
 
-/* GymCat/GymCatApp/Views/MainView.swift */
+// MainView.swift
 "main.tab.today" = "Today";
 
-/* GymCat/GymCatApp/Views/Today/TodayView.swift */
+// TodayView.swift
 "today.header.title" = "Today";
 "today.summary.progress" = "Today's progress: ";
 
@@ -23,14 +24,14 @@
 "today.card.progress" = "Progress:";
 "today.card.points" = "Points:";
 
-/* GymCat/GymCatApp/Views/Achievements/AchievementsView.swift */
+// AchievementsView.swift
 "achievements.header.title" = "Achievements";
 "achievements.empty.title" = "No achievements yet";
 "achievements.empty.description" = "Finish your days to unlock achievements here.";
 "achievements.points.total" = "pts";
 "achievements.tab.title" = "Achievements";
 
-/* GymCat/GymCatApp/Models/DailyCat.swift */
+// DailyCat.swift
 "cat.sad" = "Sad Cat";
 "cat.beginner" = "Beginner Cat";
 "cat.fitness" = "Fitness Cat";

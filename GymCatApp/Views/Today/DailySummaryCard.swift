@@ -1,8 +1,9 @@
+// ⌘
 //
 //  GymCat/GymCatApp/Views/Today/DailySummaryCard.swift
 //
 //  Created by @jonathaxs on 2025-11-26.
-/*  Criado por @jonathaxs em 2025-11-26. */
+//
 // ⌘
 
 import SwiftUI
@@ -10,7 +11,7 @@ import SwiftUI
 struct DailySummaryCard: View {
     let dailyCat: DailyCat
     let dailyPercentage: Int
-
+    
     var body: some View {
         HStack(alignment: .center) {
             VStack(alignment: .leading, spacing: 8) {

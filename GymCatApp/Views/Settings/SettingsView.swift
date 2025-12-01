@@ -1,6 +1,15 @@
+// ⌘
 //
 //  GymCat/GymCatApp/Views/Settings/SettingsView.swift
 //
 //  Created by @jonathaxs on 2025-11-24.
-/*  Criado por @jonathaxs em 2025-11-24. */
+//
 // ⌘
+
+import SwiftUI
+
+struct SettingsView: View {
+    var body: some View {
+        Text("Settings")
+    }
+}
