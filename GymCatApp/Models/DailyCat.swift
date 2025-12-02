@@ -77,13 +77,13 @@ extension DailyCat {
     var points: Int {
         switch self {
         case .sad:
-            return 15
+            return 0
         case .beginner:
-            return 55
+            return 45
         case .fitness:
-            return 75
+            return 65
         case .strong:
-            return 105
+            return 95
         }
     }
 }
