@@ -7,30 +7,41 @@
 // ⌘
 
 // MainView.swift
-"main.tab.today" = "Today";
+"main.tab.cat" = "Cat";
+"main.tab.gym" = "Gym";
+"main.tab.achievements" = "Achievements";
 
-// TodayView.swift
-"today.header.title" = "Today";
-"today.summary.progress" = "Today's progress: ";
 
-"today.metric.separator" = "/";
-"today.metric.sleep" = "Sleep";
-"today.metric.water" = "Water";
-"today.metric.protein" = "Protein";
-"today.metric.carbs" = "Carbs";
-"today.metric.fats" = "Fats";
+// MARK: Views
+// CatView.swift
+"cat.header.title" = "Today";
+"cat.summary.progress" = "Today's progress: ";
 
-"today.card.title" = "Today";
-"today.card.progress" = "Progress:";
-"today.card.points" = "Points:";
+"cat.metric.separator" = "/";
+"cat.metric.sleep" = "Sleep";
+"cat.metric.water" = "Water";
+"cat.metric.protein" = "Protein";
+"cat.metric.carbs" = "Carbs";
+"cat.metric.fats" = "Fats";
+
+"cat.card.title" = "cat";
+"cat.card.progress" = "Progress:";
+"cat.card.points" = "Points:";
 
 // AchievementsView.swift
 "achievements.header.title" = "Achievements";
 "achievements.empty.title" = "No achievements yet";
 "achievements.empty.description" = "Finish your days to unlock achievements here.";
 "achievements.points.total" = "pts";
-"achievements.tab.title" = "Achievements";
 
+// SettingsView.swift
+"settings.title" = "Ajustes";
+
+// WelcomeView.swift
+"welcome.title" = "Hello!";
+
+
+// MARK: Models
 // DailyCat.swift
 "cat.sad" = "Sad Cat";
 "cat.beginner" = "Beginner Cat";

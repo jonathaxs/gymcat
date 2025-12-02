@@ -1,6 +1,6 @@
 // ⌘
 //
-//  GymCat/GymCatApp/Views/Today/DailySummaryCard.swift
+//  GymCat/GymCatApp/Views/Cat/DailySummaryCard.swift
 //
 //  Created by @jonathaxs on 2025-11-26.
 //
@@ -15,7 +15,7 @@ struct DailySummaryCard: View {
     var body: some View {
         HStack(alignment: .center) {
             VStack(alignment: .leading, spacing: 8) {
-                Text(String(localized: "today.card.title"))
+                Text(String(localized: "cat.card.title"))
                     .font(.headline)
                     .foregroundStyle(.secondary)
                 
@@ -27,10 +27,10 @@ struct DailySummaryCard: View {
                         Text(dailyCat.name)
                             .font(.title3.bold())
                         
-                        Text("\(String(localized: "today.card.progress")) \(dailyPercentage)%")
+                        Text("\(String(localized: "cat.card.progress")) \(dailyPercentage)%")
                             .font(.subheadline)
                         
-                        Text("\(String(localized: "today.card.points")) \(dailyCat.points)")
+                        Text("\(String(localized: "cat.card.points")) \(dailyCat.points)")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }

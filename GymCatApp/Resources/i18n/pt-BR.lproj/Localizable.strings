@@ -7,30 +7,41 @@
 // ⌘
 
 // MainView.swift
-"main.tab.today" = "Hoje";
+"main.tab.cat" = "Gato";
+"main.tab.gym" = "Academia";
+"main.tab.achievements" = "Conquistas";
 
-// TodayView.swift
-"today.header.title" = "Hoje";
-"today.summary.progress" = "Progresso do dia: ";
 
-"today.metric.separator" = "/";
-"today.metric.sleep" = "Sono";
-"today.metric.water" = "Água";
-"today.metric.protein" = "Proteína";
-"today.metric.carbs" = "Carboidratos";
-"today.metric.fats" = "Gorduras";
+// MARK: Views
+// CatView.swift
+"cat.header.title" = "Hoje";
+"cat.summary.progress" = "Progresso do dia: ";
 
-"today.card.title" = "Hoje";
-"today.card.progress" = "Progresso:";
-"today.card.points" = "Pontos:";
+"cat.metric.separator" = "/";
+"cat.metric.sleep" = "Sono";
+"cat.metric.water" = "Água";
+"cat.metric.protein" = "Proteína";
+"cat.metric.carbs" = "Carboidratos";
+"cat.metric.fats" = "Gorduras";
+
+"cat.card.title" = "Hoje";
+"cat.card.progress" = "Progresso:";
+"cat.card.points" = "Pontos:";
 
 // AchievementsView.swift
 "achievements.header.title" = "Conquistas";
 "achievements.empty.title" = "Nenhuma conquista ainda";
 "achievements.empty.description" = "Finalize seus dias para desbloquear conquistas aqui.";
 "achievements.points.total" = "pts";
-"achievements.tab.title" = "Conquistas";
 
+// SettingsView.swift
+"settings.title" = "Ajustes";
+
+// WelcomeView.swift
+"welcome.title" = "Olá!";
+
+
+// MARK: Models
 // DailyCat.swift
 "cat.sad" = "Gato Triste";
 "cat.beginner" = "Gato Iniciante";

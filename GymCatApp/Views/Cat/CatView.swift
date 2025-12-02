@@ -1,6 +1,6 @@
 // ⌘
 //
-//  GymCat/GymCatApp/Views/Today/TodayView.swift
+//  GymCat/GymCatApp/Views/Cat/CatView.swift
 //
 //  Created by @jonathaxs on 2025-08-16.
 //
@@ -9,7 +9,7 @@
 import SwiftUI
 import SwiftData
 
-struct TodayView: View {
+struct CatView: View {
     
     // MARK: - State & persisted values
     // Access to the SwiftData context and variables persisted using @AppStorage.
@@ -102,16 +102,16 @@ struct TodayView: View {
     }
     
     private func checkIfNewDay() {
-        let todayString = dateString(from: Date())
+        let catString = dateString(from: Date())
         
         // If the app has never saved a date before, initialize and exit.
         if lastFinishedDate.isEmpty {
-            lastFinishedDate = todayString
+            lastFinishedDate = catString
             return
         }
         
         // If the day did not change, do nothing.
-        if todayString == lastFinishedDate {
+        if catString == lastFinishedDate {
             return
         }
         
@@ -121,7 +121,7 @@ struct TodayView: View {
         
         // Parse the last finished date from storage.
         guard let lastDate = formatter.date(from: lastFinishedDate) else {
-            lastFinishedDate = todayString
+            lastFinishedDate = catString
             finishDay()
             return
         }
@@ -132,12 +132,12 @@ struct TodayView: View {
         // 2) Reset metrics BEFORE generating missing days.
         finishDay()
         
-        // 3) Generate "Sad Cat" records for all missing days (except today).
+        // 3) Generate "Sad Cat" records for all missing days (except cat).
         var cursor = calendar.date(byAdding: .day, value: 1, to: lastDate)!
         
-        let todayStart = calendar.startOfDay(for: Date())
+        let catStart = calendar.startOfDay(for: Date())
         
-        while cursor < todayStart {
+        while cursor < catStart {
             // Create Sad Cat with zero progress.
             let sad = DailyCat.sad
             
@@ -161,13 +161,13 @@ struct TodayView: View {
         }
         
         // 4) Update lastFinishedDate to today.
-        lastFinishedDate = todayString
+        lastFinishedDate = catString
         
         // 5) The new day starts clean with all metrics already zero.
     }
     
     // MARK: - View body
-    // Main layout for the "Today" screen.
+    // Main layout for the "cat" screen.
     var body: some View {
         ScrollView {
             VStack(spacing: 12) {
@@ -182,7 +182,7 @@ struct TodayView: View {
                 // Each one uses the NutrientTrackerRow subview.
                 NutrientTrackerRow(
                     icon: "😴",
-                    title: String(localized: "today.metric.sleep"),
+                    title: String(localized: "cat.metric.sleep"),
                     unit: "h",
                     increment: 1,
                     goal: sleepGoal,
@@ -191,7 +191,7 @@ struct TodayView: View {
                 
                 NutrientTrackerRow(
                     icon: "💧",
-                    title: String(localized: "today.metric.water"),
+                    title: String(localized: "cat.metric.water"),
                     unit: "ml",
                     increment: 250,
                     goal: waterGoal,
@@ -200,7 +200,7 @@ struct TodayView: View {
                 
                 NutrientTrackerRow(
                     icon: "🍗",
-                    title: String(localized: "today.metric.protein"),
+                    title: String(localized: "cat.metric.protein"),
                     unit: "g",
                     increment: 20,
                     goal: proteinGoal,
@@ -209,7 +209,7 @@ struct TodayView: View {
                 
                 NutrientTrackerRow(
                     icon: "🍞",
-                    title: String(localized: "today.metric.carbs"),
+                    title: String(localized: "cat.metric.carbs"),
                     unit: "g",
                     increment: 20,
                     goal: carbGoal,
@@ -218,7 +218,7 @@ struct TodayView: View {
                 
                 NutrientTrackerRow(
                     icon: "🧈",
-                    title: String(localized: "today.metric.fats"),
+                    title: String(localized: "cat.metric.fats"),
                     unit: "g",
                     increment: 5,
                     goal: fatGoal,
@@ -244,5 +244,5 @@ struct TodayView: View {
 }
 
 #Preview {
-    TodayView()
+    CatView()
 }

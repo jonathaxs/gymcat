@@ -18,16 +18,19 @@ struct MainView: View {
         // Displays the tab-based navigation structure using TabView.
         TabView {
             
-            // Main tab showing the daily tracker screen.
-            TodayView()
+            CatView()
                 .tabItem {
-                    Label(String(localized: "main.tab.today"), systemImage: "house.fill")
+                    Label(String(localized: "main.tab.cat"), systemImage: "cat.fill")
                 }
             
-            // Tab that displays the saved day history.
+            GymView()
+                .tabItem {
+                    Label(String(localized: "main.tab.gym"), systemImage: "dumbbell.fill")
+                }
+
             AchievementsView()
                 .tabItem {
-                    Label(String(localized: "achievements.tab.title"), systemImage: "calendar")
+                    Label(String(localized: "main.tab.achievements"), systemImage: "trophy.fill")
                 }
         }
     }
