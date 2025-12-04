@@ -24,7 +24,7 @@
 "cat.metric.carbs" = "Carbs";
 "cat.metric.fats" = "Fats";
 
-"cat.card.title" = "cat";
+"cat.card.title" = "Today's achievement";
 "cat.card.progress" = "Progress:";
 "cat.card.points" = "Points:";
 
