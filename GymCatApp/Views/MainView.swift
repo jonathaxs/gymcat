@@ -18,19 +18,26 @@ struct MainView: View {
         // Displays the tab-based navigation structure using TabView.
         TabView {
             
-            CatView()
+            TodayView()
                 .tabItem {
-                    Label(String(localized: "main.tab.cat"), systemImage: "cat.fill")
+                    Label(String(localized: "main.tab.cat"), systemImage: "trophy.fill")
                 }
             
+            AchievementsView()
+                .tabItem {
+                    Label(String(localized: "main.tab.achievements"), systemImage: "cat.fill")
+                }
+            
+            /* Future Idea
             GymView()
                 .tabItem {
                     Label(String(localized: "main.tab.gym"), systemImage: "dumbbell.fill")
                 }
-
-            AchievementsView()
+             */
+            
+            SettingsView()
                 .tabItem {
-                    Label(String(localized: "main.tab.achievements"), systemImage: "trophy.fill")
+                    Label(String(localized: "main.tab.achievements"), systemImage: "settings.fill")
                 }
         }
     }

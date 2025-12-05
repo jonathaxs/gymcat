@@ -9,7 +9,7 @@
 import SwiftUI
 import SwiftData
 
-struct CatView: View {
+struct TodayView: View {
     
     // MARK: - State & persisted values
     // Access to the SwiftData context and variables persisted using @AppStorage.
@@ -244,5 +244,5 @@ struct CatView: View {
 }
 
 #Preview {
-    CatView()
+    TodayView()
 }
