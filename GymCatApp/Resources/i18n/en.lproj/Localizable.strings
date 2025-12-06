@@ -7,26 +7,25 @@
 // ⌘
 
 // MainView.swift
-"main.tab.cat" = "Cat";
+"main.tab.cat" = "Today";
 "main.tab.gym" = "Gym";
 "main.tab.achievements" = "Achievements";
 
-
 // MARK: Views
-// CatView.swift
-"cat.header.title" = "Today";
-"cat.summary.progress" = "Today's progress: ";
+// TodayView.swift
+"today.metric.sleep" = "Sleep";
+"today.metric.water" = "Water";
+"today.metric.protein" = "Protein";
+"today.metric.carbs" = "Carbs";
+"today.metric.fats" = "Fats";
 
-"cat.metric.separator" = "/";
-"cat.metric.sleep" = "Sleep";
-"cat.metric.water" = "Water";
-"cat.metric.protein" = "Protein";
-"cat.metric.carbs" = "Carbs";
-"cat.metric.fats" = "Fats";
-
+// CatCard.swift
 "cat.card.title" = "Today's achievement";
 "cat.card.progress" = "Progress:";
 "cat.card.points" = "Points:";
+
+// NutrientTracketRow.swift
+"cat.metric.separator" = "/";
 
 // AchievementsView.swift
 "achievements.header.title" = "Achievements";
@@ -39,7 +38,6 @@
 
 // WelcomeView.swift
 "welcome.title" = "Hello!";
-
 
 // MARK: Models
 // DailyCat.swift

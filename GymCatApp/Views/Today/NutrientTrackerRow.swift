@@ -28,7 +28,7 @@ struct NutrientTrackerRow: View {
             }
             
             HStack(spacing: 8) {
-                Text("\(value) \(unit) \(String(localized: "cat.metric.separator")) \(goal) \(unit)")
+                Text("\(value) \(unit) \(String(localized: "today.metric.separator")) \(goal) \(unit)")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                 

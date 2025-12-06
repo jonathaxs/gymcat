@@ -173,7 +173,7 @@ struct TodayView: View {
             VStack(spacing: 12) {
                 
                 // Screen header and Daily summary card
-                DailySummaryCard(
+                CatCard(
                     dailyCat: dailyCat,
                     dailyPercentage: dailyPercentage
                 )
@@ -182,7 +182,7 @@ struct TodayView: View {
                 // Each one uses the NutrientTrackerRow subview.
                 NutrientTrackerRow(
                     icon: "😴",
-                    title: String(localized: "cat.metric.sleep"),
+                    title: String(localized: "today.metric.sleep"),
                     unit: "h",
                     increment: 1,
                     goal: sleepGoal,
@@ -191,7 +191,7 @@ struct TodayView: View {
                 
                 NutrientTrackerRow(
                     icon: "💧",
-                    title: String(localized: "cat.metric.water"),
+                    title: String(localized: "today.metric.water"),
                     unit: "ml",
                     increment: 250,
                     goal: waterGoal,
@@ -200,7 +200,7 @@ struct TodayView: View {
                 
                 NutrientTrackerRow(
                     icon: "🍗",
-                    title: String(localized: "cat.metric.protein"),
+                    title: String(localized: "today.metric.protein"),
                     unit: "g",
                     increment: 20,
                     goal: proteinGoal,
@@ -209,7 +209,7 @@ struct TodayView: View {
                 
                 NutrientTrackerRow(
                     icon: "🍞",
-                    title: String(localized: "cat.metric.carbs"),
+                    title: String(localized: "today.metric.carbs"),
                     unit: "g",
                     increment: 20,
                     goal: carbGoal,
@@ -218,7 +218,7 @@ struct TodayView: View {
                 
                 NutrientTrackerRow(
                     icon: "🧈",
-                    title: String(localized: "cat.metric.fats"),
+                    title: String(localized: "today.metric.fats"),
                     unit: "g",
                     increment: 5,
                     goal: fatGoal,

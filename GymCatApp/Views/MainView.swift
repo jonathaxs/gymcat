@@ -20,7 +20,7 @@ struct MainView: View {
             
             TodayView()
                 .tabItem {
-                    Label(String(localized: "main.tab.cat"), systemImage: "trophy.fill")
+                    Label(String(localized: "main.tab.cat"), systemImage: "dumbbell.fill")
                 }
             
             AchievementsView()
@@ -31,13 +31,13 @@ struct MainView: View {
             /* Future Idea
             GymView()
                 .tabItem {
-                    Label(String(localized: "main.tab.gym"), systemImage: "dumbbell.fill")
+                    Label(String(localized: "main.tab.gym"), systemImage: "muscle.fill")
                 }
              */
             
             SettingsView()
                 .tabItem {
-                    Label(String(localized: "main.tab.achievements"), systemImage: "settings.fill")
+                    Label(String(localized: "settings.title"), systemImage: "gearshape.fill")
                 }
         }
     }

@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DailySummaryCard: View {
+struct CatCard: View {
     let dailyCat: DailyCat
     let dailyPercentage: Int
     
@@ -46,7 +46,7 @@ struct DailySummaryCard: View {
 }
 
 #Preview {
-    DailySummaryCard(
+    CatCard(
         dailyCat: .fitness,
         dailyPercentage: 85
     )
