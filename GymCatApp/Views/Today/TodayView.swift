@@ -179,8 +179,8 @@ struct TodayView: View {
                 )
                 
                 // Individual trackers for each metric.
-                // Each one uses the NutrientTrackerRow subview.
-                NutrientTrackerRow(
+                // Each one uses the TrackerRow subview.
+                TrackerRow(
                     icon: "😴",
                     title: String(localized: "today.metric.sleep"),
                     unit: "h",
@@ -189,7 +189,7 @@ struct TodayView: View {
                     value: $sleepHours
                 )
                 
-                NutrientTrackerRow(
+                TrackerRow(
                     icon: "💧",
                     title: String(localized: "today.metric.water"),
                     unit: "ml",
@@ -198,7 +198,7 @@ struct TodayView: View {
                     value: $waterIntake
                 )
                 
-                NutrientTrackerRow(
+                TrackerRow(
                     icon: "🍗",
                     title: String(localized: "today.metric.protein"),
                     unit: "g",
@@ -207,7 +207,7 @@ struct TodayView: View {
                     value: $proteinIntake
                 )
                 
-                NutrientTrackerRow(
+                TrackerRow(
                     icon: "🍞",
                     title: String(localized: "today.metric.carbs"),
                     unit: "g",
@@ -216,7 +216,7 @@ struct TodayView: View {
                     value: $carbIntake
                 )
                 
-                NutrientTrackerRow(
+                TrackerRow(
                     icon: "🧈",
                     title: String(localized: "today.metric.fats"),
                     unit: "g",

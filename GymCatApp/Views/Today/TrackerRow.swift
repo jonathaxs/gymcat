@@ -10,7 +10,7 @@ import SwiftUI
 
 // MARK: - Subviews
 // Reusable subview to avoid duplicated logic.
-struct NutrientTrackerRow: View {
+struct TrackerRow: View {
     let icon: String
     let title: String
     let unit: String
