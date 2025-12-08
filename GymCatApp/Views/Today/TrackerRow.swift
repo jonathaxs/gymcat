@@ -1,6 +1,6 @@
 // ⌘
 //
-//  GymCat/GymCatApp/Views/Cat/NutrientTrackerRow.swift
+//  GymCat/GymCatApp/Views/Cat/TrackerRow.swift
 //
 //  Created by @jonathaxs on 2025-11-22.
 //
@@ -28,7 +28,7 @@ struct TrackerRow: View {
             }
             
             HStack(spacing: 8) {
-                Text("\(value) \(unit) \(String(localized: "today.metric.separator")) \(goal) \(unit)")
+                Text("\(value) \(unit) \(String(localized: "tracker.metric.separator")) \(goal) \(unit)")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                 

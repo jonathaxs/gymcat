@@ -24,8 +24,8 @@
 "cat.card.progress" = "Progresso:";
 "cat.card.points" = "Pontos:";
 
-// NutrientTrackerRow.swift
-"today.metric.separator" = "/";
+// TrackerRow.swift
+"tracker.metric.separator" = "/";
 
 // AchievementsView.swift
 "achievements.header.title" = "Conquistas";

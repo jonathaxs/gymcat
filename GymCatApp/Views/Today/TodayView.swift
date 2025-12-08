@@ -1,6 +1,6 @@
 // ⌘
 //
-//  GymCat/GymCatApp/Views/Cat/CatView.swift
+//  GymCat/GymCatApp/Views/Cat/TodayView.swift
 //
 //  Created by @jonathaxs on 2025-08-16.
 //
