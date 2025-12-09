@@ -10,6 +10,6 @@ import SwiftUI
 
 struct GymView: View {
     var body: some View {
-        Text("main.tab.gym")
+        Text("gym.title")
     }
 }

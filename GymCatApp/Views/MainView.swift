@@ -37,7 +37,7 @@ struct MainView: View {
             
             SettingsView()
                 .tabItem {
-                    Label(String(localized: "settings.title"), systemImage: "gearshape.fill")
+                    Label(String(localized: "main.tab.settings"), systemImage: "gearshape.fill")
                 }
         }
     }

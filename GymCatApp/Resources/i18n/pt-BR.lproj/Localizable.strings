@@ -8,8 +8,8 @@
 
 // MainView.swift
 "main.tab.cat" = "Hoje";
-"main.tab.gym" = "Academia";
 "main.tab.achievements" = "Conquistas";
+"main.tab.settings" = "Ajustes";
 
 // MARK: Views
 // TodayView.swift
@@ -34,10 +34,13 @@
 "achievements.points.total" = "pts";
 
 // SettingsView.swift
-"settings.title" = "Ajustes";
+"settings.title" = "Ajustes do App";
 
 // WelcomeView.swift
 "welcome.title" = "Olá!";
+
+// GymView.swift
+"gym.title" = "Treinos";
 
 // MARK: Models
 // DailyCat.swift
