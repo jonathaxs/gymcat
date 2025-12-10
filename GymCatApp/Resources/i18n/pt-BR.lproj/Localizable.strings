@@ -33,6 +33,10 @@
 "achievements.empty.description" = "Finalize seus dias para desbloquear conquistas aqui.";
 "achievements.points.total" = "pts";
 
+// EditRecordView.swift
+"edit.record.cancel" = "Cancelar";
+"edit.record.save" = "Salvar";
+
 // SettingsView.swift
 "settings.empty.title" = "Ajustes do App";
 

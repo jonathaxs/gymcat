@@ -18,8 +18,8 @@ struct AchievementsView: View {
     @Query(sort: \DailyRecord.date, order: .reverse) private var records: [DailyRecord]
     @Environment(\.modelContext) private var modelContext
     
-    // Controls the placeholder edit popup when tapping the edit button.
-    @State private var showingEditPlaceholder: Bool = false
+    // Controls which record is currently being edited in a sheet.
+    @State private var editingRecord: DailyRecord?
     
     // MARK: - Actions
     // Deletes the selected record from the database.
@@ -32,9 +32,9 @@ struct AchievementsView: View {
     
     private func canEdit(_ record: DailyRecord) -> Bool {
         let now = Date()
-        let fortyEightHoursInSeconds: TimeInterval = 72 * 60 * 60
+        let seventyTwoHoursInSeconds: TimeInterval = 72 * 60 * 60
         let interval = now.timeIntervalSince(record.date)
-        return interval >= 0 && interval <= fortyEightHoursInSeconds
+        return interval >= 0 && interval <= seventyTwoHoursInSeconds
     }
     
     var body: some View {
@@ -77,10 +77,10 @@ struct AchievementsView: View {
                                 Text("\(record.points) \(String(localized: "achievements.points.total"))")
                                     .font(.subheadline.bold())
                                 
-                                // Edit button – only visible for records within the last 48 hours.
+                                // Edit button – only visible for records within the last 72 hours.
                                 if canEdit(record) {
                                     Button {
-                                        showingEditPlaceholder = true
+                                        editingRecord = record
                                     } label: {
                                         Image(systemName: "pencil")
                                             .imageScale(.medium)
@@ -97,13 +97,8 @@ struct AchievementsView: View {
             // Navigation title for the achievements screen.
             .navigationTitle(String(localized: "achievements.header.title"))
         }
-        .alert(
-            String(localized: "achievements.edit.placeholder.title"),
-            isPresented: $showingEditPlaceholder
-        ) {
-            Button(String(localized: "common.cancel"), role: .cancel) { }
-        } message: {
-            Text(String(localized: "achievements.edit.placeholder.message"))
+        .sheet(item: $editingRecord) { record in
+            EditRecordView(record: record)
         }
     }
 }
