@@ -37,6 +37,11 @@ struct AchievementsView: View {
         return interval >= 0 && interval <= seventyTwoHoursInSeconds
     }
     
+    private func dailyCat(for record: DailyRecord) -> DailyCat {
+        let progress = Double(record.percent) / 100.0
+        return DailyCat.from(progress: progress)
+    }
+    
     var body: some View {
         
         // MARK: - View Body
@@ -60,11 +65,11 @@ struct AchievementsView: View {
                             // Individual history row.
                             // Shows the cat emoji, title, date, and points for that day.
                             HStack(spacing: 16) {
-                                Text(record.catEmoji)
+                                Text(dailyCat(for: record).emoji)
                                     .font(.largeTitle)
                                 
                                 VStack(alignment: .leading, spacing: 4) {
-                                    Text(record.catTitle)
+                                    Text(dailyCat(for: record).name)
                                         .font(.headline)
                                     
                                     Text(record.date, style: .date)
