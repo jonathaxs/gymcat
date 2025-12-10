@@ -18,6 +18,9 @@ struct AchievementsView: View {
     @Query(sort: \DailyRecord.date, order: .reverse) private var records: [DailyRecord]
     @Environment(\.modelContext) private var modelContext
     
+    // Controls the placeholder edit popup when tapping the edit button.
+    @State private var showingEditPlaceholder: Bool = false
+    
     // MARK: - Actions
     // Deletes the selected record from the database.
     private func deleteRecord(offsets: IndexSet) {
@@ -25,6 +28,13 @@ struct AchievementsView: View {
             let record = records[index]
             modelContext.delete(record)
         }
+    }
+    
+    private func canEdit(_ record: DailyRecord) -> Bool {
+        let now = Date()
+        let fortyEightHoursInSeconds: TimeInterval = 72 * 60 * 60
+        let interval = now.timeIntervalSince(record.date)
+        return interval >= 0 && interval <= fortyEightHoursInSeconds
     }
     
     var body: some View {
@@ -66,6 +76,16 @@ struct AchievementsView: View {
                                 
                                 Text("\(record.points) \(String(localized: "achievements.points.total"))")
                                     .font(.subheadline.bold())
+                                
+                                // Edit button – only visible for records within the last 48 hours.
+                                if canEdit(record) {
+                                    Button {
+                                        showingEditPlaceholder = true
+                                    } label: {
+                                        Image(systemName: "pencil")
+                                            .imageScale(.medium)
+                                    }
+                                }
                             }
                             .padding(.vertical, 8)
                         }
@@ -76,6 +96,14 @@ struct AchievementsView: View {
             
             // Navigation title for the achievements screen.
             .navigationTitle(String(localized: "achievements.header.title"))
+        }
+        .alert(
+            String(localized: "achievements.edit.placeholder.title"),
+            isPresented: $showingEditPlaceholder
+        ) {
+            Button(String(localized: "common.cancel"), role: .cancel) { }
+        } message: {
+            Text(String(localized: "achievements.edit.placeholder.message"))
         }
     }
 }
