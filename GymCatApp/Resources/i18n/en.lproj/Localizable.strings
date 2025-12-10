@@ -48,7 +48,7 @@
 
 // MARK: Models
 // DailyCat.swift
-"cat.sad" = "Sad Cat";
-"cat.beginner" = "Beginner Cat";
-"cat.fitness" = "Fitness Cat";
-"cat.strong" = "Strong Cat";
+"daily.cat.sad" = "Sad Cat";
+"daily.cat.beginner" = "Beginner Cat";
+"daily.cat.fitness" = "Fitness Cat";
+"daily.cat.strong" = "Strong Cat";
