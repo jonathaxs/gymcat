@@ -10,7 +10,7 @@ import SwiftUI
 
 struct WelcomeView: View {
     var body: some View {
-        Text("welcome.title")
+        Text("welcome.empty.title")
             .font(.largeTitle)
             .padding()
     }

@@ -34,13 +34,13 @@
 "achievements.points.total" = "pts";
 
 // SettingsView.swift
-"settings.title" = "Ajustes do App";
+"settings.empty.title" = "Ajustes do App";
 
 // WelcomeView.swift
-"welcome.title" = "Olá!";
+"welcome.empty.title" = "Olá!";
 
 // GymView.swift
-"gym.title" = "Treinos";
+"gym.empty.title" = "Treinos";
 
 // MARK: Models
 // DailyCat.swift
