@@ -18,6 +18,7 @@ struct TodayView: View {
     @AppStorage("proteinIntake") private var proteinIntake: Int = 0
     @AppStorage("carbIntake") private var carbIntake: Int = 0
     @AppStorage("fatIntake") private var fatIntake: Int = 0
+    @AppStorage("creatineIntake") private var creatineIntake: Int = 0
     @AppStorage("sleepHours") private var sleepHours: Int = 0
     @AppStorage("lastFinishedDate") private var lastFinishedDate: String = ""
     
@@ -27,6 +28,7 @@ struct TodayView: View {
     let proteinGoal = 150
     let carbGoal = 300
     let fatGoal = 80
+    let creatineGoal = 6
     let sleepGoal = 7
     
     // MARK: - Daily progress helpers
@@ -51,12 +53,16 @@ struct TodayView: View {
         calculateProgress(current: fatIntake, goal: fatGoal)
     }
     
+    private var creatineProgress: Double {
+        calculateProgress(current: creatineIntake, goal: creatineGoal)
+    }
+    
     private var sleepProgress: Double {
         calculateProgress(current: sleepHours, goal: sleepGoal)
     }
     
     private var dailyProgress: Double {
-        (waterProgress + proteinProgress + carbProgress + fatProgress + sleepProgress) / 5.0
+        (waterProgress + proteinProgress + carbProgress + fatProgress + creatineProgress + sleepProgress) / 6.0
     }
     
     private var dailyPercentage: Int {
@@ -84,6 +90,7 @@ struct TodayView: View {
             proteinAmount: proteinIntake,
             carbAmount: carbIntake,
             fatAmount: fatIntake,
+            creatineAmount: creatineIntake,
             sleepHours: sleepHours,
             percentValue: dailyPercentage,
             catTitle: dailyCat.name,
@@ -98,6 +105,7 @@ struct TodayView: View {
         proteinIntake = 0
         carbIntake = 0
         fatIntake = 0
+        creatineIntake = 0
         sleepHours = 0
     }
     
@@ -147,6 +155,7 @@ struct TodayView: View {
                 proteinAmount: 0,
                 carbAmount: 0,
                 fatAmount: 0,
+                creatineAmount: 0,
                 sleepHours: 0,
                 percentValue: 0,
                 catTitle: sad.name,
@@ -223,6 +232,15 @@ struct TodayView: View {
                     increment: 5,
                     goal: fatGoal,
                     value: $fatIntake
+                )
+                
+                TrackerRow(
+                    icon: "⚡️",
+                    title: String(localized: "today.metric.creatine"),
+                    unit: "g",
+                    increment: 3,
+                    goal: creatineGoal,
+                    value: $creatineIntake
                 )
                 // When the user finishes the day, we save a DailyRecord and reset all counters.
                 

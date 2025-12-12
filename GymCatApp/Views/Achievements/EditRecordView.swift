@@ -27,6 +27,7 @@ struct EditRecordView: View {
     @State private var protein: Int
     @State private var carb: Int
     @State private var fat: Int
+    @State private var creatine: Int
     @State private var sleep: Int
     
     // MARK: - Goals
@@ -35,6 +36,7 @@ struct EditRecordView: View {
     private let proteinGoal = 150
     private let carbGoal = 300
     private let fatGoal = 80
+    private let creatineGoal = 6
     private let sleepGoal = 7
     
     // MARK: - Initializer
@@ -45,6 +47,7 @@ struct EditRecordView: View {
         _protein = State(initialValue: record.protein)
         _carb = State(initialValue: record.carb)
         _fat = State(initialValue: record.fat)
+        _creatine = State(initialValue: record.creatine)
         _sleep = State(initialValue: record.sleep)
     }
     
@@ -69,12 +72,16 @@ struct EditRecordView: View {
         calculateProgress(current: fat, goal: fatGoal)
     }
     
+    private var creatineProgress: Double {
+        calculateProgress(current: creatine, goal: creatineGoal)
+    }
+    
     private var sleepProgress: Double {
         calculateProgress(current: sleep, goal: sleepGoal)
     }
     
     private var dailyProgress: Double {
-        (waterProgress + proteinProgress + carbProgress + fatProgress + sleepProgress) / 5.0
+        (waterProgress + proteinProgress + carbProgress + fatProgress + creatineProgress + sleepProgress) / 6.0
     }
     
     private var dailyPercentage: Int {
@@ -142,6 +149,15 @@ struct EditRecordView: View {
                         goal: fatGoal,
                         value: $fat
                     )
+                    
+                    TrackerRow(
+                        icon: "⚡️",
+                        title: String(localized: "today.metric.creatine"),
+                        unit: "g",
+                        increment: 3,
+                        goal: creatineGoal,
+                        value: $creatine
+                    )
                 }
                 .padding()
             }
@@ -170,6 +186,7 @@ struct EditRecordView: View {
         record.protein = protein
         record.carb = carb
         record.fat = fat
+        record.creatine = creatine
         record.sleep = sleep
         
         // Recalculate percentage and cat based on the edited data.
@@ -191,6 +208,7 @@ struct EditRecordView: View {
         proteinAmount: 80,
         carbAmount: 200,
         fatAmount: 50,
+        creatineAmount: 3,
         sleepHours: 6,
         percentValue: 70,
         catTitle: DailyCat.fitness.name,

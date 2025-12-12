@@ -23,6 +23,7 @@ final class DailyRecord {
     var protein: Int
     var carb: Int
     var fat: Int
+    var creatine: Int = 0
     var sleep: Int
     var percent: Int
     var catTitle: String
@@ -43,6 +44,7 @@ final class DailyRecord {
         proteinAmount: Int,
         carbAmount: Int,
         fatAmount: Int,
+        creatineAmount: Int,
         sleepHours: Int,
         percentValue: Int,
         catTitle: String,
@@ -54,6 +56,7 @@ final class DailyRecord {
         self.protein = proteinAmount
         self.carb = carbAmount
         self.fat = fatAmount
+        self.creatine = creatineAmount
         self.sleep = sleepHours
         self.percent = percentValue
         self.catTitle = catTitle
