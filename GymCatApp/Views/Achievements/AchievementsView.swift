@@ -88,8 +88,17 @@ struct AchievementsView: View {
                                         editingRecord = record
                                     } label: {
                                         Image(systemName: "pencil")
-                                            .imageScale(.medium)
+                                            .font(.system(size: 16, weight: .semibold))
+                                            .foregroundStyle(.blue)
+                                            .padding(10)
+                                            .background(.ultraThinMaterial, in: Circle())
+                                            .overlay(
+                                                Circle()
+                                                    .stroke(.blue.opacity(0.25), lineWidth: 1)
+                                            )
+                                            .shadow(radius: 6, y: 3)
                                     }
+                                    .buttonStyle(PressScaleButtonStyle())
                                 }
                             }
                             .padding(.vertical, 8)
@@ -105,6 +114,14 @@ struct AchievementsView: View {
         .sheet(item: $editingRecord) { record in
             EditRecordView(record: record)
         }
+    }
+}
+
+private struct PressScaleButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.92 : 1.0)
+            .animation(.spring(response: 0.22, dampingFraction: 0.65), value: configuration.isPressed)
     }
 }
 
