@@ -238,7 +238,7 @@ struct TodayView: View {
                     icon: "⚡️",
                     title: String(localized: "today.metric.creatine"),
                     unit: "g",
-                    increment: 3,
+                    increment: 2,
                     goal: creatineGoal,
                     value: $creatineIntake
                 )
