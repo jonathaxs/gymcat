@@ -112,7 +112,7 @@ struct AchievementsView: View {
             .navigationTitle(String(localized: "achievements.header.title"))
         }
         .sheet(item: $editingRecord) { record in
-            EditRecordView(record: record)
+            EditTodayView(record: record)
         }
     }
 }

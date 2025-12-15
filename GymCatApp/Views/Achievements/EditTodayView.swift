@@ -1,6 +1,6 @@
 // ⌘
 //
-//  /Users/jonathaxs/Developer/GymCatProject/GymCat/GymCatApp/Views/Achievements/EditRecordView.swift
+//  GymCat/GymCatApp/Views/Achievements/EditTodayView.swift
 //
 //  Created by @jonathaxs on 2025-12-10.
 //
@@ -11,8 +11,8 @@ import SwiftData
 
 // MARK: - EditRecordView
 // Screen used to edit an existing DailyRecord up to 72 hours after its date.
-// Reuses the same goals and visual components from CatView (CatCard + TrackerRow).
-struct EditRecordView: View {
+// Reuses the same goals and visual components from TodayView (CatCard + TrackerRow).
+struct EditTodayView: View {
     
     // Daily record selected from AchievementsView.
     let record: DailyRecord
@@ -31,7 +31,7 @@ struct EditRecordView: View {
     @State private var sleep: Int
     
     // MARK: - Goals
-    // Uses the same default goals as CatView / TodayView.
+    // Uses the same default goals as TodayView / TodayView.
     private let waterGoal = 3000
     private let proteinGoal = 150
     private let carbGoal = 300
@@ -158,6 +158,7 @@ struct EditRecordView: View {
                         goal: creatineGoal,
                         value: $creatine
                     )
+                    Spacer()
                 }
                 .padding()
             }
@@ -216,6 +217,6 @@ struct EditRecordView: View {
         pointsEarned: DailyCat.fitness.points
     )
     
-    return EditRecordView(record: sample)
+    return EditTodayView(record: sample)
         .modelContainer(for: DailyRecord.self, inMemory: true)
 }

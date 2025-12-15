@@ -34,7 +34,7 @@
 "achievements.empty.description" = "Finish your days to unlock achievements here.";
 "achievements.points.total" = "pts";
 
-// EditRecordView.swift
+// EditTodayView.swift
 "edit.record.cancel" = "Cancel";
 "edit.record.save" = "Save";
 

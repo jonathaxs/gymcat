@@ -1,6 +1,6 @@
 // ⌘
 //
-//  GymCat/GymCatApp/Views/Cat/TodayView.swift
+//  GymCat/GymCatApp/Views/Today/TodayView.swift
 //
 //  Created by @jonathaxs on 2025-08-16.
 //
@@ -140,7 +140,7 @@ struct TodayView: View {
         // 2) Reset metrics BEFORE generating missing days.
         finishDay()
         
-        // 3) Generate "Sad Cat" records for all missing days (except cat).
+        // 3) Generate "Sad Cat" records for missing past days only (from the day after lastDate up to yesterday).
         var cursor = calendar.date(byAdding: .day, value: 1, to: lastDate)!
         
         let catStart = calendar.startOfDay(for: Date())
@@ -243,8 +243,6 @@ struct TodayView: View {
                     value: $creatineIntake
                 )
                 // When the user finishes the day, we save a DailyRecord and reset all counters.
-                
-                // Button removed, now inside DailySummaryCard
                 Spacer()
             }
             .padding()

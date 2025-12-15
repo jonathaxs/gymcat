@@ -1,6 +1,6 @@
 // ⌘
 //
-//  GymCat/GymCatApp/Views/Cat/TrackerRow.swift
+//  GymCat/GymCatApp/Views/Today/TrackerRow.swift
 //
 //  Created by @jonathaxs on 2025-11-22.
 //
