@@ -65,7 +65,7 @@ struct TrackerRow: View {
                 .clipShape(RoundedRectangle(cornerRadius: 30))
         }
         .padding(15)
-        .background(Color(.systemGray6))
+        .background(Color(.secondarySystemBackground))
         .cornerRadius(25)
     }
 }
