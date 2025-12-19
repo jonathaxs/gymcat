@@ -71,7 +71,7 @@ struct TrackerRow: View {
             }
             
             // Visual progress representation based on the current value and goal
-            ProgressView(value: Float(value), total: Float(goal))
+            ProgressView(value: Double(value), total: Double(goal))
                 .progressViewStyle(LinearProgressViewStyle())
                 .tint(Color.green.opacity(0.9))
                 .scaleEffect(x: 1, y: 2, anchor: .center)
