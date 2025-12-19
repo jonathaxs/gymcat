@@ -30,13 +30,13 @@ struct EditTodayView: View {
     @State private var sleep: Int
     
     // MARK: - Goals
-    // Uses the same default goals as TodayView / TodayView.
-    private let waterGoal = 3000
-    private let proteinGoal = 150
-    private let carbGoal = 300
-    private let fatGoal = 80
-    private let creatineGoal = 6
-    private let sleepGoal = 7
+    // Uses the same default goals as TodayView.
+    private let waterGoal: Int = DefaultGoals.water
+    private let proteinGoal: Int = DefaultGoals.protein
+    private let carbGoal: Int = DefaultGoals.carbs
+    private let fatGoal: Int = DefaultGoals.fats
+    private let creatineGoal: Int = DefaultGoals.creatine
+    private let sleepGoal: Int = DefaultGoals.sleep
     
     // MARK: - Initializer
     // Initializes the local state using the existing values of the record.
@@ -51,32 +51,29 @@ struct EditTodayView: View {
     }
     
     // MARK: - Progress helpers
-    private func calculateProgress(current: Int, goal: Int) -> Double {
-        min(Double(current) / Double(goal), 1.0)
-    }
     
     private var waterProgress: Double {
-        calculateProgress(current: water, goal: waterGoal)
+        ProgressHelpers.clampedProgress(current: water, goal: waterGoal)
     }
     
     private var proteinProgress: Double {
-        calculateProgress(current: protein, goal: proteinGoal)
+        ProgressHelpers.clampedProgress(current: protein, goal: proteinGoal)
     }
     
     private var carbProgress: Double {
-        calculateProgress(current: carb, goal: carbGoal)
+        ProgressHelpers.clampedProgress(current: carb, goal: carbGoal)
     }
     
     private var fatProgress: Double {
-        calculateProgress(current: fat, goal: fatGoal)
+        ProgressHelpers.clampedProgress(current: fat, goal: fatGoal)
     }
     
     private var creatineProgress: Double {
-        calculateProgress(current: creatine, goal: creatineGoal)
+        ProgressHelpers.clampedProgress(current: creatine, goal: creatineGoal)
     }
     
     private var sleepProgress: Double {
-        calculateProgress(current: sleep, goal: sleepGoal)
+        ProgressHelpers.clampedProgress(current: sleep, goal: sleepGoal)
     }
     
     private var dailyProgress: Double {
