@@ -24,41 +24,38 @@ struct TodayView: View {
     
     // Default daily goals for each tracked metric.
     // In the future these should come from user settings.
-    let waterGoal = 3000
-    let proteinGoal = 150
-    let carbGoal = 300
-    let fatGoal = 80
-    let creatineGoal = 6
-    let sleepGoal = 7
+    private let waterGoal: Int = DefaultGoals.water
+    private let proteinGoal: Int = DefaultGoals.protein
+    private let carbGoal: Int = DefaultGoals.carbs
+    private let fatGoal: Int = DefaultGoals.fats
+    private let creatineGoal: Int = DefaultGoals.creatine
+    private let sleepGoal: Int = DefaultGoals.sleep
     
     // MARK: - Daily progress helpers
-    // Normalizes each intake into values between 0...1.
-    private func calculateProgress(current: Int, goal: Int) -> Double {
-        min(Double(current) / Double(goal), 1.0)
-    }
+    // Normalizes each metric into values between 0...1.
     
     private var waterProgress: Double {
-        calculateProgress(current: waterIntake, goal: waterGoal)
+        ProgressHelpers.clampedProgress(current: waterIntake, goal: waterGoal)
     }
     
     private var proteinProgress: Double {
-        calculateProgress(current: proteinIntake, goal: proteinGoal)
+        ProgressHelpers.clampedProgress(current: proteinIntake, goal: proteinGoal)
     }
     
     private var carbProgress: Double {
-        calculateProgress(current: carbIntake, goal: carbGoal)
+        ProgressHelpers.clampedProgress(current: carbIntake, goal: carbGoal)
     }
     
     private var fatProgress: Double {
-        calculateProgress(current: fatIntake, goal: fatGoal)
+        ProgressHelpers.clampedProgress(current: fatIntake, goal: fatGoal)
     }
     
     private var creatineProgress: Double {
-        calculateProgress(current: creatineIntake, goal: creatineGoal)
+        ProgressHelpers.clampedProgress(current: creatineIntake, goal: creatineGoal)
     }
     
     private var sleepProgress: Double {
-        calculateProgress(current: sleepHours, goal: sleepGoal)
+        ProgressHelpers.clampedProgress(current: sleepHours, goal: sleepGoal)
     }
     
     private var dailyProgress: Double {
