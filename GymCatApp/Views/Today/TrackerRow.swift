@@ -18,6 +18,18 @@ struct TrackerRow: View {
     let goal: Int
     @Binding var value: Int
     
+    // Localized separator used between current value and goal (e.g. "of", "/", "de")
+    // Extracted to keep localization logic out of the View body.
+    private var separatorText: String {
+        String(localized: "tracker.metric.separator")
+    }
+
+    // Pre-formatted metric text shown in the UI (e.g. "120 ml of 200 ml").
+    // This keeps string composition separate from layout, improving readability and maintenance.
+    private var metricText: String {
+        "\(value) \(unit) \(separatorText) \(goal) \(unit)"
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
@@ -28,7 +40,8 @@ struct TrackerRow: View {
             }
             
             HStack(spacing: 8) {
-                Text("\(value) \(unit) \(String(localized: "tracker.metric.separator")) \(goal) \(unit)")
+                // Displays the metric text using the pre-composed string from `metricText`
+                Text(metricText)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                 
@@ -57,6 +70,7 @@ struct TrackerRow: View {
                 }
             }
             
+            // Visual progress representation based on the current value and goal
             ProgressView(value: Float(value), total: Float(goal))
                 .progressViewStyle(LinearProgressViewStyle())
                 .tint(Color.green.opacity(0.9))
