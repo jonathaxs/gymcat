@@ -18,7 +18,6 @@ struct EditTodayView: View {
     let record: DailyRecord
     
     // MARK: - Environment
-    @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     
     // MARK: - Editable values
