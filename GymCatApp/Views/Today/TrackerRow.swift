@@ -109,8 +109,8 @@ struct GlassButtonStyle: ButtonStyle {
                     .strokeBorder(tint.opacity(0.6), lineWidth: 1)
             )
             .shadow(radius: 2)
-            .scaleEffect(configuration.isPressed ? 0.5 : 1.0)
-            .opacity(configuration.isPressed ? 0.5 : 1.0)
+            .scaleEffect(configuration.isPressed ? 0.92 : 1.0)
+            .opacity(configuration.isPressed ? 0.85 : 1.0)
             .animation(
                 .easeInOut(duration: 0.15),
                 value: configuration.isPressed
