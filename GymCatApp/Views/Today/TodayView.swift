@@ -72,10 +72,14 @@ struct TodayView: View {
         DailyCat.from(progress: dailyProgress)
     }
     
-    private func dateString(from date: Date) -> String {
+    private static let dayFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        return formatter.string(from: date)
+        return formatter
+    }()
+    
+    private func dateString(from date: Date) -> String {
+        Self.dayFormatter.string(from: date)
     }
     
     // MARK: - Actions
@@ -121,11 +125,9 @@ struct TodayView: View {
         }
         
         let calendar = Calendar.current
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
         
         // Parse the last finished date from storage.
-        guard let lastDate = formatter.date(from: lastFinishedDate) else {
+        guard let lastDate = Self.dayFormatter.date(from: lastFinishedDate) else {
             lastFinishedDate = catString
             finishDay()
             return
