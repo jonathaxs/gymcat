@@ -25,7 +25,7 @@
 "cat.card.progress" = "Progress:";
 "cat.card.points" = "Points:";
 
-// TracketRow.swift
+// TrackerRow.swift
 "tracker.metric.separator" = "/";
 
 // AchievementsView.swift
