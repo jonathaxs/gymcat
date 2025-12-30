@@ -1,0 +1,55 @@
+// ⌘
+/*
+  GymCat/GymCatApp/Resources/translations/en.lproj/Localizable.strings
+
+  Created by @jonathaxs on 2025-11-24.
+*/
+// ⌘
+
+// MainView.swift
+"main.tab.cat" = "Today";
+"main.tab.achievements" = "Achievements";
+"main.tab.settings" = "Settings";
+
+// MARK: Views
+// TodayView.swift
+"today.metric.sleep" = "Sleep";
+"today.metric.water" = "Water";
+"today.metric.protein" = "Protein";
+"today.metric.carbs" = "Carbs";
+"today.metric.fats" = "Fats";
+"today.metric.creatine" = "Creatine";
+
+// CatCard.swift
+"cat.card.title" = "Today's achievement";
+"cat.card.progress" = "Progress:";
+"cat.card.points" = "Points:";
+
+// TrackerRow.swift
+"tracker.metric.separator" = "/";
+
+// AchievementsView.swift
+"achievements.header.title" = "Achievements";
+"achievements.empty.title" = "No achievements yet";
+"achievements.empty.description" = "Finish your days to unlock achievements here.";
+"achievements.points.total" = "pts";
+
+// EditTodayView.swift
+"edit.record.cancel" = "Cancel";
+"edit.record.save" = "Save";
+
+// SettingsView.swift
+"settings.empty.title" = "App Settings";
+
+// WelcomeView.swift
+"welcome.empty.title" = "Hello!";
+
+// GymView.swift
+"gym.empty.title" = "Workouts";
+
+// MARK: Models
+// DailyCat.swift
+"daily.cat.sad" = "Sad Cat";
+"daily.cat.beginner" = "Beginner Cat";
+"daily.cat.fitness" = "Fitness Cat";
+"daily.cat.strong" = "Strong Cat";

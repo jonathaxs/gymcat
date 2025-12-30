@@ -1,0 +1,55 @@
+// ⌘
+/*
+  GymCat/GymCatApp/Resources/translations/pt-BR.lproj/Localizable.strings
+
+  Created by @jonathaxs on 2025-11-24.
+*/
+// ⌘
+
+// MainView.swift
+"main.tab.cat" = "Hoje";
+"main.tab.achievements" = "Conquistas";
+"main.tab.settings" = "Ajustes";
+
+// MARK: Views
+// TodayView.swift
+"today.metric.sleep" = "Sono";
+"today.metric.water" = "Água";
+"today.metric.protein" = "Proteína";
+"today.metric.carbs" = "Carboidratos";
+"today.metric.fats" = "Gorduras";
+"today.metric.creatine" = "Creatina";
+
+// CatCard.swift
+"cat.card.title" = "Conquista de hoje";
+"cat.card.progress" = "Progresso:";
+"cat.card.points" = "Pontos:";
+
+// TrackerRow.swift
+"tracker.metric.separator" = "/";
+
+// AchievementsView.swift
+"achievements.header.title" = "Conquistas";
+"achievements.empty.title" = "Nenhuma conquista ainda";
+"achievements.empty.description" = "Finalize seus dias para desbloquear conquistas aqui.";
+"achievements.points.total" = "pts";
+
+// EditTodayView.swift
+"edit.record.cancel" = "Cancelar";
+"edit.record.save" = "Salvar";
+
+// SettingsView.swift
+"settings.empty.title" = "Ajustes do App";
+
+// WelcomeView.swift
+"welcome.empty.title" = "Olá!";
+
+// GymView.swift
+"gym.empty.title" = "Treinos";
+
+// MARK: Models
+// DailyCat.swift
+"daily.cat.sad" = "Gato Triste";
+"daily.cat.beginner" = "Gato Iniciante";
+"daily.cat.fitness" = "Gato Fitness";
+"daily.cat.strong" = "Gato Forte";
