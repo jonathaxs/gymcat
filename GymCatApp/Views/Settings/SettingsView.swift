@@ -10,6 +10,6 @@ import SwiftUI
 
 struct SettingsView: View {
     var body: some View {
-        Text("settings.empty.title")
+        Text(String(localized: "settings.empty.title"))
     }
 }

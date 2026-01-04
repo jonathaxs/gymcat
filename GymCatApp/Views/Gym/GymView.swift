@@ -10,6 +10,6 @@ import SwiftUI
 
 struct GymView: View {
     var body: some View {
-        Text("gym.empty.title")
+        Text(String(localized: "gym.empty.title"))
     }
 }
