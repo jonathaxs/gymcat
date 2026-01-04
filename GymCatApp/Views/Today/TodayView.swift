@@ -111,16 +111,16 @@ struct TodayView: View {
     }
     
     private func checkIfNewDay() {
-        let catString = dateString(from: Date())
+        let todayString = dateString(from: Date())
         
         // If the app has never saved a date before, initialize and exit.
         if lastFinishedDate.isEmpty {
-            lastFinishedDate = catString
+            lastFinishedDate = todayString
             return
         }
         
         // If the day did not change, do nothing.
-        if catString == lastFinishedDate {
+        if todayString == lastFinishedDate {
             return
         }
         
@@ -128,7 +128,7 @@ struct TodayView: View {
         
         // Parse the last finished date from storage.
         guard let lastDate = Self.dayFormatter.date(from: lastFinishedDate) else {
-            lastFinishedDate = catString
+            lastFinishedDate = todayString
             finishDay()
             return
         }
@@ -142,9 +142,9 @@ struct TodayView: View {
         // 3) Generate "Sad Cat" records for missing past days only (from the day after lastDate up to yesterday).
         var cursor = calendar.date(byAdding: .day, value: 1, to: lastDate)!
         
-        let catStart = calendar.startOfDay(for: Date())
+        let todayStart = calendar.startOfDay(for: Date())
         
-        while cursor < catStart {
+        while cursor < todayStart {
             // Create Sad Cat with zero progress.
             let sad = DailyCat.sad
             
@@ -169,7 +169,7 @@ struct TodayView: View {
         }
         
         // 4) Update lastFinishedDate to today.
-        lastFinishedDate = catString
+        lastFinishedDate = todayString
         
         // 5) The new day starts clean with all metrics already zero.
     }
