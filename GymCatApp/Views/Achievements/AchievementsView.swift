@@ -118,10 +118,17 @@ struct AchievementsView: View {
 }
 
 private struct PressScaleButtonStyle: ButtonStyle {
+    private static let pressedScale: CGFloat = 0.92
+    private static let springResponse: Double = 0.22
+    private static let springDamping: Double = 0.65
+
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .scaleEffect(configuration.isPressed ? 0.92 : 1.0)
-            .animation(.spring(response: 0.22, dampingFraction: 0.65), value: configuration.isPressed)
+            .scaleEffect(configuration.isPressed ? Self.pressedScale : 1.0)
+            .animation(
+                .spring(response: Self.springResponse, dampingFraction: Self.springDamping),
+                value: configuration.isPressed
+            )
     }
 }
 
