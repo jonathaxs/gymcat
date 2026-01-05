@@ -87,6 +87,10 @@ struct TrackerRow: View {
 // Glass-like button style with blur, rounded corners and subtle border.
 struct GlassButtonStyle: ButtonStyle {
     let tint: Color
+
+    private static let pressedScale: CGFloat = 0.92
+    private static let pressedOpacity: Double = 0.85
+    private static let animationDuration: Double = 0.15
     
     init(tint: Color = .white) {
         self.tint = tint
@@ -109,10 +113,10 @@ struct GlassButtonStyle: ButtonStyle {
                     .strokeBorder(tint.opacity(0.6), lineWidth: 1)
             )
             .shadow(radius: 2)
-            .scaleEffect(configuration.isPressed ? 0.92 : 1.0)
-            .opacity(configuration.isPressed ? 0.85 : 1.0)
+            .scaleEffect(configuration.isPressed ? Self.pressedScale : 1.0)
+            .opacity(configuration.isPressed ? Self.pressedOpacity : 1.0)
             .animation(
-                .easeInOut(duration: 0.15),
+                .easeInOut(duration: Self.animationDuration),
                 value: configuration.isPressed
             )
     }
