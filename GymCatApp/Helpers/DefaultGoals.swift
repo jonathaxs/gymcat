@@ -1,9 +1,9 @@
 // ⌘
-//
 //  GymCat/GymCatApp/Helpers/DefaultGoals.swift
 //
-//  Created by @jonathaxs on 2025-12-19.
+//  Purpose: Centralizes the default daily goal values used across the app.
 //
+//  Created by @jonathaxs on 2025-12-19.
 // ⌘
 
 import Foundation

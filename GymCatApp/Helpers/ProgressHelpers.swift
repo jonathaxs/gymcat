@@ -1,9 +1,9 @@
 // ⌘
-//
 //  GymCat/GymCatApp/Helpers/ProgressHelpers.swift
 //
-//  Created by @jonathaxs on 2025-12-19.
+//  Purpose: Shared utilities to compute normalized progress values (clamped to 0…1).
 //
+//  Created by @jonathaxs on 2025-12-19.
 // ⌘
 
 import Foundation
