@@ -1,9 +1,9 @@
 // ⌘
-//
 //  GymCat/GymCatApp/Views/Cat/CatCard.swift
 //
-//  Created by @jonathaxs on 2025-11-26.
+//  Purpose: Summary card that displays the day’s cat, progress percentage and points.
 //
+//  Created by @jonathaxs on 2025-11-26.
 // ⌘
 
 import SwiftUI

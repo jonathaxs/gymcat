@@ -1,9 +1,9 @@
 // ⌘
-//
 //  GymCat/GymCatApp/Views/Today/TrackerRow.swift
 //
-//  Created by @jonathaxs on 2025-11-22.
+//  Purpose: Reusable tracker row with +/- controls and progress bar for a single metric.
 //
+//  Created by @jonathaxs on 2025-11-22.
 // ⌘
 
 import SwiftUI
