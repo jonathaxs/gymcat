@@ -1,9 +1,9 @@
 // ⌘
-//
 //  GymCat/GymCatApp/Views/Achievements/AchievementsView.swift
 //
-//  Created by @jonathaxs on 2025-11-14.
+//  Purpose: History screen that lists saved DailyRecords and allows editing recent entries.
 //
+//  Created by @jonathaxs on 2025-11-14.
 // ⌘
 
 import SwiftUI

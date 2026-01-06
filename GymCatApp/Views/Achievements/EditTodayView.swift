@@ -1,9 +1,9 @@
 // ⌘
-//
 //  GymCat/GymCatApp/Views/Achievements/EditTodayView.swift
 //
-//  Created by @jonathaxs on 2025-12-10.
+//  Purpose: Edit screen to update a recent DailyRecord and recalculate the cat and points.
 //
+//  Created by @jonathaxs on 2025-12-10.
 // ⌘
 
 import SwiftUI
