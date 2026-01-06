@@ -1,9 +1,9 @@
 // ⌘
-//
 //  GymCat/GymCatApp/Views/MainView.swift
 //
-//  Created by @jonathaxs on 2025-11-15.
+//  Purpose: Hosts the main TabView and routes users to the primary app screens.
 //
+//  Created by @jonathaxs on 2025-11-15.
 // ⌘
 
 import SwiftUI

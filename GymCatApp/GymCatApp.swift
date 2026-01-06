@@ -1,9 +1,9 @@
 // ⌘
-//
 //  GymCat/GymCatApp/GymCatApp.swift
 //
-//  Created by @jonathaxs on 2025-08-16.
+//  Purpose: Entry point of the app; configures SwiftData and loads MainView.
 //
+//  Created by @jonathaxs on 2025-08-16.
 // ⌘
 
 // MARK: - Main Application
