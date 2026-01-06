@@ -1,9 +1,9 @@
 // ⌘
-//
 //  GymCat/GymCatApp/Views/Today/TodayView.swift
 //
-//  Created by @jonathaxs on 2025-08-16.
+//  Purpose: Main “Today” screen where users track daily metrics and finish the day.
 //
+//  Created by @jonathaxs on 2025-08-16.
 // ⌘
 
 import SwiftUI
