@@ -1,9 +1,9 @@
 // ⌘
-//
 //  GymCat/GymCatApp/Views/Settings/SettingsView.swift
 //
-//  Created by @jonathaxs on 2025-11-24.
+//  Purpose: Settings placeholder screen (will later store user preferences like goals and theme).
 //
+//  Created by @jonathaxs on 2025-11-24.
 // ⌘
 
 import SwiftUI

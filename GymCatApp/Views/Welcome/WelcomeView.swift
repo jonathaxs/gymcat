@@ -1,9 +1,9 @@
 // ⌘
-//
 //  GymCat/GymCatApp/Views/Welcome/WelcomeView.swift
 //
-//  Created by @jonathaxs on 2025-11-24.
+//  Purpose: Welcome/onboarding placeholder screen for first-time user flow.
 //
+//  Created by @jonathaxs on 2025-11-24.
 // ⌘
 
 import SwiftUI

@@ -1,9 +1,9 @@
 // ⌘
-//
 //  GymCat/GymCatApp/Views/Gym/GymView.swift
 //
-//  Created by @jonathaxs on 2025-12-02.
+//  Purpose: Gym/workouts placeholder screen for future training features.
 //
+//  Created by @jonathaxs on 2025-12-02.
 // ⌘
 
 import SwiftUI
