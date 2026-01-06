@@ -1,9 +1,9 @@
 // ⌘
-//
 //  GymCat/GymCatApp/Models/DailyCat.swift
 //
-//  Created by @jonathaxs on 2025-11-22.
+//  Purpose: Defines the daily cat tier logic (emoji, name, color, points) based on progress.
 //
+//  Created by @jonathaxs on 2025-11-22.
 // ⌘
 
 import SwiftUI
