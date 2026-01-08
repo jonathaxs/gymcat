@@ -48,6 +48,7 @@
 
 // GymView.swift
 "gym.empty.title" = "Workouts";
+"gym.empty.description" = "This area will be used for workouts in the future.";
 
 // MARK: Models
 // DailyCat.swift

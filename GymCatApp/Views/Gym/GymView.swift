@@ -10,6 +10,10 @@ import SwiftUI
 
 struct GymView: View {
     var body: some View {
-        Text(String(localized: "gym.empty.title"))
+        ContentUnavailableView(
+            String(localized: "gym.empty.title"),
+            systemImage: "dumbbell.fill",
+            description: Text(String(localized: "gym.empty.description"))
+        )
     }
 }
