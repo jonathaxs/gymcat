@@ -42,6 +42,7 @@
 
 // SettingsView.swift
 "settings.empty.title" = "Ajustes do App";
+"settings.empty.description" = "Em breve, você poderá configurar o app por aqui.";
 
 // WelcomeView.swift
 "welcome.empty.title" = "Olá!";

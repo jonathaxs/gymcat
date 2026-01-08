@@ -10,6 +10,10 @@ import SwiftUI
 
 struct SettingsView: View {
     var body: some View {
-        Text(String(localized: "settings.empty.title"))
+        ContentUnavailableView(
+            String(localized: "settings.empty.title"),
+            systemImage: "gearshape.fill",
+            description: Text(String(localized: "settings.empty.description"))
+        )
     }
 }
