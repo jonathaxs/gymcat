@@ -8,6 +8,7 @@
 
 import SwiftUI
 import SwiftData
+import HealthKit
 
 // MARK: - EditRecordView
 // Screen used to edit an existing DailyRecord up to 72 hours after its date.
@@ -185,6 +186,10 @@ struct EditTodayView: View {
         record.fat = fat
         record.creatine = creatine
         record.sleep = sleep
+
+        // If the user provided sleep hours, mirror the value into Apple Health.
+        // Safe no-op if HealthKit is unavailable or not authorized.
+        HealthKitManager.shared.writeSleepIfNeeded(for: record.date, hours: sleep)
         
         // Recalculate percentage and cat based on the edited data.
         record.percent = dailyPercentage
