@@ -8,7 +8,6 @@
 
 import SwiftUI
 import SwiftData
-import HealthKit
 
 // MARK: - EditRecordView
 // Screen used to edit an existing DailyRecord up to 72 hours after its date.
