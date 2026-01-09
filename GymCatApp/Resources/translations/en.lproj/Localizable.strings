@@ -46,6 +46,7 @@
 
 // WelcomeView.swift
 "welcome.empty.title" = "Hello!";
+"welcome.empty.description" = "Welcome to GymCat. Track your daily progress and finish the day to earn cats and points.";
 
 // GymView.swift
 "gym.empty.title" = "Workouts";

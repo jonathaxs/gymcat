@@ -46,6 +46,7 @@
 
 // WelcomeView.swift
 "welcome.empty.title" = "Olá!";
+"welcome.empty.description" = "Bem-vindo ao GymCat. Registre seu progresso diário e finalize o dia para ganhar gatinhos e pontos.";
 
 // GymView.swift
 "gym.empty.title" = "Treinos";
