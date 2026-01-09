@@ -8,7 +8,6 @@
 
 import SwiftUI
 import SwiftData
-import HealthKit
 
 struct TodayView: View {
     
@@ -79,33 +78,8 @@ struct TodayView: View {
         return formatter
     }()
     
-    private static let healthStore = HKHealthStore()
-    
     private func dateString(from date: Date) -> String {
         Self.dayFormatter.string(from: date)
-    }
-    
-    // Writes Sleep Analysis to Apple Health for the finished day.
-    // If `sleepHours` is 0, Health data is unavailable, or permissions are missing, it safely does nothing.
-    private func writeSleepToHealthIfNeeded(for date: Date) {
-        guard sleepHours > 0 else { return }
-        guard HKHealthStore.isHealthDataAvailable() else { return }
-        guard let sleepType = HKObjectType.categoryType(forIdentifier: .sleepAnalysis) else { return }
-
-        let calendar = Calendar.current
-        let start = calendar.startOfDay(for: date)
-        let end = start.addingTimeInterval(TimeInterval(sleepHours) * 60 * 60)
-
-        let sample = HKCategorySample(
-            type: sleepType,
-            value: HKCategoryValueSleepAnalysis.asleepUnspecified.rawValue,
-            start: start,
-            end: end
-        )
-
-        Self.healthStore.save(sample) { _, _ in
-            // Intentionally ignored: if saving fails, the app should continue normally.
-        }
     }
     
     // MARK: - Actions
@@ -125,7 +99,7 @@ struct TodayView: View {
             pointsEarned: dailyCat.points
         )
         modelContext.insert(record)
-        writeSleepToHealthIfNeeded(for: date)
+        HealthKitManager.shared.writeSleepIfNeeded(for: date, hours: sleepHours)
     }
     
     private func finishDay() {
