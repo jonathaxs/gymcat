@@ -10,8 +10,10 @@ import SwiftUI
 
 struct WelcomeView: View {
     var body: some View {
-        Text(String(localized: "welcome.empty.title"))
-            .font(.largeTitle)
-            .padding()
+        ContentUnavailableView(
+            String(localized: "welcome.empty.title"),
+            systemImage: "sparkles",
+            description: Text(String(localized: "welcome.empty.description"))
+        )
     }
 }
