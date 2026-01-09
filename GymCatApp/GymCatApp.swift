@@ -10,9 +10,13 @@
 // Entry point of the GymCat app. Sets up SwiftData and loads MainView.
 import SwiftUI
 import SwiftData
+import HealthKit
 
 @main
 struct GymCatApp: App {
+    
+    // Shared HealthKit store used to request permissions and write health data.
+    private let healthStore = HKHealthStore()
     
     // Shared SwiftData container.
     // Defines the schema and storage configuration for the database.
@@ -43,7 +47,24 @@ struct GymCatApp: App {
         // Main window group that displays the MainView.
         WindowGroup {
             MainView()
+                .task {
+                    requestSleepAuthorizationIfNeeded()
+                }
         }
         .modelContainer(sharedModelContainer)
+    }
+    
+    // Requests permission to write Sleep Analysis data.
+    // If Health data is unavailable or the type is missing, it safely does nothing.
+    private func requestSleepAuthorizationIfNeeded() {
+        guard HKHealthStore.isHealthDataAvailable() else { return }
+        guard let sleepType = HKObjectType.categoryType(forIdentifier: .sleepAnalysis) else { return }
+
+        let typesToShare: Set<HKSampleType> = [sleepType]
+        let typesToRead: Set<HKObjectType> = [sleepType]
+
+        healthStore.requestAuthorization(toShare: typesToShare, read: typesToRead) { _, _ in
+            // Intentionally ignored here. The app will simply skip Health writes if not authorized.
+        }
     }
 }
