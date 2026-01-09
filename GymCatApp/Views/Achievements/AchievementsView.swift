@@ -21,6 +21,9 @@ struct AchievementsView: View {
     // Controls which record is currently being edited in a sheet.
     @State private var editingRecord: DailyRecord?
     
+    // Defines how long a record remains editable after being created.
+    private static let editWindow: TimeInterval = 72 * 60 * 60
+    
     // MARK: - Actions
     // Deletes the selected record from the database.
     private func deleteRecord(offsets: IndexSet) {
@@ -32,9 +35,8 @@ struct AchievementsView: View {
     
     private func canEdit(_ record: DailyRecord) -> Bool {
         let now = Date()
-        let seventyTwoHoursInSeconds: TimeInterval = 72 * 60 * 60
         let interval = now.timeIntervalSince(record.date)
-        return interval >= 0 && interval <= seventyTwoHoursInSeconds
+        return interval >= 0 && interval <= Self.editWindow
     }
     
     private func dailyCat(for record: DailyRecord) -> DailyCat {
