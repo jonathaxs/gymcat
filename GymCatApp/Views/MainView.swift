@@ -20,12 +20,12 @@ struct MainView: View {
             
             TodayView()
                 .tabItem {
-                    Label(String(localized: "main.tab.cat"), systemImage: "dumbbell.fill")
+                    Label(String(localized: "main.tab.cat"), systemImage: "cat.fill")
                 }
             
             AchievementsView()
                 .tabItem {
-                    Label(String(localized: "main.tab.achievements"), systemImage: "cat.fill")
+                    Label(String(localized: "main.tab.achievements"), systemImage: "dumbbell.fill")
                 }
             
             /* Future Idea
