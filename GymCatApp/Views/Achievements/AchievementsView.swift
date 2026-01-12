@@ -22,7 +22,8 @@ struct AchievementsView: View {
     @State private var editingRecord: DailyRecord?
     
     // Defines how long a record remains editable after being created.
-    private static let editWindow: TimeInterval = 72 * 60 * 60
+    private static let editWindowHours: Int = 72
+    private static let editWindow: TimeInterval = TimeInterval(Self.editWindowHours * 60 * 60)
     
     // MARK: - Actions
     // Deletes the selected record from the database.
