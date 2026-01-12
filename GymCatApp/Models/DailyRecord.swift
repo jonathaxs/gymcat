@@ -33,34 +33,33 @@ final class DailyRecord {
     // MARK: - Initializer
     // The initializer assigns all incoming values to the model's stored properties.
     // `self.` is used here to distinguish the class properties from the parameters.
-    // In the future we will rename parameters to improve readability.
     init(
         
         // The `date` parameter has a default value of `Date()`,
         // meaning new records will automatically store the current day unless another date is provided.
         
         date: Date = Date(),
-        waterAmount: Int,
-        proteinAmount: Int,
-        carbAmount: Int,
-        fatAmount: Int,
-        creatineAmount: Int,
-        sleepHours: Int,
-        percentValue: Int,
+        water: Int,
+        protein: Int,
+        carb: Int,
+        fat: Int,
+        creatine: Int,
+        sleep: Int,
+        percent: Int,
         catTitle: String,
         catEmoji: String,
-        pointsEarned: Int
+        points: Int
     ) {
         self.date = date
-        self.water = waterAmount
-        self.protein = proteinAmount
-        self.carb = carbAmount
-        self.fat = fatAmount
-        self.creatine = creatineAmount
-        self.sleep = sleepHours
-        self.percent = percentValue
+        self.water = water
+        self.protein = protein
+        self.carb = carb
+        self.fat = fat
+        self.creatine = creatine
+        self.sleep = sleep
+        self.percent = percent
         self.catTitle = catTitle
         self.catEmoji = catEmoji
-        self.points = pointsEarned
+        self.points = points
     }
 }
