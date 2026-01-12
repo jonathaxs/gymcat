@@ -205,18 +205,17 @@ struct EditTodayView: View {
 #Preview {
     // Simple preview using a sample DailyRecord.
     let sample = DailyRecord(
-        waterAmount: 1500,
-        proteinAmount: 80,
-        carbAmount: 200,
-        fatAmount: 50,
-        creatineAmount: 3,
-        sleepHours: 6,
-        percentValue: 70,
+        water: 1500,
+        protein: 80,
+        carb: 200,
+        fat: 50,
+        creatine: 3,
+        sleep: 6,
+        percent: 70,
         catTitle: DailyCat.fitness.name,
         catEmoji: DailyCat.fitness.emoji,
-        pointsEarned: DailyCat.fitness.points
+        points: DailyCat.fitness.points
     )
-    
-    return EditTodayView(record: sample)
+    EditTodayView(record: sample)
         .modelContainer(for: DailyRecord.self, inMemory: true)
 }
