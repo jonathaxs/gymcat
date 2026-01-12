@@ -87,16 +87,16 @@ struct TodayView: View {
     private func finishSpecificDay(_ date: Date) {
         let record = DailyRecord(
             date: date,
-            waterAmount: waterIntake,
-            proteinAmount: proteinIntake,
-            carbAmount: carbIntake,
-            fatAmount: fatIntake,
-            creatineAmount: creatineIntake,
-            sleepHours: sleepHours,
-            percentValue: dailyPercentage,
+            water: waterIntake,
+            protein: proteinIntake,
+            carb: carbIntake,
+            fat: fatIntake,
+            creatine: creatineIntake,
+            sleep: sleepHours,
+            percent: dailyPercentage,
             catTitle: dailyCat.name,
             catEmoji: dailyCat.emoji,
-            pointsEarned: dailyCat.points
+            points: dailyCat.points
         )
         modelContext.insert(record)
         HealthKitManager.shared.writeSleepIfNeeded(for: date, hours: sleepHours)
@@ -151,16 +151,16 @@ struct TodayView: View {
             
             let sadRecord = DailyRecord(
                 date: cursor,
-                waterAmount: 0,
-                proteinAmount: 0,
-                carbAmount: 0,
-                fatAmount: 0,
-                creatineAmount: 0,
-                sleepHours: 0,
-                percentValue: 0,
+                water: 0,
+                protein: 0,
+                carb: 0,
+                fat: 0,
+                creatine: 0,
+                sleep: 0,
+                percent: 0,
                 catTitle: sad.name,
                 catEmoji: sad.emoji,
-                pointsEarned: sad.points
+                points: sad.points
             )
             
             modelContext.insert(sadRecord)
