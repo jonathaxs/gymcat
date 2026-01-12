@@ -13,6 +13,12 @@ import Foundation
 enum ProgressHelpers {
 
     /// Returns a normalized progress value clamped to 0...1.
+    /// Preferred semantic name for progress calculations.
+    static func normalizedProgress(current: Int, goal: Int) -> Double {
+        clampedProgress(current: current, goal: goal)
+    }
+
+    /// Returns a normalized progress value clamped to 0...1.
     /// - Parameters:
     ///   - current: Current metric value (e.g. 1200 ml).
     ///   - goal: Goal value (e.g. 3000 ml). If goal <= 0, returns 0.
@@ -20,6 +26,12 @@ enum ProgressHelpers {
         guard goal > 0 else { return 0.0 }
         let raw = Double(current) / Double(goal)
         return min(max(raw, 0.0), 1.0)
+    }
+
+    /// Returns a normalized progress value clamped to 0...1 (Double overload).
+    /// Preferred semantic name for progress calculations.
+    static func normalizedProgress(current: Double, goal: Double) -> Double {
+        clampedProgress(current: current, goal: goal)
     }
 
     /// Returns a normalized progress value clamped to 0...1 (Double overload).
