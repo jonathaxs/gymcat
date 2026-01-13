@@ -35,27 +35,27 @@ struct TodayView: View {
     // Normalizes each metric into values between 0...1.
     
     private var waterProgress: Double {
-        ProgressHelpers.clampedProgress(current: waterIntake, goal: waterGoal)
+        ProgressHelpers.normalizedProgress(current: waterIntake, goal: waterGoal)
     }
     
     private var proteinProgress: Double {
-        ProgressHelpers.clampedProgress(current: proteinIntake, goal: proteinGoal)
+        ProgressHelpers.normalizedProgress(current: proteinIntake, goal: proteinGoal)
     }
     
     private var carbProgress: Double {
-        ProgressHelpers.clampedProgress(current: carbIntake, goal: carbGoal)
+        ProgressHelpers.normalizedProgress(current: carbIntake, goal: carbGoal)
     }
     
     private var fatProgress: Double {
-        ProgressHelpers.clampedProgress(current: fatIntake, goal: fatGoal)
+        ProgressHelpers.normalizedProgress(current: fatIntake, goal: fatGoal)
     }
     
     private var creatineProgress: Double {
-        ProgressHelpers.clampedProgress(current: creatineIntake, goal: creatineGoal)
+        ProgressHelpers.normalizedProgress(current: creatineIntake, goal: creatineGoal)
     }
     
     private var sleepProgress: Double {
-        ProgressHelpers.clampedProgress(current: sleepHours, goal: sleepGoal)
+        ProgressHelpers.normalizedProgress(current: sleepHours, goal: sleepGoal)
     }
     
     private var dailyProgress: Double {
