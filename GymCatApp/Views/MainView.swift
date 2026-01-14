@@ -25,7 +25,7 @@ struct MainView: View {
             
             AchievementsView()
                 .tabItem {
-                    Label(String(localized: "main.tab.achievements"), systemImage: "dumbbell.fill")
+                    Label(String(localized: "main.tab.achievements"), systemImage: "trophy.fill")
                 }
             
             /* Future Idea
