@@ -26,3 +26,23 @@ enum DefaultGoals {
     // MARK: - Recovery
     static let sleep: Int = 7
 }
+
+/// Provides a single access point for goal values used by the app.
+/// Today it proxies `DefaultGoals`, but it allows future migration
+/// to user-defined settings (e.g., AppStorage / Settings) without
+/// touching call sites.
+enum GoalsProvider {
+    // MARK: - Hydration
+    static var water: Int { DefaultGoals.water }
+
+    // MARK: - Macros
+    static var protein: Int { DefaultGoals.protein }
+    static var carbs: Int { DefaultGoals.carbs }
+    static var fats: Int { DefaultGoals.fats }
+
+    // MARK: - Supplements
+    static var creatine: Int { DefaultGoals.creatine }
+
+    // MARK: - Recovery
+    static var sleep: Int { DefaultGoals.sleep }
+}
