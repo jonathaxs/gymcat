@@ -53,27 +53,27 @@ struct EditTodayView: View {
     // MARK: - Progress helpers
     
     private var waterProgress: Double {
-        ProgressHelpers.clampedProgress(current: water, goal: waterGoal)
+        ProgressHelpers.normalizedProgress(current: water, goal: waterGoal)
     }
     
     private var proteinProgress: Double {
-        ProgressHelpers.clampedProgress(current: protein, goal: proteinGoal)
+        ProgressHelpers.normalizedProgress(current: protein, goal: proteinGoal)
     }
     
     private var carbProgress: Double {
-        ProgressHelpers.clampedProgress(current: carb, goal: carbGoal)
+        ProgressHelpers.normalizedProgress(current: carb, goal: carbGoal)
     }
     
     private var fatProgress: Double {
-        ProgressHelpers.clampedProgress(current: fat, goal: fatGoal)
+        ProgressHelpers.normalizedProgress(current: fat, goal: fatGoal)
     }
     
     private var creatineProgress: Double {
-        ProgressHelpers.clampedProgress(current: creatine, goal: creatineGoal)
+        ProgressHelpers.normalizedProgress(current: creatine, goal: creatineGoal)
     }
     
     private var sleepProgress: Double {
-        ProgressHelpers.clampedProgress(current: sleep, goal: sleepGoal)
+        ProgressHelpers.normalizedProgress(current: sleep, goal: sleepGoal)
     }
     
     private var dailyProgress: Double {
