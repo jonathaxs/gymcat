@@ -23,13 +23,13 @@ struct TodayView: View {
     @AppStorage("lastFinishedDate") private var lastFinishedDate: String = ""
     
     // Default daily goals for each tracked metric.
-    // In the future these should come from user settings.
-    private let waterGoal: Int = DefaultGoals.water
-    private let proteinGoal: Int = DefaultGoals.protein
-    private let carbGoal: Int = DefaultGoals.carbs
-    private let fatGoal: Int = DefaultGoals.fats
-    private let creatineGoal: Int = DefaultGoals.creatine
-    private let sleepGoal: Int = DefaultGoals.sleep
+    // Centralized via GoalsProvider to ease future Settings migration.
+    private let waterGoal: Int = GoalsProvider.water
+    private let proteinGoal: Int = GoalsProvider.protein
+    private let carbGoal: Int = GoalsProvider.carbs
+    private let fatGoal: Int = GoalsProvider.fats
+    private let creatineGoal: Int = GoalsProvider.creatine
+    private let sleepGoal: Int = GoalsProvider.sleep
     
     // MARK: - Daily progress helpers
     // Normalizes each metric into values between 0...1.
