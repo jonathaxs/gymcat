@@ -22,6 +22,15 @@ enum DailyCat {
 // Defines how progress maps to a DailyCat and which emoji, name,
 // color and points belong to each case.
 extension DailyCat {
+    /// Maps a normalized progress value (0...1) to a `DailyCat` tier.
+    ///
+    /// Thresholds:
+    /// - `< 0.5`  → `.sad`
+    /// - `< 0.7`  → `.beginner`
+    /// - `< 0.9`  → `.fitness`
+    /// - `≥ 0.9`  → `.strong`
+    ///
+    /// - Parameter progress: A normalized progress value, ideally clamped to the 0...1 range.
     static func from(progress: Double) -> DailyCat {
         switch progress {
         case ..<0.5:
