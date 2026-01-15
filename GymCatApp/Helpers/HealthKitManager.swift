@@ -9,17 +9,16 @@
 import Foundation
 import HealthKit
 
-// Note:
-// GymCat intentionally does NOT overwrite existing sleep data.
-// This avoids interfering with Apple Watch or other sleep trackers.
-// Sleep entries are only added when the user provides a value
-// and no external device is assumed.
-
 /// Centralizes Apple Health (HealthKit) authorization and writes for the app.
 ///
 /// Current scope:
 /// - Requests permission for Sleep Analysis.
 /// - Writes Sleep Analysis samples only when the user provided a valid sleep value.
+///
+/// Design:
+/// - GymCat intentionally does **not** overwrite existing sleep data in Apple Health.
+///   This avoids interfering with Apple Watch or other sleep trackers.
+/// - Sleep entries are only added when the user explicitly provides a value.
 final class HealthKitManager {
 
     static let shared = HealthKitManager()
