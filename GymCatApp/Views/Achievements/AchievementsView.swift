@@ -58,7 +58,7 @@ struct AchievementsView: View {
                     // Shown when there are no records to display.
                     ContentUnavailableView(
                         String(localized: "achievements.empty.title"),
-                        systemImage: "calendar.badge.exclamationmark",
+                        systemImage: "trophy.fill",
                         description: Text(String(localized: "achievements.empty.description"))
                     )
                 } else {
