@@ -31,12 +31,13 @@ struct EditTodayView: View {
     
     // MARK: - Goals
     // Uses the same default goals as TodayView.
-    private let waterGoal: Int = DefaultGoals.water
-    private let proteinGoal: Int = DefaultGoals.protein
-    private let carbGoal: Int = DefaultGoals.carbs
-    private let fatGoal: Int = DefaultGoals.fats
-    private let creatineGoal: Int = DefaultGoals.creatine
-    private let sleepGoal: Int = DefaultGoals.sleep
+    // Centralized via GoalsProvider to ease future Settings migration.
+    private let waterGoal: Int = GoalsProvider.water
+    private let proteinGoal: Int = GoalsProvider.protein
+    private let carbGoal: Int = GoalsProvider.carbs
+    private let fatGoal: Int = GoalsProvider.fats
+    private let creatineGoal: Int = GoalsProvider.creatine
+    private let sleepGoal: Int = GoalsProvider.sleep
     
     // MARK: - Initializer
     // Initializes the local state using the existing values of the record.
