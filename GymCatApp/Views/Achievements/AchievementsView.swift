@@ -34,6 +34,7 @@ struct AchievementsView: View {
         }
     }
     
+    // A record can be edited only within the configured edit window (default: 72 hours).
     private func canEdit(_ record: DailyRecord) -> Bool {
         let now = Date()
         let interval = now.timeIntervalSince(record.date)
