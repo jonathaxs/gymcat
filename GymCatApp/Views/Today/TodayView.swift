@@ -58,8 +58,20 @@ struct TodayView: View {
         ProgressHelpers.normalizedProgress(current: sleepHours, goal: sleepGoal)
     }
     
+    private var progressValues: [Double] {
+        [
+            waterProgress,
+            proteinProgress,
+            carbProgress,
+            fatProgress,
+            creatineProgress,
+            sleepProgress
+        ]
+    }
+
     private var dailyProgress: Double {
-        (waterProgress + proteinProgress + carbProgress + fatProgress + creatineProgress + sleepProgress) / 6.0
+        guard !progressValues.isEmpty else { return 0 }
+        return progressValues.reduce(0, +) / Double(progressValues.count)
     }
     
     private var dailyPercentage: Int {
