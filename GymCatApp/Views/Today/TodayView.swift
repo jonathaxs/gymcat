@@ -75,7 +75,7 @@ struct TodayView: View {
     }
     
     private var dailyPercentage: Int {
-        Int(dailyProgress * 100)
+        Int((dailyProgress * 100).rounded())
     }
     
     // Daily cat category computed from the average progress.
