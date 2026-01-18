@@ -43,6 +43,19 @@
 // SettingsView.swift
 "settings.empty.title" = "Ajustes do App";
 "settings.empty.description" = "Em breve, você poderá configurar o app por aqui.";
+"settings.header.title" = "Ajustes";
+"settings.section.goals" = "Metas";
+"settings.section.about" = "Sobre";
+
+"settings.goal.water" = "Água";
+"settings.goal.protein" = "Proteína";
+"settings.goal.carbs" = "Carboidratos";
+"settings.goal.fats" = "Gorduras";
+"settings.goal.creatine" = "Creatina";
+"settings.goal.sleep" = "Sono";
+
+"settings.about.version" = "Versão";
+"settings.about.build" = "Build";
 
 // WelcomeView.swift
 "welcome.empty.title" = "Olá!";
