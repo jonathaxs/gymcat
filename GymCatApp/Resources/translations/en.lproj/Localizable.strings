@@ -44,6 +44,20 @@
 "settings.empty.title" = "App Settings";
 "settings.empty.description" = "Settings will be available here soon.";
 
+"settings.header.title" = "Settings";
+"settings.section.goals" = "Goals";
+"settings.section.about" = "About";
+
+"settings.goal.water" = "Water";
+"settings.goal.protein" = "Protein";
+"settings.goal.carbs" = "Carbs";
+"settings.goal.fats" = "Fats";
+"settings.goal.creatine" = "Creatine";
+"settings.goal.sleep" = "Sleep";
+
+"settings.about.version" = "Version";
+"settings.about.build" = "Build";
+
 // WelcomeView.swift
 "welcome.empty.title" = "Hello!";
 "welcome.empty.description" = "Welcome to GymCat. Track your daily progress and finish the day to earn cats and points.";
