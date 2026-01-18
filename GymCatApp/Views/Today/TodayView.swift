@@ -202,7 +202,7 @@ struct TodayView: View {
                 // Individual trackers for each metric.
                 // Each one uses the TrackerRow subview.
                 TrackerRow(
-                    icon: "😴",
+                    icon: "🌙",
                     title: String(localized: "today.metric.sleep"),
                     unit: "h",
                     increment: 1,
