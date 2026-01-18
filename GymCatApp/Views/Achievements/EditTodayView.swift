@@ -115,7 +115,7 @@ struct EditTodayView: View {
                     
                     // Editable rows for each metric, reusing TrackerRow.
                     TrackerRow(
-                        icon: "😴",
+                        icon: "🌙",
                         title: String(localized: "today.metric.sleep"),
                         unit: "h",
                         increment: 1,
