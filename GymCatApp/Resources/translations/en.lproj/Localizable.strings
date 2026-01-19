@@ -41,9 +41,6 @@
 "edit.record.save" = "Save";
 
 // SettingsView.swift
-"settings.empty.title" = "App Settings";
-"settings.empty.description" = "Settings will be available here soon.";
-
 "settings.header.title" = "Settings";
 "settings.section.goals" = "Goals";
 "settings.section.about" = "About";
