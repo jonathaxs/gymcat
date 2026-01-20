@@ -21,15 +21,24 @@ struct AchievementsView: View {
     // Controls which record is currently being edited in a sheet.
     @State private var editingRecord: DailyRecord?
     
+    private enum FilterMode: String {
+        case all
+        case day
+    }
+
+    // Controls list filtering on the Achievements screen.
+    @State private var filterMode: FilterMode = .all
+    @State private var selectedDate: Date = Date()
+    
     // Defines how long a record remains editable after being created.
     private static let editWindowHours: Int = 72
     private static let editWindow: TimeInterval = TimeInterval(Self.editWindowHours * 60 * 60)
     
     // MARK: - Actions
     // Deletes the selected record from the database.
-    private func deleteRecord(offsets: IndexSet) {
+    private func deleteRecord(offsets: IndexSet, in list: [DailyRecord]) {
         for index in offsets {
-            let record = records[index]
+            let record = list[index]
             modelContext.delete(record)
         }
     }
@@ -44,6 +53,16 @@ struct AchievementsView: View {
     private func dailyCat(for record: DailyRecord) -> DailyCat {
         let progress = Double(record.percent) / 100.0
         return DailyCat.from(progress: progress)
+    }
+    
+    private var visibleRecords: [DailyRecord] {
+        switch filterMode {
+        case .all:
+            return records
+        case .day:
+            let calendar = Calendar.current
+            return records.filter { calendar.isDate($0.date, inSameDayAs: selectedDate) }
+        }
     }
     
     var body: some View {
@@ -64,28 +83,45 @@ struct AchievementsView: View {
                     )
                 } else {
                     List {
-                        ForEach(records) { record in
-                            
+                        Section {
+                            Picker(String(localized: "achievements.filter.title"), selection: $filterMode) {
+                                Text(String(localized: "achievements.filter.all")).tag(FilterMode.all)
+                                Text(String(localized: "achievements.filter.day")).tag(FilterMode.day)
+                            }
+                            .pickerStyle(.segmented)
+
+                            if filterMode == .day {
+                                DatePicker(
+                                    String(localized: "achievements.calendar.title"),
+                                    selection: $selectedDate,
+                                    displayedComponents: .date
+                                )
+                                .datePickerStyle(.graphical)
+                            }
+                        }
+
+                        ForEach(visibleRecords) { record in
+
                             // Individual history row.
                             // Shows the cat emoji, title, date, and points for that day.
                             HStack(spacing: 16) {
                                 Text(dailyCat(for: record).emoji)
                                     .font(.largeTitle)
-                                
+
                                 VStack(alignment: .leading, spacing: 4) {
                                     Text(dailyCat(for: record).name)
                                         .font(.headline)
-                                    
+
                                     Text(record.date, style: .date)
                                         .foregroundStyle(.secondary)
                                         .font(.caption)
                                 }
-                                
+
                                 Spacer()
-                                
+
                                 Text("\(record.points) \(String(localized: "achievements.points.total"))")
                                     .font(.subheadline.bold())
-                                
+
                                 // Edit button – only visible for records within the last 72 hours.
                                 if canEdit(record) {
                                     Button {
@@ -107,7 +143,9 @@ struct AchievementsView: View {
                             }
                             .padding(.vertical, 8)
                         }
-                        .onDelete(perform: deleteRecord)
+                        .onDelete { offsets in
+                            deleteRecord(offsets: offsets, in: visibleRecords)
+                        }
                     }
                 }
             }
