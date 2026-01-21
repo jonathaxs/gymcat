@@ -35,7 +35,6 @@
 "achievements.empty.title" = "No achievements yet";
 "achievements.empty.description" = "Finish your days to unlock achievements here.";
 "achievements.points.total" = "pts";
-
 "achievements.filter.title" = "View";
 "achievements.filter.all" = "All";
 "achievements.filter.day" = "By day";
@@ -49,14 +48,12 @@
 "settings.header.title" = "Settings";
 "settings.section.goals" = "Goals";
 "settings.section.about" = "About";
-
 "settings.goal.water" = "Water";
 "settings.goal.protein" = "Protein";
 "settings.goal.carbs" = "Carbs";
 "settings.goal.fats" = "Fats";
 "settings.goal.creatine" = "Creatine";
 "settings.goal.sleep" = "Sleep";
-
 "settings.about.version" = "Version";
 "settings.about.build" = "Build";
 

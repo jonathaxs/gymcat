@@ -35,7 +35,6 @@
 "achievements.empty.title" = "Nenhuma conquista ainda";
 "achievements.empty.description" = "Finalize seus dias para desbloquear conquistas aqui.";
 "achievements.points.total" = "pts";
-
 "achievements.filter.title" = "Visualização";
 "achievements.filter.all" = "Tudo";
 "achievements.filter.day" = "Por dia";
@@ -49,14 +48,12 @@
 "settings.header.title" = "Ajustes";
 "settings.section.goals" = "Metas";
 "settings.section.about" = "Sobre";
-
 "settings.goal.water" = "Água";
 "settings.goal.protein" = "Proteína";
 "settings.goal.carbs" = "Carboidratos";
 "settings.goal.fats" = "Gorduras";
 "settings.goal.creatine" = "Creatina";
 "settings.goal.sleep" = "Sono";
-
 "settings.about.version" = "Versão";
 "settings.about.build" = "Build";
 
