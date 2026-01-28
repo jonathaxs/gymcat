@@ -36,8 +36,8 @@
 "achievements.empty.description" = "Finish your days to unlock achievements here.";
 "achievements.points.total" = "pts";
 "achievements.filter.title" = "View";
-"achievements.filter.all" = "All";
-"achievements.filter.day" = "By day";
+"achievements.filter.all" = "List";
+"achievements.filter.day" = "Calendar";
 "achievements.calendar.title" = "Calendar";
 
 // EditTodayView.swift
