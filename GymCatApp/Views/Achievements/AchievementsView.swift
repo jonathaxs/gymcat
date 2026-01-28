@@ -30,7 +30,7 @@ struct AchievementsView: View {
     }
 
     // Persists the user's last selection for the Achievements filters.
-    @AppStorage("achievements.filterMode") private var storedFilterMode: String = FilterMode.all.rawValue
+    @AppStorage("achievements.filterMode") private var storedFilterMode: String = FilterMode.day.rawValue
     @AppStorage("achievements.selectedDate") private var storedSelectedDateTimestamp: Double = Date().timeIntervalSince1970
 
     // Controls list filtering on the Achievements screen.
