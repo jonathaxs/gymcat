@@ -9,6 +9,9 @@
 import SwiftUI
 import SwiftData
 
+// Custom calendar view used to display achievement emojis per day.
+// (Defined in MonthlyCalendarView.swift)
+
 // MARK: - Achievements Screen
 // Displays all saved DailyRecord entries using SwiftData, sorted newest to oldest.
 struct AchievementsView: View {
@@ -33,6 +36,7 @@ struct AchievementsView: View {
     // Controls list filtering on the Achievements screen.
     @State private var filterMode: FilterMode = .all
     @State private var selectedDate: Date = Date()
+    @State private var visibleMonthDate: Date = Date()
     
     // Defines how long a record remains editable after being created.
     private static let editWindowHours: Int = 72
@@ -68,6 +72,40 @@ struct AchievementsView: View {
             return records.filter { calendar.isDate($0.date, inSameDayAs: selectedDate) }
         }
     }
+
+    // Builds a mapping of each recorded day -> earned cat emoji.
+    // Keys are normalized to startOfDay so lookups are stable.
+    private var emojiByDay: [Date: String] {
+        let calendar = Calendar.current
+        return Dictionary(
+            uniqueKeysWithValues: records.map {
+                (calendar.startOfDay(for: $0.date), dailyCat(for: $0).emoji)
+            }
+        )
+    }
+
+    // Returns the start of the month for any given date.
+    private func startOfMonth(for date: Date) -> Date {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month], from: date)
+        return calendar.date(from: components) ?? date
+    }
+
+    // Human-readable month title used above the custom calendar.
+    private var visibleMonthTitle: String {
+        let formatter = DateFormatter()
+        formatter.locale = .current
+        formatter.dateFormat = "LLLL yyyy"
+        return formatter.string(from: visibleMonthDate)
+    }
+
+    // Moves the visible month by the provided offset (e.g. -1 = previous month).
+    private func changeMonth(by offset: Int) {
+        let calendar = Calendar.current
+        if let next = calendar.date(byAdding: .month, value: offset, to: visibleMonthDate) {
+            visibleMonthDate = startOfMonth(for: next)
+        }
+    }
     
     var body: some View {
         
@@ -95,12 +133,46 @@ struct AchievementsView: View {
                             .pickerStyle(.segmented)
 
                             if filterMode == .day {
-                                DatePicker(
-                                    String(localized: "achievements.calendar.title"),
-                                    selection: $selectedDate,
-                                    displayedComponents: .date
-                                )
-                                .datePickerStyle(.graphical)
+                                // Month navigation + custom calendar with achievement emojis.
+                                VStack(alignment: .leading, spacing: 10) {
+                                    HStack {
+                                        Text(String(localized: "achievements.calendar.title"))
+                                            .font(.headline)
+
+                                        Spacer()
+
+                                        Button {
+                                            changeMonth(by: -1)
+                                        } label: {
+                                            Image(systemName: "chevron.left")
+                                                .font(.system(size: 14, weight: .semibold))
+                                                .padding(8)
+                                                .background(.ultraThinMaterial, in: Circle())
+                                        }
+                                        .buttonStyle(.plain)
+
+                                        Text(visibleMonthTitle)
+                                            .font(.subheadline)
+                                            .foregroundStyle(.secondary)
+
+                                        Button {
+                                            changeMonth(by: 1)
+                                        } label: {
+                                            Image(systemName: "chevron.right")
+                                                .font(.system(size: 14, weight: .semibold))
+                                                .padding(8)
+                                                .background(.ultraThinMaterial, in: Circle())
+                                        }
+                                        .buttonStyle(.plain)
+                                    }
+
+                                    MonthlyCalendarView(
+                                        monthDate: visibleMonthDate,
+                                        selectedDate: $selectedDate,
+                                        emojiByDay: emojiByDay
+                                    )
+                                }
+                                .padding(.vertical, 4)
                             }
                         }
 
@@ -160,12 +232,15 @@ struct AchievementsView: View {
                 // Restore last used filter state.
                 filterMode = FilterMode(rawValue: storedFilterMode) ?? .all
                 selectedDate = Date(timeIntervalSince1970: storedSelectedDateTimestamp)
+                visibleMonthDate = startOfMonth(for: selectedDate)
             }
             .onChange(of: filterMode) { _, newValue in
                 storedFilterMode = newValue.rawValue
             }
             .onChange(of: selectedDate) { _, newValue in
                 storedSelectedDateTimestamp = newValue.timeIntervalSince1970
+                // If user selects a date in a different month, keep the visible month aligned.
+                visibleMonthDate = startOfMonth(for: newValue)
             }
         }
         .sheet(item: $editingRecord) { record in
