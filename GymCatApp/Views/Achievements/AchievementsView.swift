@@ -127,8 +127,8 @@ struct AchievementsView: View {
                     List {
                         Section {
                             Picker(String(localized: "achievements.filter.title"), selection: $filterMode) {
-                                Text(String(localized: "achievements.filter.all")).tag(FilterMode.all)
                                 Text(String(localized: "achievements.filter.day")).tag(FilterMode.day)
+                                Text(String(localized: "achievements.filter.all")).tag(FilterMode.all)
                             }
                             .pickerStyle(.segmented)
 
