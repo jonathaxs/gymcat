@@ -38,7 +38,7 @@
 "achievements.filter.title" = "View";
 "achievements.filter.all" = "List";
 "achievements.filter.day" = "Calendar";
-"achievements.calendar.title" = "Calendar";
+"achievements.calendar.title" = "Goals";
 
 // EditTodayView.swift
 "edit.record.cancel" = "Cancel";
