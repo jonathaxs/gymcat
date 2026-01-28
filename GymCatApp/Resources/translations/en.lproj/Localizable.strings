@@ -8,13 +8,17 @@
 */
 // ⌘
 
-// MainView.swift
+
+
+/* MARK: MainView.swift */
+/* Tabs */
 "main.tab.cat" = "Today";
 "main.tab.achievements" = "Achievements";
 "main.tab.settings" = "Settings";
 
-// MARK: Views
-// TodayView.swift
+
+/* MARK: TodayView.swift */
+/* Metrics */
 "today.metric.sleep" = "Sleep";
 "today.metric.water" = "Water";
 "today.metric.protein" = "Protein";
@@ -22,51 +26,81 @@
 "today.metric.fats" = "Fats";
 "today.metric.creatine" = "Creatine";
 
-// CatCard.swift
+
+/* MARK: CatCard.swift */
+/* Cards */
 "cat.card.title" = "Today's achievement";
 "cat.card.progress" = "Progress:";
 "cat.card.points" = "Points:";
 
-// TrackerRow.swift
+
+/* MARK: TrackerRow.swift */
+/* Metrics */
 "tracker.metric.separator" = "/";
 
-// AchievementsView.swift
+
+/* MARK: AchievementsView.swift */
+/* Header */
 "achievements.header.title" = "Achievements";
-"achievements.empty.title" = "No achievements yet";
-"achievements.empty.description" = "Finish your days to unlock achievements here.";
+/* Points */
 "achievements.points.total" = "pts";
+/* Filter */
 "achievements.filter.title" = "View";
 "achievements.filter.all" = "List";
 "achievements.filter.day" = "Calendar";
+/* Calendar */
 "achievements.calendar.title" = "History";
+/* Empty state */
+"achievements.empty.title" = "No achievements yet";
+"achievements.empty.description" = "Finish your days to unlock achievements here.";
 
-// EditTodayView.swift
+
+/* MARK: EditTodayView.swift */
+/* Record options */
 "edit.record.cancel" = "Cancel";
 "edit.record.save" = "Save";
 
-// SettingsView.swift
+
+/* MARK: SettingsView.swift */
+/* Sections */
 "settings.header.title" = "Settings";
 "settings.section.goals" = "Goals";
+"settings.section.preferences" = "Preferences";
 "settings.section.about" = "About";
+/* Goals */
+"settings.goals.title" = "Goals";
+"settings.goals.edit" = "Goals registered";
+"settings.goals.placeholder.title" = "Editing coming soon";
+"settings.goals.placeholder.description" = "Goal customization will be available in a future update.";
+/* Goal labels */
 "settings.goal.water" = "Water";
 "settings.goal.protein" = "Protein";
-"settings.goal.carbs" = "Carbs";
+"settings.goal.carbs" = "Carbohydrates";
 "settings.goal.fats" = "Fats";
 "settings.goal.creatine" = "Creatine";
 "settings.goal.sleep" = "Sleep";
+/* Preferences */
+"settings.preference.syncSleep" = "Sync sleep with Apple Health";
+/* About */
 "settings.about.version" = "Version";
 "settings.about.build" = "Build";
 
-// WelcomeView.swift
+
+/* MARK: WelcomeView.swift */
+/* Empty state */
 "welcome.empty.title" = "Hello!";
 "welcome.empty.description" = "Welcome to GymCat. Track your daily progress and finish the day to earn cats and points.";
 
-// GymView.swift
+
+// MARK: GymView.swift */
+/* Empty state */
 "gym.empty.title" = "Workouts";
 "gym.empty.description" = "This area will be used for workouts in the future.";
 
-// MARK: Models
-// DailyCat.swift
+
+
+/* MARK: DailyCat.swift */
+/* Cat achievements */
 "daily.cat.sad" = "Sad Cat";
 "daily.cat.beginner" = "Beginner Cat";
 "daily.cat.fitness" = "Fitness Cat";

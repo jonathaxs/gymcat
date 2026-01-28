@@ -8,13 +8,17 @@
 */
 // ⌘
 
-// MainView.swift
+
+
+/* MARK: MainView.swift */
+/* Tabs */
 "main.tab.cat" = "Hoje";
 "main.tab.achievements" = "Conquistas";
 "main.tab.settings" = "Ajustes";
 
-// MARK: Views
-// TodayView.swift
+
+/* MARK: TodayView.swift */
+/* Metrics */
 "today.metric.sleep" = "Sono";
 "today.metric.water" = "Água";
 "today.metric.protein" = "Proteína";
@@ -22,51 +26,81 @@
 "today.metric.fats" = "Gorduras";
 "today.metric.creatine" = "Creatina";
 
-// CatCard.swift
+
+/* MARK: CatCard.swift */
+/* Cards */
 "cat.card.title" = "Conquista de hoje";
 "cat.card.progress" = "Progresso:";
 "cat.card.points" = "Pontos:";
 
-// TrackerRow.swift
+
+/* MARK: TrackerRow.swift */
+/* Metrics */
 "tracker.metric.separator" = "/";
 
-// AchievementsView.swift
+
+/* MARK: AchievementsView.swift */
+/* Header */
 "achievements.header.title" = "Conquistas";
-"achievements.empty.title" = "Nenhuma conquista ainda";
-"achievements.empty.description" = "Finalize seus dias para desbloquear conquistas aqui.";
+/* Points */
 "achievements.points.total" = "pts";
+/* Filter */
 "achievements.filter.title" = "Visualização";
 "achievements.filter.all" = "Lista";
 "achievements.filter.day" = "Calendário";
+/* Calendar */
 "achievements.calendar.title" = "Histórico";
+/* Empty state */
+"achievements.empty.title" = "Nenhuma conquista ainda";
+"achievements.empty.description" = "Conclua seus dias para desbloquear conquistas aqui.";
 
-// EditTodayView.swift
+
+/* MARK: EditTodayView.swift */
+/* Record options */
 "edit.record.cancel" = "Cancelar";
 "edit.record.save" = "Salvar";
 
-// SettingsView.swift
+
+/* MARK: SettingsView.swift */
+/* Sections */
 "settings.header.title" = "Ajustes";
 "settings.section.goals" = "Metas";
+"settings.section.preferences" = "Preferências";
 "settings.section.about" = "Sobre";
+/* Goals */
+"settings.goals.title" = "Metas";
+"settings.goals.edit" = "Metas registradas";
+"settings.goals.placeholder.title" = "Edição em breve";
+"settings.goals.placeholder.description" = "A personalização das metas estará disponível em uma atualização futura.";
+/* Goal labels */
 "settings.goal.water" = "Água";
 "settings.goal.protein" = "Proteína";
 "settings.goal.carbs" = "Carboidratos";
 "settings.goal.fats" = "Gorduras";
 "settings.goal.creatine" = "Creatina";
 "settings.goal.sleep" = "Sono";
+/* Preferences */
+"settings.preference.syncSleep" = "Sincronizar sono com o Apple Health";
+/* About */
 "settings.about.version" = "Versão";
 "settings.about.build" = "Build";
 
-// WelcomeView.swift
-"welcome.empty.title" = "Olá!";
-"welcome.empty.description" = "Bem-vindo ao GymCat. Registre seu progresso diário e finalize o dia para ganhar gatinhos e pontos.";
 
-// GymView.swift
+/* MARK: WelcomeView.swift */
+/* Empty state */
+"welcome.empty.title" = "Olá!";
+"welcome.empty.description" = "Bem-vindo ao GymCat. Acompanhe seu progresso diário e conclua o dia para ganhar gatos e pontos.";
+
+
+// MARK: GymView.swift */
+/* Empty state */
 "gym.empty.title" = "Treinos";
 "gym.empty.description" = "Esta área será usada para treinos no futuro.";
 
-// MARK: Models
-// DailyCat.swift
+
+
+/* MARK: DailyCat.swift */
+/* Cat achievements */
 "daily.cat.sad" = "Gato Triste";
 "daily.cat.beginner" = "Gato Iniciante";
 "daily.cat.fitness" = "Gato Fitness";
