@@ -66,7 +66,7 @@ private struct GoalsSettingsView: View {
     var body: some View {
         List {
             // Current configured daily goals (read-only for now)
-            Section(String(localized: "settings.section.goals")) {
+            Section(String(localized: "settings.goals.edit")) {
                 LabeledContent("settings.goal.water", value: "\(GoalsProvider.water)")
                 LabeledContent("settings.goal.protein", value: "\(GoalsProvider.protein)")
                 LabeledContent("settings.goal.carbs", value: "\(GoalsProvider.carbs)")
