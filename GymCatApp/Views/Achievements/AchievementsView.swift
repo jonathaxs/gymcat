@@ -113,115 +113,113 @@ struct AchievementsView: View {
         // Visual structure for the achievements screen using NavigationStack.
         // Each record is displayed in a list row with emoji, title, date, and points.
         NavigationStack {
-            Group {
-                if records.isEmpty {
-                    
-                    // Empty state view.
-                    // Shown when there are no records to display.
-                    ContentUnavailableView(
-                        String(localized: "achievements.empty.title"),
-                        systemImage: "trophy.fill",
-                        description: Text(String(localized: "achievements.empty.description"))
-                    )
-                } else {
-                    List {
-                        Section {
-                            Picker(String(localized: "achievements.filter.title"), selection: $filterMode) {
-                                Text(String(localized: "achievements.filter.day")).tag(FilterMode.day)
-                                Text(String(localized: "achievements.filter.all")).tag(FilterMode.all)
-                            }
-                            .pickerStyle(.segmented)
+            List {
+                Section {
+                    Picker(String(localized: "achievements.filter.title"), selection: $filterMode) {
+                        Text(String(localized: "achievements.filter.day")).tag(FilterMode.day)
+                        Text(String(localized: "achievements.filter.all")).tag(FilterMode.all)
+                    }
+                    .pickerStyle(.segmented)
 
-                            if filterMode == .day {
-                                // Month navigation + custom calendar with achievement emojis.
-                                VStack(alignment: .leading, spacing: 10) {
-                                    HStack {
-                                        Text(String(localized: "achievements.calendar.title"))
-                                            .font(.headline)
-
-                                        Spacer()
-
-                                        Button {
-                                            changeMonth(by: -1)
-                                        } label: {
-                                            Image(systemName: "chevron.left")
-                                                .font(.system(size: 14, weight: .semibold))
-                                                .padding(8)
-                                                .background(.ultraThinMaterial, in: Circle())
-                                        }
-                                        .buttonStyle(.plain)
-
-                                        Text(visibleMonthTitle)
-                                            .font(.subheadline)
-                                            .foregroundStyle(.secondary)
-
-                                        Button {
-                                            changeMonth(by: 1)
-                                        } label: {
-                                            Image(systemName: "chevron.right")
-                                                .font(.system(size: 14, weight: .semibold))
-                                                .padding(8)
-                                                .background(.ultraThinMaterial, in: Circle())
-                                        }
-                                        .buttonStyle(.plain)
-                                    }
-
-                                    MonthlyCalendarView(
-                                        monthDate: visibleMonthDate,
-                                        selectedDate: $selectedDate,
-                                        emojiByDay: emojiByDay
-                                    )
-                                }
-                                .padding(.vertical, 4)
-                            }
-                        }
-
-                        ForEach(visibleRecords) { record in
-
-                            // Individual history row.
-                            // Shows the cat emoji, title, date, and points for that day.
-                            HStack(spacing: 16) {
-                                Text(dailyCat(for: record).emoji)
-                                    .font(.largeTitle)
-
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text(dailyCat(for: record).name)
-                                        .font(.headline)
-
-                                    Text(record.date, style: .date)
-                                        .foregroundStyle(.secondary)
-                                        .font(.caption)
-                                }
+                    if filterMode == .day {
+                        // Month navigation + custom calendar with achievement emojis.
+                        VStack(alignment: .leading, spacing: 10) {
+                            HStack {
+                                Text(String(localized: "achievements.calendar.title"))
+                                    .font(.headline)
 
                                 Spacer()
 
-                                Text("\(record.points) \(String(localized: "achievements.points.total"))")
-                                    .font(.subheadline.bold())
-
-                                // Edit button – only visible for records within the last 72 hours.
-                                if canEdit(record) {
-                                    Button {
-                                        editingRecord = record
-                                    } label: {
-                                        Image(systemName: "pencil")
-                                            .font(.system(size: 16, weight: .semibold))
-                                            .foregroundStyle(.blue)
-                                            .padding(10)
-                                            .background(.ultraThinMaterial, in: Circle())
-                                            .overlay(
-                                                Circle()
-                                                    .stroke(.blue.opacity(0.25), lineWidth: 1)
-                                            )
-                                            .shadow(radius: 6, y: 3)
-                                    }
-                                    .buttonStyle(PressScaleButtonStyle())
+                                Button {
+                                    changeMonth(by: -1)
+                                } label: {
+                                    Image(systemName: "chevron.left")
+                                        .font(.system(size: 14, weight: .semibold))
+                                        .padding(8)
+                                        .background(.ultraThinMaterial, in: Circle())
                                 }
+                                .buttonStyle(.plain)
+
+                                Text(visibleMonthTitle)
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+
+                                Button {
+                                    changeMonth(by: 1)
+                                } label: {
+                                    Image(systemName: "chevron.right")
+                                        .font(.system(size: 14, weight: .semibold))
+                                        .padding(8)
+                                        .background(.ultraThinMaterial, in: Circle())
+                                }
+                                .buttonStyle(.plain)
                             }
-                            .padding(.vertical, 8)
+
+                            MonthlyCalendarView(
+                                monthDate: visibleMonthDate,
+                                selectedDate: $selectedDate,
+                                emojiByDay: emojiByDay
+                            )
                         }
-                        .onDelete { offsets in
-                            deleteRecord(offsets: offsets, in: visibleRecords)
+                        .padding(.vertical, 4)
+                    }
+                }
+
+                if visibleRecords.isEmpty {
+                    // Inline empty state (keeps calendar + filters visible).
+                    Section {
+                        ContentUnavailableView(
+                            String(localized: "achievements.empty.title"),
+                            systemImage: "trophy.fill",
+                            description: Text(String(localized: "achievements.empty.description"))
+                        )
+                    }
+                } else {
+                    ForEach(visibleRecords) { record in
+
+                        // Individual history row.
+                        // Shows the cat emoji, title, date, and points for that day.
+                        HStack(spacing: 16) {
+                            Text(dailyCat(for: record).emoji)
+                                .font(.largeTitle)
+
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(dailyCat(for: record).name)
+                                    .font(.headline)
+
+                                Text(record.date, style: .date)
+                                    .foregroundStyle(.secondary)
+                                    .font(.caption)
+                            }
+
+                            Spacer()
+
+                            Text("\(record.points) \(String(localized: "achievements.points.total"))")
+                                .font(.subheadline.bold())
+
+                            // Edit button – only visible for records within the last 72 hours.
+                            if canEdit(record) {
+                                Button {
+                                    editingRecord = record
+                                } label: {
+                                    Image(systemName: "pencil")
+                                        .font(.system(size: 16, weight: .semibold))
+                                        .foregroundStyle(.blue)
+                                        .padding(10)
+                                        .background(.ultraThinMaterial, in: Circle())
+                                        .overlay(
+                                            Circle()
+                                                .stroke(.blue.opacity(0.25), lineWidth: 1)
+                                        )
+                                        .shadow(radius: 6, y: 3)
+                                }
+                                .buttonStyle(PressScaleButtonStyle())
+                            }
                         }
+                        .padding(.vertical, 8)
+                    }
+                    .onDelete { offsets in
+                        deleteRecord(offsets: offsets, in: visibleRecords)
                     }
                 }
             }
