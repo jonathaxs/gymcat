@@ -26,6 +26,10 @@ struct AchievementsView: View {
         case day
     }
 
+    // Persists the user's last selection for the Achievements filters.
+    @AppStorage("achievements.filterMode") private var storedFilterMode: String = FilterMode.all.rawValue
+    @AppStorage("achievements.selectedDate") private var storedSelectedDateTimestamp: Double = Date().timeIntervalSince1970
+
     // Controls list filtering on the Achievements screen.
     @State private var filterMode: FilterMode = .all
     @State private var selectedDate: Date = Date()
@@ -152,6 +156,17 @@ struct AchievementsView: View {
             
             // Navigation title for the achievements screen.
             .navigationTitle(String(localized: "achievements.header.title"))
+            .onAppear {
+                // Restore last used filter state.
+                filterMode = FilterMode(rawValue: storedFilterMode) ?? .all
+                selectedDate = Date(timeIntervalSince1970: storedSelectedDateTimestamp)
+            }
+            .onChange(of: filterMode) { _, newValue in
+                storedFilterMode = newValue.rawValue
+            }
+            .onChange(of: selectedDate) { _, newValue in
+                storedSelectedDateTimestamp = newValue.timeIntervalSince1970
+            }
         }
         .sheet(item: $editingRecord) { record in
             EditTodayView(record: record)
