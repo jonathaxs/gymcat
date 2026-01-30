@@ -10,6 +10,12 @@ import SwiftUI
 
 struct RecordDetailView: View {
 
+    @Environment(\.dismiss) private var dismiss
+
+    // MARK: - Navigation actions
+    let canEdit: Bool
+    let onEdit: () -> Void
+
     // MARK: - Inputs
     let record: DailyRecord
 
@@ -95,8 +101,23 @@ struct RecordDetailView: View {
             }
             .padding()
         }
-        .navigationTitle(String(localized: "achievements.calendar.title"))
+        .navigationTitle(String(localized: "record.detail.title"))
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+                Button(String(localized: "record.detail.back")) {
+                    dismiss()
+                }
+            }
+
+            if canEdit {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button(String(localized: "record.detail.edit")) {
+                        onEdit()
+                    }
+                }
+            }
+        }
     }
 }
 
