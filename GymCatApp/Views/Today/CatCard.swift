@@ -11,11 +11,20 @@ import SwiftUI
 struct CatCard: View {
     let dailyCat: DailyCat
     let dailyPercentage: Int
+
+    /// Date shown in the card header (e.g., "quarta-feira, 29 de janeiro")
+    let headerDate: Date
+
+    private var headerText: String {
+        // Locale-aware, human-friendly format.
+        // PT-BR example: "quarta-feira, 29 de janeiro"
+        headerDate.formatted(.dateTime.weekday(.wide).day().month(.wide))
+    }
     
     var body: some View {
         HStack(alignment: .center) {
             VStack(alignment: .leading, spacing: 8) {
-                Text(String(localized: "cat.card.title"))
+                Text(headerText)
                     .font(.headline)
                     .foregroundStyle(.secondary)
                 
@@ -48,6 +57,7 @@ struct CatCard: View {
 #Preview {
     CatCard(
         dailyCat: .fitness,
-        dailyPercentage: 85
+        dailyPercentage: 85,
+        headerDate: Date()
     )
 }
