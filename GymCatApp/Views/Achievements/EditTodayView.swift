@@ -110,7 +110,8 @@ struct EditTodayView: View {
                     // Summary card showing the current cat and percentage based on the edited values.
                     CatCard(
                         dailyCat: dailyCat,
-                        dailyPercentage: dailyPercentage
+                        dailyPercentage: dailyPercentage,
+                        headerDate: record.date
                     )
                     
                     // Editable rows for each metric, reusing TrackerRow.
