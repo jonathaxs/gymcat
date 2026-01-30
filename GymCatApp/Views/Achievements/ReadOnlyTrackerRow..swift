@@ -1,8 +1,7 @@
 // ⌘
 //  GymCat/GymCatApp/Views/Today/ReadOnlyTrackerRow.swift
 //
-//  Purpose:
-//  Read-only version of TrackerRow used to display historical records.
+//  Purpose: Read-only version of TrackerRow used to display historical records.
 //
 //  Created by @jonathaxs on 2026-01-29.
 // ⌘
@@ -24,6 +23,7 @@ struct ReadOnlyTrackerRow: View {
         return min(Double(value) / Double(goal), 1.0)
     }
     
+    // Human-readable summary of the metric compared to its goal
     private var metricText: String {
         "\(value) \(unit) / \(goal) \(unit)"
     }
@@ -44,6 +44,7 @@ struct ReadOnlyTrackerRow: View {
                     .foregroundStyle(.secondary)
             }
             
+            // Visual progress representation for historical inspection
             ProgressView(value: Double(value), total: Double(goal))
                 .tint(Color.accentColor)
                 .scaleEffect(x: 1, y: 2, anchor: .center)
