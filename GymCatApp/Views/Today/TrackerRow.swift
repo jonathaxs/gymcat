@@ -29,6 +29,20 @@ struct TrackerRow: View {
     private var metricText: String {
         "\(value) \(unit) \(separatorText) \(goal) \(unit)"
     }
+
+    // Slider works with Double internally, so we bridge it to our Int-based model.
+    // Dragging snaps to the same step used by the +/- buttons (`increment`).
+    private var sliderValue: Binding<Double> {
+        Binding(
+            get: { Double(value) },
+            set: { newValue in
+                let step = max(1, increment)
+                let snapped = (newValue / Double(step)).rounded() * Double(step)
+                let clamped = min(max(snapped, 0), Double(goal))
+                value = Int(clamped)
+            }
+        )
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -70,13 +84,15 @@ struct TrackerRow: View {
                 }
             }
             
-            // Visual progress representation based on the current value and goal
-            ProgressView(value: Double(value), total: Double(goal))
-                .progressViewStyle(LinearProgressViewStyle())
-                .tint(Color.green.opacity(0.9))
-                .scaleEffect(x: 1, y: 2, anchor: .center)
-                .frame(height: 10)
-                .clipShape(RoundedRectangle(cornerRadius: 30))
+            // Fast input: drag to reach the target quickly.
+            if goal > 0 {
+                Slider(
+                    value: sliderValue,
+                    in: 0...Double(goal),
+                    step: Double(max(1, increment))
+                )
+            }
+
         }
         .padding(15)
         .background(Color(.secondarySystemBackground))
