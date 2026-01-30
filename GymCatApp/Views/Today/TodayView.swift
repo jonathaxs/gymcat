@@ -196,7 +196,8 @@ struct TodayView: View {
                 // Screen header and Daily summary card
                 CatCard(
                     dailyCat: dailyCat,
-                    dailyPercentage: dailyPercentage
+                    dailyPercentage: dailyPercentage,
+                    headerDate: Date()
                 )
                 
                 // Individual trackers for each metric.
