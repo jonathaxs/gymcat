@@ -29,7 +29,6 @@
 
 /* MARK: CatCard.swift */
 /* Cards */
-"cat.card.title" = "Today's achievement";
 "cat.card.progress" = "Progress:";
 "cat.card.points" = "Points:";
 
