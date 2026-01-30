@@ -60,6 +60,13 @@
 "edit.record.save" = "Salvar";
 
 
+/* MARK: RecordDetailView.swift */
+/* Navigation */
+"record.detail.title" = "Detalhes da Conquista";
+"record.detail.back" = "Voltar";
+"record.detail.edit" = "Editar";
+
+
 /* MARK: SettingsView.swift */
 /* Sections */
 "settings.header.title" = "Ajustes";
