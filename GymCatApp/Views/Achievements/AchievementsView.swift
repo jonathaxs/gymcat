@@ -21,8 +21,31 @@ struct AchievementsView: View {
     @Query(sort: \DailyRecord.date, order: .reverse) private var records: [DailyRecord]
     @Environment(\.modelContext) private var modelContext
     
-    // Controls which record is currently being edited in a sheet.
-    @State private var editingRecord: DailyRecord?
+    // Controls which record is currently displayed in a sheet.
+    // - view: read-only details for any day
+    // - edit: editable sheet for recent entries
+    @State private var activeSheet: ActiveSheet?
+
+    private enum ActiveSheet: Identifiable {
+        case view(DailyRecord)
+        case edit(DailyRecord)
+
+        var id: String {
+            switch self {
+            case .view(let record):
+                return "view-\(record.id)"
+            case .edit(let record):
+                return "edit-\(record.id)"
+            }
+        }
+
+        var record: DailyRecord {
+            switch self {
+            case .view(let record), .edit(let record):
+                return record
+            }
+        }
+    }
     
     private enum FilterMode: String {
         case all
@@ -200,7 +223,7 @@ struct AchievementsView: View {
                             // Edit button – only visible for records within the last 72 hours.
                             if canEdit(record) {
                                 Button {
-                                    editingRecord = record
+                                    activeSheet = .edit(record)
                                 } label: {
                                     Image(systemName: "pencil")
                                         .font(.system(size: 16, weight: .semibold))
@@ -217,6 +240,10 @@ struct AchievementsView: View {
                             }
                         }
                         .padding(.vertical, 8)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            activeSheet = .view(record)
+                        }
                     }
                     .onDelete { offsets in
                         deleteRecord(offsets: offsets, in: visibleRecords)
@@ -241,8 +268,15 @@ struct AchievementsView: View {
                 visibleMonthDate = startOfMonth(for: newValue)
             }
         }
-        .sheet(item: $editingRecord) { record in
-            EditTodayView(record: record)
+        .sheet(item: $activeSheet) { sheet in
+            switch sheet {
+            case .view(let record):
+                NavigationStack {
+                    RecordDetailView(record: record)
+                }
+            case .edit(let record):
+                EditTodayView(record: record)
+            }
         }
     }
 }
