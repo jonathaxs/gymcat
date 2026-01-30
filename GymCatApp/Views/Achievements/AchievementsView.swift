@@ -272,7 +272,13 @@ struct AchievementsView: View {
             switch sheet {
             case .view(let record):
                 NavigationStack {
-                    RecordDetailView(record: record)
+                    RecordDetailView(
+                        canEdit: canEdit(record),
+                        onEdit: {
+                            activeSheet = .edit(record)
+                        },
+                        record: record
+                    )
                 }
             case .edit(let record):
                 EditTodayView(record: record)
