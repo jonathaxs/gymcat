@@ -119,6 +119,9 @@ struct RecordDetailView: View {
             }
         }
     }
+    /// When a record is still within the editable window, an Edit action is exposed
+    /// via the navigation bar, delegating editing to `EditTodayView`.
+
 }
 
 #Preview {
