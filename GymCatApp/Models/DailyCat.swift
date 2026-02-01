@@ -9,8 +9,12 @@
 import SwiftUI
 
 // MARK: - DailyCat (Enum for cat categories)
-// Represents the daily cat categories based on progress.
-// Centralizes emoji, name, color and points in a single type.
+// Represents the daily cat categories based on user progress.
+//
+// This enum centralizes all visual and semantic information related to a
+// daily achievement tier, including emoji, localized name, display color
+// and point value. It acts as the single source of truth for cat-based
+// gamification logic in the app.
 enum DailyCat {
     case sad
     case beginner
@@ -32,6 +36,8 @@ extension DailyCat {
     ///
     /// - Parameter progress: A normalized progress value, ideally clamped to the 0...1 range.
     static func from(progress: Double) -> DailyCat {
+        // The progress value is evaluated against fixed thresholds
+        // to determine the corresponding DailyCat tier.
         switch progress {
         case ..<0.5:
             return .sad
@@ -44,6 +50,8 @@ extension DailyCat {
         }
     }
 
+    // MARK: - Presentation properties
+    // Visual and descriptive attributes associated with each cat tier.
     var emoji: String {
         switch self {
         case .sad:
@@ -57,6 +65,8 @@ extension DailyCat {
         }
     }
 
+    // Localized display name for the cat tier.
+    // Used in UI labels, summaries and achievement descriptions.
     var name: String {
         switch self {
         case .sad:
@@ -70,6 +80,8 @@ extension DailyCat {
         }
     }
 
+    // Representative color associated with the cat tier.
+    // Primarily used for subtle background highlights and accents.
     var color: Color {
         switch self {
         case .sad:
@@ -83,6 +95,7 @@ extension DailyCat {
         }
     }
 
+    // Points awarded for completing a day at this cat tier.
     var points: Int {
         switch self {
         case .sad:
