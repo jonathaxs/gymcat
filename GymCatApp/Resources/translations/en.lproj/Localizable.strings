@@ -51,7 +51,7 @@
 "achievements.calendar.title" = "History";
 /* Empty state */
 "achievements.empty.title" = "No achievements yet";
-"achievements.empty.description" = "Finish your days to unlock achievements here.";
+"achievements.empty.description" = "Finish the day to unlock achievement here.";
 
 
 /* MARK: EditTodayView.swift */
