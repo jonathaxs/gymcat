@@ -29,13 +29,6 @@ struct RecordDetailView: View {
     private let creatineGoal: Int = GoalsProvider.creatine
     private let sleepGoal: Int = GoalsProvider.sleep
 
-    // MARK: - Record helpers
-    // Converts the stored percentage (0...100) to a normalized progress (0...1).
-    private var recordProgress: Double {
-        let raw = Double(record.percent) / 100
-        return min(max(raw, 0), 1)
-    }
-
     // MARK: - View
     var body: some View {
         ScrollView {
@@ -43,7 +36,7 @@ struct RecordDetailView: View {
 
                 // Summary card for this specific day
                 CatCard(
-                    dailyCat: DailyCat.from(progress: recordProgress),
+                    dailyCat: DailyCat.from(emoji: record.catEmoji),
                     dailyPercentage: record.percent,
                     headerDate: record.date
                 )
