@@ -94,7 +94,9 @@ struct EditTodayView: View {
     }
 
     private var dailyPercentage: Int {
-        Int((dailyProgress * 100).rounded())
+        // Use .down rounding to avoid crossing category thresholds
+        // (e.g. 69.5% becoming 70% and changing the DailyCat tier).
+        Int((dailyProgress * 100).rounded(.down))
     }
     
     private var dailyCat: DailyCat {
