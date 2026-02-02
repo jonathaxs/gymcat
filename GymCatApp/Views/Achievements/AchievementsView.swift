@@ -82,8 +82,9 @@ struct AchievementsView: View {
     }
     
     private func dailyCat(for record: DailyRecord) -> DailyCat {
-        let progress = Double(record.percent) / 100.0
-        return DailyCat.from(progress: progress)
+        // Use the persisted emoji as the source of truth for historical tiers.
+        // This prevents mismatches when `percent` is rounded near thresholds.
+        return DailyCat.from(emoji: record.catEmoji)
     }
     
     private var visibleRecords: [DailyRecord] {
@@ -102,7 +103,7 @@ struct AchievementsView: View {
         let calendar = Calendar.current
         return Dictionary(
             uniqueKeysWithValues: records.map {
-                (calendar.startOfDay(for: $0.date), dailyCat(for: $0).emoji)
+                (calendar.startOfDay(for: $0.date), $0.catEmoji)
             }
         )
     }
