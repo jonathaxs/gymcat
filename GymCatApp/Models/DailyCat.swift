@@ -50,6 +50,28 @@ extension DailyCat {
         }
     }
 
+    /// Maps a stored emoji (from `DailyRecord`) back to a `DailyCat` tier.
+    ///
+    /// This is used when rendering historical records to avoid re-computing the tier
+    /// from rounded percentages, which can lead to mismatches near thresholds.
+    ///
+    /// - Parameter emoji: The emoji stored on the record.
+    /// - Returns: The corresponding `DailyCat` tier. Defaults to `.sad` for unknown values.
+    static func from(emoji: String) -> DailyCat {
+        switch emoji {
+        case DailyCat.sad.emoji:
+            return .sad
+        case DailyCat.beginner.emoji:
+            return .beginner
+        case DailyCat.fitness.emoji:
+            return .fitness
+        case DailyCat.strong.emoji:
+            return .strong
+        default:
+            return .sad
+        }
+    }
+
     // MARK: - Presentation properties
     // Visual and descriptive attributes associated with each cat tier.
     var emoji: String {
