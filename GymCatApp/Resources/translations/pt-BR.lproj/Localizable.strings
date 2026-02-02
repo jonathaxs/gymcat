@@ -51,7 +51,7 @@
 "achievements.calendar.title" = "Histórico";
 /* Empty state */
 "achievements.empty.title" = "Nenhuma conquista ainda";
-"achievements.empty.description" = "Conclua seus dias para desbloquear conquistas aqui.";
+"achievements.empty.description" = "Conclua o dia para desbloquear uma conquista aqui.";
 
 
 /* MARK: EditTodayView.swift */
