@@ -51,7 +51,7 @@
 "achievements.calendar.title" = "Histórico";
 /* Empty state */
 "achievements.empty.title" = "Nenhuma conquista ainda";
-"achievements.empty.description" = "Conclua o dia para desbloquear uma conquista aqui.";
+"achievements.empty.description" = "Conclua o Dia para desbloquear uma conquista aqui.";
 
 
 /* MARK: EditTodayView.swift */
@@ -86,7 +86,7 @@
 "settings.goal.creatine" = "Creatina";
 "settings.goal.sleep" = "Sono";
 /* Preferences */
-"settings.preference.syncSleep" = "Sincronizar sono com o Apple Health";
+"settings.preference.syncSleep" = "Sincronizar Sono com o Apple Health";
 /* About */
 "settings.about.version" = "Versão";
 "settings.about.build" = "Build";
