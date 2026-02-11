@@ -165,8 +165,8 @@ struct AchievementsView: View {
                                 .buttonStyle(.plain)
 
                                 Text(visibleMonthTitle)
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
+                                    .font(.callout.weight(.semibold))
+                                    .foregroundStyle(.primary)
 
                                 Button {
                                     changeMonth(by: 1)
@@ -287,11 +287,11 @@ struct AchievementsView: View {
         }
     }
 
-        // MARK: - Navigation behavior
-        /// Tapping a record opens a read-only detail view (RecordDetailView).
-        /// Recent records (within the edit window) expose an Edit action,
-        /// allowing users to transition directly to EditTodayView.
-        /// This keeps historical data safe while preserving quick edits for recent days.
+    // MARK: - Navigation behavior
+    /// Tapping a record opens a read-only detail view (RecordDetailView).
+    /// Recent records (within the edit window) expose an Edit action,
+    /// allowing users to transition directly to EditTodayView.
+    /// This keeps historical data safe while preserving quick edits for recent days.
 }
 
 private struct PressScaleButtonStyle: ButtonStyle {
