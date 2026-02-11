@@ -58,6 +58,8 @@ struct TodayView: View {
         ProgressHelpers.normalizedProgress(current: sleepHours, goal: sleepGoal)
     }
     
+    // Collects all normalized metric progress values (0...1).
+    // We keep them in an array to make the daily average calculation concise and consistent.
     private var progressValues: [Double] {
         [
             waterProgress,
@@ -69,6 +71,8 @@ struct TodayView: View {
         ]
     }
 
+    // Average progress across all tracked metrics.
+    // Each metric currently has equal weight in the final progress score.
     private var dailyProgress: Double {
         guard !progressValues.isEmpty else { return 0 }
         return progressValues.reduce(0, +) / Double(progressValues.count)
