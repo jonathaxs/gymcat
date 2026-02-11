@@ -51,7 +51,7 @@
 "achievements.calendar.title" = "History";
 /* Empty state */
 "achievements.empty.title" = "No achievements yet";
-"achievements.empty.description" = "Finish the day to unlock achievement here.";
+"achievements.empty.description" = "Finish the Day to unlock achievement here.";
 
 
 /* MARK: EditTodayView.swift */
@@ -86,7 +86,7 @@
 "settings.goal.creatine" = "Creatine";
 "settings.goal.sleep" = "Sleep";
 /* Preferences */
-"settings.preference.syncSleep" = "Sync sleep with Apple Health";
+"settings.preference.syncSleep" = "Sync Sleep with Apple Health";
 /* About */
 "settings.about.version" = "Version";
 "settings.about.build" = "Build";
