@@ -32,7 +32,7 @@ struct RecordDetailView: View {
     // MARK: - View
     var body: some View {
         ScrollView {
-            VStack(spacing: 12) {
+            VStack(spacing: 16) {
 
                 // Summary card for this specific day
                 CatCard(
@@ -40,6 +40,9 @@ struct RecordDetailView: View {
                     dailyPercentage: record.percent,
                     headerDate: record.date
                 )
+
+                Divider()
+                    .opacity(0.6)
 
                 // Metrics read-only rows
                 ReadOnlyTrackerRow(
@@ -94,6 +97,7 @@ struct RecordDetailView: View {
             }
             .padding()
         }
+        .background(Color(.systemGroupedBackground))
         .navigationTitle(String(localized: "record.detail.title"))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -112,9 +116,11 @@ struct RecordDetailView: View {
             }
         }
     }
-    /// When a record is still within the editable window, an Edit action is exposed
-    /// via the navigation bar, delegating editing to `EditTodayView`.
 
+    // MARK: - Notes
+    // This screen is intentionally read-only.
+    // When a record is still within the editable window, an Edit action is exposed
+    // via the navigation bar, delegating editing to `EditTodayView`.
 }
 
 #Preview {
