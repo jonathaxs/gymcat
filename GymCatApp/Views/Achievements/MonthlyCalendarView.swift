@@ -66,25 +66,30 @@ struct MonthlyCalendarView: View {
     @ViewBuilder
     private func dayCell(for date: Date) -> some View {
         let isSelected = calendar.isDate(date, inSameDayAs: selectedDate)
+        let isInDisplayedMonth = calendar.isDate(date, equalTo: monthDate, toGranularity: .month)
         let dayNumber = calendar.component(.day, from: date)
         let emoji = emojiByDay[calendar.startOfDay(for: date)]
 
         VStack(spacing: 4) {
             Text("\(dayNumber)")
-                .font(.subheadline.weight(.semibold))
-                .foregroundStyle(isSelected ? .white : .primary)
+                .font(.callout.weight(.semibold))
+                .foregroundStyle(isSelected ? .white : (isInDisplayedMonth ? .primary : .secondary))
+                .opacity(isInDisplayedMonth || isSelected ? 1 : 0.45)
 
             if let emoji {
                 Text(emoji)
-                    .font(.body)
+                    .font(.callout)
+                    .opacity(isInDisplayedMonth || isSelected ? 1 : 0.45)
             }
         }
         .frame(height: 44)
         .frame(maxWidth: .infinity)
         .background(isSelected ? Color.accentColor : Color.clear)
         .clipShape(RoundedRectangle(cornerRadius: 8))
+        .opacity(isInDisplayedMonth || isSelected ? 1 : 0.65)
         .contentShape(Rectangle())
         .onTapGesture {
+            guard isInDisplayedMonth else { return }
             selectedDate = date
         }
     }
