@@ -20,5 +20,5 @@ DerivedData/
 # * Dependências do CocoaPods *
 Pods/**/xcuserdata/
 
-# Xcode generated / transient
+# Xcode generated / transient files
 GymCat-Info.plist
