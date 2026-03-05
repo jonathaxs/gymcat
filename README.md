@@ -1,10 +1,10 @@
-# GymCat
-
-![SwiftUI](https://img.shields.io/badge/SwiftUI-0C7CFF?style=for-the-badge&logo=swift&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Work_In_Progress-yellow?style=for-the-badge)
+![SwiftUI](https://img.shields.io/badge/SwiftUI-0C7CFF?style=for-the-badge&logo=swift&logoColor=white)
 
 <img align="left" src="git/appicons/GymCatLightIconRounded.png" width="100">
 <img src="git/appicons/GymCatNightIconRounded.png" width="100">
+
+# GymCat
 
 ### *A fitness goals app with gamification and motivational cats.*
 
