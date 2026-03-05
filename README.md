@@ -11,7 +11,7 @@
 **GymCat** is an iOS app built with **SwiftUI** that helps users stay consistent with their fitness routine.  
 Complete your daily goals, earn a **Cat of the Day**, collect **points**, and unlock **weekly and monthly achievements**.
 
----
+<br/>
 
 ## ⭐ Features
 
@@ -25,7 +25,7 @@ Track 5 metrics:
 
 Daily progress = **average** of all 5 goals.
 
----
+<br/>
 
 ## 🐾 Cat of the Day & Points (on development)
 
@@ -38,7 +38,7 @@ Daily progress = **average** of all 5 goals.
 
 **Finish Day** → saves the day's record and adds points to the total score.
 
----
+<br/>
 
 ## 📱 Screens (on development)
 
@@ -64,10 +64,19 @@ Daily progress = **average** of all 5 goals.
 - Automatic goal calculation  
 - Option to manually adjust all values
 
----
+<br/>
 
 ## 🚀 Tech Stack
 - Swift + SwiftUI  
 - SwiftData  
 - @AppStorage  
-- Lightweight MVVM structure 
+- Lightweight MVVM structure
+
+<br/>
+
+## 
+
+### Platforms: 
+![iOS](https://img.shields.io/badge/iOS-f0f0f0?logo=apple&logoColor=black&style=for-the-badge)
+![iPadOS](https://img.shields.io/badge/iPadOS-f0f0f0?logo=apple&logoColor=black&style=for-the-badge)
+![macOS](https://img.shields.io/badge/macOS-f0f0f0?logo=apple&logoColor=black&style=for-the-badge)
