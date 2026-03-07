@@ -1,5 +1,5 @@
 // ⌘
-//  GymCat/GymCatApp/Views/MainView.swift
+//  GymCat/App/Views/MainView.swift
 //
 //  Purpose: Hosts the main TabView and routes users to the primary app screens.
 //

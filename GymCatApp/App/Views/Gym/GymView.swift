@@ -1,5 +1,5 @@
 // ⌘
-//  GymCat/GymCatApp/Views/Gym/GymView.swift
+//  GymCat/App/Views/Gym/GymView.swift
 //
 //  Purpose: Gym/workouts placeholder screen for future training features.
 //

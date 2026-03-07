@@ -1,5 +1,5 @@
 // ⌘
-//  GymCat/GymCatApp/Views/Achievements/RecordDetailView.swift
+//  GymCat/App/Views/Achievements/RecordDetailView.swift
 //
 //  Purpose: Read-only detail screen for a historical DailyRecord.
 //

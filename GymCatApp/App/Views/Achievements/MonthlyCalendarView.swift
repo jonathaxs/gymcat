@@ -1,5 +1,5 @@
 // ⌘
-//  GymCat/GymCatApp/Views/Achievements/MonthlyCalendarView.swift
+//  GymCat/App/Views/Achievements/MonthlyCalendarView.swift
 //
 //  Purpose: Custom monthly calendar grid used by AchievementsView.
 //

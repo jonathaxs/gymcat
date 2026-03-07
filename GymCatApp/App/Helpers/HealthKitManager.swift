@@ -1,5 +1,5 @@
 // ⌘
-//  GymCat/GymCatApp/Helpers/HealthKitManager.swift
+//  GymCat/App/Helpers/HealthKitManager.swift
 //
 //  Purpose: Centralizes Apple Health (HealthKit) authorization and writing Sleep Analysis entries.
 //

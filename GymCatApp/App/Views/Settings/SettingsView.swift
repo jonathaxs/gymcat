@@ -1,5 +1,5 @@
 // ⌘
-//  GymCat/GymCatApp/Views/Settings/SettingsView.swift
+//  GymCat/App/Views/Settings/SettingsView.swift
 //
 //  Purpose: Settings placeholder screen (will later store user preferences like goals and theme).
 //

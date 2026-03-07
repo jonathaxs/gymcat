@@ -1,5 +1,5 @@
 // ⌘
-//  GymCat/GymCatApp/Views/Cat/CatCard.swift
+//  GymCat/App/Views/Cat/CatCard.swift
 //
 //  Purpose: Summary card that displays the day’s cat, progress percentage and points.
 //

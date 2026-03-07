@@ -1,5 +1,5 @@
 // ⌘
-//  GymCat/GymCatApp/GymCatApp.swift
+//  GymCat/App/GymCatApp.swift
 //
 //  Purpose: Entry point of the app; configures SwiftData and loads MainView.
 //

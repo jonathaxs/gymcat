@@ -1,5 +1,5 @@
 // ⌘
-//  GymCat/GymCatApp/Views/Today/TodayView.swift
+//  GymCat/App/Views/Today/TodayView.swift
 //
 //  Purpose: Main “Today” screen where users track daily metrics and finish the day.
 //

@@ -1,5 +1,5 @@
 // ⌘
-//  GymCat/GymCatApp/Views/Achievements/AchievementsView.swift
+//  GymCat/App/Views/Achievements/AchievementsView.swift
 //
 //  Purpose: History screen that lists saved DailyRecords and allows editing recent entries.
 //

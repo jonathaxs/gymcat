@@ -1,5 +1,5 @@
 // ⌘
-//  GymCat/GymCatApp/Views/Today/ReadOnlyTrackerRow.swift
+//  GymCat/App/Views/Today/ReadOnlyTrackerRow.swift
 //
 //  Purpose: Read-only version of TrackerRow used to display historical records.
 //

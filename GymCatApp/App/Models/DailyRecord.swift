@@ -1,5 +1,5 @@
 // ⌘
-//  GymCat/GymCatApp/Models/DailyRecord.swift
+//  GymCat/App/Models/DailyRecord.swift
 //
 //  Purpose: SwiftData model that persists a completed day with metrics, cat result and points.
 //

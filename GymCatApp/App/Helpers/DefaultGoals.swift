@@ -1,5 +1,5 @@
 // ⌘
-//  GymCat/GymCatApp/Helpers/DefaultGoals.swift
+//  GymCat/App/Helpers/DefaultGoals.swift
 //
 //  Purpose: Centralizes the default daily goal values used across the app.
 //

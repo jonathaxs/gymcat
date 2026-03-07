@@ -1,5 +1,5 @@
 // ⌘
-//  GymCat/GymCatApp/Views/Welcome/WelcomeView.swift
+//  GymCat/App/Views/Welcome/WelcomeView.swift
 //
 //  Purpose: Welcome/onboarding placeholder screen for first-time user flow.
 //

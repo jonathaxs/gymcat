@@ -1,5 +1,5 @@
 // ⌘
-//  GymCat/GymCatApp/Views/Achievements/EditTodayView.swift
+//  GymCat/App/Views/Achievements/EditTodayView.swift
 //
 //  Purpose: Edit screen to update a recent DailyRecord and recalculate the cat and points.
 //

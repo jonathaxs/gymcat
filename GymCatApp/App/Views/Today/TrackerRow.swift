@@ -1,5 +1,5 @@
 // ⌘
-//  GymCat/GymCatApp/Views/Today/TrackerRow.swift
+//  GymCat/App/Views/Today/TrackerRow.swift
 //
 //  Purpose: Reusable tracker row with +/- controls and progress bar for a single metric.
 //

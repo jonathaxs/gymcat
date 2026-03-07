@@ -1,5 +1,5 @@
 // ⌘
-//  GymCat/GymCatApp/Helpers/ProgressHelpers.swift
+//  GymCat/App/Helpers/ProgressHelpers.swift
 //
 //  Purpose: Shared utilities to compute normalized progress values (clamped to 0…1).
 //
